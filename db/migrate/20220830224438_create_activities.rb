@@ -5,7 +5,7 @@ class CreateActivities < ActiveRecord::Migration[7.0]
       t.text :detail
       t.string :location
       t.integer :max_participants
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.date :start_date
       t.date :end_date
       t.time :start_time
