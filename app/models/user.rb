@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :messages, dependent: :destroy
   has_many :itineraries, dependent: :destroy
   has_many :activities, through: :itineraries, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true

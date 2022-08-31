@@ -117,17 +117,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
-    t.text "comment"
-    t.bigint "user_id", null: false
-    t.bigint "activity_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_reviews_on_activity_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -156,6 +145,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "activities"
   add_foreign_key "participants", "users"
-  add_foreign_key "reviews", "activities"
-  add_foreign_key "reviews", "users"
 end

@@ -3,7 +3,6 @@ class Activity < ApplicationRecord
   belongs_to :interest_type
 
   has_many :chatrooms
-  has_many :reviews
   has_many :participants
 
   validates :name, presence: true
