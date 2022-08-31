@@ -384,22 +384,22 @@ message15 = Message.create(chatroom: chatroom8, user: user3, content: "you guys 
 
 
 
-creatorreview1 = Creator_review.create(
+creatorreview1 = CreatorReview.create(
   creator_id: user1,
   participation: participation1,
   comment: "Fel was kinda niiiiice!",
   rating: 5)
 
-creatorreview2 = Creator_review.create(creator_id: user1, participation: participation2, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+creatorreview2 = CreatorReview.create(creator_id: user1, participation: participation2, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
 
-creatorreview3 = Creator_review.create(creator_id: user1, participation: participation1, comment: "Fel is ma hypewomaaaan!", rating: 5)
+creatorreview3 = CreatorReview.create(creator_id: user1, participation: participation1, comment: "Fel is ma hypewomaaaan!", rating: 5)
 
-creatorreview4 = Creator_review.create(creator_id: user1, participation: participation2, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
+creatorreview4 = CreatorReview.create(creator_id: user1, participation: participation2, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
 
 
-participationreview5 = Participation_review.create(comment: "Malia iz da best", rating: 4, participation: participation3)
+participationreview5 = ParticipationReview.create(comment: "Malia iz da best", rating: 4, participation: participation3)
 
-participationreview1 = Participation_review.create(comment: "", rating: 5, participation: participation1)
-participationreview2 = Participation_review.create(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
+participationreview1 = ParticipationReview.create(comment: "", rating: 5, participation: participation1)
+participationreview2 = ParticipationReview.create(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
 
-participationreview3 = Participation_review.create(comment: "Loved this too! Malia is da best!", rating: 5, participation: participation1)
+participationreview3 = ParticipationReview.create(comment: "Loved this too! Malia is da best!", rating: 5, participation: participation1)
