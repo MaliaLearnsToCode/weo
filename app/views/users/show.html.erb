@@ -1,2 +1,21 @@
+<div class="top_bar">
+  <div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Barack_Obama.jpg/640px-Barack_Obama.jpg" alt="user profile" height="100px" width="100px" id="avatar_photo">
+  </div>
 
-<h1><%= @user.email %></h1>
+  <div id="name">
+  <%= "#{current_user.first_name}" %>
+  </div>
+
+  <div>
+    <%= link_to itineraries_path do%>
+      <img src="https://cdn-icons-png.flaticon.com/512/992/992668.png" alt="button" height="25px" width="25px">
+    <% end %>
+  </div>
+
+  <div>
+     <%= link_to itineraries_path do%>
+      <button type="button">Create New Itinerary</button>
+    <% end %>
+  </div>
+</div>
