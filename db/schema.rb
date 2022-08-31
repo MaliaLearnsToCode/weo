@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
     t.index ["activity_id"], name: "index_chatrooms_on_activity_id"
   end
 
+  create_table "creator_reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "participant_id", null: false
+    t.bigint "creator_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_creator_reviews_on_creator_id"
+    t.index ["participant_id"], name: "index_creator_reviews_on_participant_id"
+  end
+
   create_table "interest_types", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -107,14 +118,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "participants", force: :cascade do |t|
+  create_table "participant_reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "participation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_participant_reviews_on_participation_id"
+  end
+
+  create_table "participations", force: :cascade do |t|
     t.string "status"
     t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_participants_on_activity_id"
-    t.index ["user_id"], name: "index_participants_on_user_id"
+    t.index ["activity_id"], name: "index_participations_on_activity_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,11 +158,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
   add_foreign_key "activities", "interest_types"
   add_foreign_key "activities", "itineraries"
   add_foreign_key "chatrooms", "activities"
+  add_foreign_key "creator_reviews", "users", column: "creator_id"
+  add_foreign_key "creator_reviews", "users", column: "participant_id"
   add_foreign_key "interests", "interest_types"
   add_foreign_key "interests", "users"
   add_foreign_key "itineraries", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "participants", "activities"
-  add_foreign_key "participants", "users"
+  add_foreign_key "participant_reviews", "participations"
+  add_foreign_key "participations", "activities"
+  add_foreign_key "participations", "users"
 end
