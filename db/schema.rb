@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_161046) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_225353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,92 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_161046) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.text "detail"
+    t.string "location"
+    t.integer "max_participants"
+    t.boolean "completed"
+    t.date "start_date"
+    t.date "end_date"
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "itinerary_id", null: false
+    t.bigint "interest_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interest_type_id"], name: "index_activities_on_interest_type_id"
+    t.index ["itinerary_id"], name: "index_activities_on_itinerary_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_chatrooms_on_activity_id"
+  end
+
+  create_table "interest_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "interest_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interest_type_id"], name: "index_interests_on_interest_type_id"
+    t.index ["user_id"], name: "index_interests_on_user_id"
+  end
+
+  create_table "itineraries", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "country"
+    t.string "city"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_itineraries_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_participants_on_activity_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +136,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_161046) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.integer "age"
+    t.string "gender"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "interest_types"
+  add_foreign_key "activities", "itineraries"
+  add_foreign_key "chatrooms", "activities"
+  add_foreign_key "interests", "interest_types"
+  add_foreign_key "interests", "users"
+  add_foreign_key "itineraries", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "activities"
+  add_foreign_key "participants", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "users"
 end
