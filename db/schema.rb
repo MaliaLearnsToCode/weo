@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
     t.text "detail"
     t.string "location"
     t.integer "max_participants"
-    t.boolean "completed", default: false
+    t.boolean "completed"
     t.date "start_date"
     t.date "end_date"
     t.time "start_time"
@@ -125,6 +125,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
     t.index ["participation_id"], name: "index_participant_reviews_on_participation_id"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_participants_on_activity_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.string "status"
     t.bigint "user_id", null: false
@@ -133,6 +143,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_participations_on_activity_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -164,6 +185,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participant_reviews", "participations"
+  add_foreign_key "participants", "activities"
+  add_foreign_key "participants", "users"
   add_foreign_key "participations", "activities"
   add_foreign_key "participations", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "users"
 end

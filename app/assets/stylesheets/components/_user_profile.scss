@@ -25,4 +25,17 @@
 #usermap {
   display: flex;
   justify-content: center;
+  padding: 0 0 5px 0;
+}
+
+#bordermap {
+  background-color: grey;
+  margin: 50px 20px 0 70px;
+  width: 340px;
+  height: 145px;
+}
+
+#bordermap h1{
+  font-size: 20px;
+  text-decoration: none;
 }
