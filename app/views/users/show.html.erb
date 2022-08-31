@@ -4,7 +4,7 @@
   </div>
 
   <div id="name">
-  <%= "#{current_user.first_name}" %>
+    <%= "#{current_user.first_name}" %>
   </div>
 
   <div>
@@ -13,9 +13,16 @@
     <% end %>
   </div>
 
-  <div>
-     <%= link_to itineraries_path do%>
-      <button type="button">Create New Itinerary</button>
-    <% end %>
+</div>
+
+<div>
+  <%= link_to itineraries_path do%>
+  <button type="button" id="profilebutton">Create New Itinerary</button>
+  <% end %>
+</div>
+
+<div>
+  <div id="usermap">
+  <img src=https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg alt="button" height="150px" width="310px">
   </div>
 </div>
