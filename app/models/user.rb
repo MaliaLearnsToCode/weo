@@ -9,4 +9,10 @@ class User < ApplicationRecord
   has_many :itineraries, dependent: :destroy
   has_many :activities, through: :itineraries, dependent: :destroy
   has_many :reviews, dependent: :destroy
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :gender, presence: true
+
 end

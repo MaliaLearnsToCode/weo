@@ -4,7 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name,
+    <%= f.input :first_name, label_html: { class: 'myclass' },
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "first-name" }%>
@@ -19,7 +19,7 @@
     <%= f.input :gender,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "gender" }%>
+                input_html: { autocomplete: "gender" }, collection: %w[male female]%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
