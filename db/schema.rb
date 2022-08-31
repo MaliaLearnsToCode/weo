@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
     t.text "detail"
     t.string "location"
     t.integer "max_participants"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.date "start_date"
     t.date "end_date"
     t.time "start_time"
@@ -75,8 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_095739) do
     t.bigint "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_creator_reviews_on_creator_id"
-    t.index ["participant_id"], name: "index_creator_reviews_on_participant_id"
   end
 
   create_table "interest_types", force: :cascade do |t|

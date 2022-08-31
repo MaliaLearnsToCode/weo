@@ -3,8 +3,8 @@ class CreateCreatorReviews < ActiveRecord::Migration[7.0]
     create_table :creator_reviews do |t|
       t.string :comment
       t.integer :rating
-      t.references :participant, null: false
-      t.references :creator, null: false
+      t.references :participant, null: false, index: false
+      t.references :creator, null: false, index: false
 
       t.timestamps
     end
