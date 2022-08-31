@@ -1,0 +1,2 @@
+class InterestType < ApplicationRecord
+end
