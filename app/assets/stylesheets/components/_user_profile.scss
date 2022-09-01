@@ -12,3 +12,40 @@
 #avatar_photo {
   border-radius: 50%;
 }
+
+#profilebutton {
+  margin: 20px 0 0 320px;
+  background-color: rgb(27, 221, 251);
+  height: 27px;
+  width: 142px;
+  font-size: 12px;
+  border: none;
+}
+
+#usermap {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 5px 0;
+}
+
+#bordermap {
+  background-color: rgb(247, 244, 244);
+  margin: 50px 20px 0 70px;
+  width: 340px;
+  height: 145px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#bordermap h1{
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+}
+
+body {
+  background-color: #fed9d7;
+}

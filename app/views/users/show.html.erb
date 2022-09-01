@@ -1,11 +1,11 @@
-
+<body>
 <div class="top_bar">
   <div>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Barack_Obama.jpg/640px-Barack_Obama.jpg" alt="user profile" height="100px" width="100px" id="avatar_photo">
   </div>
 
   <div id="name">
-  <%= "#{current_user.first_name}" %>
+    <%= "#{current_user.first_name}" %>
   </div>
 
   <div>
@@ -14,10 +14,22 @@
     <% end %>
   </div>
 
-  <div>
-     <%= link_to itineraries_path do%>
-      <button type="button">Create New Itinerary</button>
-    <% end %>
-  </div>
 </div>
 
+<div>
+  <%= link_to itineraries_path do%>
+  <button type="button" id="profilebutton">Create New Itinerary</button>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to itineraries_path do%>
+    <div id="bordermap">
+      <h1> All my itineraries </h1>
+      <div id="usermap">
+      <img src=https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg alt="button" height="106px" width="330px">
+      </div>
+    </div>
+  <% end %>
+</div>
+</body>
