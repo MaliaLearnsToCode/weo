@@ -17,7 +17,7 @@
 </div>
 
 <div>
-  <%= link_to itineraries_path do%>
+  <%= link_to new_itinerary_path do%>
   <button type="button" id="profilebutton">Create New Itinerary</button>
   <% end %>
 </div>
@@ -32,4 +32,33 @@
     </div>
   <% end %>
 </div>
+
+<div id="rating">
+  <h1> 4.7/5 </h1>
+  <p> Rating </p>
+</div>
+
+<div>
+  <h5 id="reviewtitle">Reviews</h5>
+  <div id="review-border">
+    <div id="review-card">
+
+      <div id="reviewtop">
+        <div id="reviewer-name">
+          <%= "#{current_user.first_name}" %>
+        </div>
+
+        <div id="locationdate">
+          <%= "Osaka, Jan 2021" %>
+        </div>
+      </div>
+
+        <div id="review">
+          <%= "This is a great review!" %>
+        </div>
+
+    </div>
+  </div>
+</div>
+
 </body>
