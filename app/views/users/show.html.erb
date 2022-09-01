@@ -17,11 +17,13 @@
 
 </div>
 
+<% if @user == current_user %>
 <div>
   <%= link_to new_itinerary_path do%>
   <button type="button" id="profilebutton">Create New Itinerary</button>
   <% end %>
 </div>
+<% end %>
 
 <div>
   <%= link_to itineraries_path do%>
