@@ -14,4 +14,26 @@ class Itinerary < ApplicationRecord
     start_date, end_date)
   end)
 
+  # scope :current_itineraries, -> (my_itineraries) do
+  #  where(start_date: "start_date >=  Date.now and end_date <= date.now")
+  # end
+
+  # scope :current_itineraries, ->(booking_status, current_user) do
+  #   where(start_date: booking_status).joins(:itinerary).where('watches.user': current_user)
+  # end
+
+  # scope :current_itineraries, -> (start_date, end_date, Date.now, current_user) do
+  #   where(start_date: start_date).joins(:watch).where('itineraries.user': current_user)
+  # end
+
+  # def current_itineraries
+  #   @current_itineraries = Itinerary.find(:all, :conditions => ['start_date =?', Date.now])
+  #   @current_itineraries = Itinerary.where("start_date >=  ? and end_date <= ?", start_date, end_date)
+  # end
+
+  # def current_itineraries
+  #   # @current_itineraries = Itinerary.find(:all, :conditions => ['start_date =?', Date.now])
+  #   @current_itineraries = Itinerary.where("start_date >=  ? and end_date <= ?", start_date, end_date)
+  # end
+
 end
