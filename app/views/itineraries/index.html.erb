@@ -1,2 +1,62 @@
-<h1>Itineraries#index</h1>
-<p>Find me in app/views/itineraries/index.html.erb</p>
+<div class="container-main">
+
+  <div class="navbar"></div>
+
+  <div class="content">
+    <div class="filters">
+      <div id="date-location">
+        <p>Here will be the date filter</p>
+        <p>Here will be the geocoder filter</p>
+      </div>
+    </div>
+
+    <div class="iti-acti d-flex justify-content-between">
+      <% @itineraries.each do |itinerary| %>
+      <hr>
+        <div class="d-flex justify-content-between position-relative">
+          <div>
+            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            <%= itinerary.user.first_name %>
+          </div>
+        </div>
+        <div class="card" style="width: 36rem; height: 24rem;">
+          <div class="card-header">
+            <%= itinerary.title %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= itinerary.start_date %></li>
+            <li class="list-group-item"><%= itinerary.end_date %></li>
+            <li class="list-group-item"><%= itinerary.city %></li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <% itinerary.activities.each_with_index do |activity,index| %>
+              <%= activity.name %></li>
+              <%= activity.start_date %></li>
+              <%= activity.end_date %></li>
+              <%= activity.start_time %></li>
+              <%= activity.end_time %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div>
+          <p>button for details</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <div class="footer">
+      <div class="footer-links">
+        <a href="HOME"><i class="fab fa-github"></i></a>
+        <a href="MY ITINERARIES"><i class="fab fa-instagram"></i></a>
+        <a href="MESSAGE"><i class="fab fa-facebook"></i></a>
+        <a href="PROFILE"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="footer-copyright">
+        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+      </div>
+    </div>
+  </div>
+
+</div>
