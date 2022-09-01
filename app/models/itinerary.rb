@@ -9,6 +9,11 @@ class Itinerary < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  scope :overlapping, (lambda do |start_date, end_date|
+    Itinerary.where("start_date < ? AND end_date > ?",
+    start_date, end_date)
+  end)
+
   # scope :current_itineraries, -> (my_itineraries) do
   #  where(start_date: "start_date >=  Date.now and end_date <= date.now")
   # end
