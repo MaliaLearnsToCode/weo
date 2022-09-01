@@ -1,45 +1,61 @@
 <div class="container-main">
-
   <div class="navbar"></div>
 
-  <div class="content">
-    <div class="filters">
-      <div id="date-location">
-        <p>Here will be the date filter</p>
+  <div class="content" data-controller="itinerary">
+
+    <div class="filter">
+      <div class="date-container" >
+        <div class= "d-flex justify-content-center">
+        <form action="/itineraries" class="form-inline">
+        <label for="start_date">From:</label><br>
+        <input type="date" id="start_date" name="start_date"><br>
+        <label for="end_date">Until:</label><br>
+        <input type="date" id="end_date" name="end_date" ><br><br>
+        <input type="submit" value="Let's go!" id="submitbutton">
+        </form>
+        </div>
+
+        <% if @start_date != "" %>
+        <h5 class="align-item-center"><%= "Let's hop on an activity with others! #{@start_date} to #{@end_date} " %></h5>
+        <% end %>
+      </div>
+      <div>
         <p>Here will be the geocoder filter</p>
       </div>
     </div>
 
-    <div class="iti-acti d-flex justify-content-between">
+    <div class="outer-card ml-3 mb-3 pl-3 pr-3">
       <% @itineraries.each do |itinerary| %>
       <hr>
-        <div class="d-flex justify-content-between position-relative">
-          <div>
-            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-            <%= itinerary.user.first_name %>
+        <div data-itinerary-target='card'>
+          <div class="d-flex justify-content-between position-relative" >
+            <div>
+              <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+              <strong><%= itinerary.user.first_name %></strong>
+            </div>
+          </div>
+          <div class="card bg-light" style="width: 36rem; height: 24rem;">
+            <div class="card-header">
+              <strong><%= itinerary.title %></strong>
+            </div>
+            <ul class="itinerary-group">
+              <li class="list-group-item"><%= "Starting from: #{itinerary.start_date} to #{itinerary.end_date}" %></li>
+              <li class="list-group-item"><%= "Where? #{itinerary.city} " %></li>
+            </ul>
+            <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
+              <p>Activities</p>
+              <% itinerary.activities.each_with_index do |activity,index| %>
+                <%= activity.name %></li>
+                <%= activity.start_date %></li>
+                <%= activity.end_date %></li>
+                <%= activity.start_time %></li>
+                <%= activity.end_time %></li>
+              <% end %>
+            </ul>
           </div>
         </div>
-        <div class="card" style="width: 36rem; height: 24rem;">
-          <div class="card-header">
-            <%= itinerary.title %>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= itinerary.start_date %></li>
-            <li class="list-group-item"><%= itinerary.end_date %></li>
-            <li class="list-group-item"><%= itinerary.city %></li>
-          </ul>
-          <ul class="list-group list-group-flush">
-            <% itinerary.activities.each_with_index do |activity,index| %>
-              <%= activity.name %></li>
-              <%= activity.start_date %></li>
-              <%= activity.end_date %></li>
-              <%= activity.start_time %></li>
-              <%= activity.end_time %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div>
-          <p>button for details</p>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-danger">See More</button>
         </div>
       <% end %>
     </div>
