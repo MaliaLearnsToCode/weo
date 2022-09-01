@@ -7,6 +7,7 @@ class ItinerariesController < ApplicationController
 
     @start_date = ""
     @end_date = ""
+    @itinerary = Itinerary.new
 
     if params[:start_date].present? && params[:end_date].present?
       start_date = DateTime.parse(params[:start_date])
@@ -22,6 +23,13 @@ class ItinerariesController < ApplicationController
       @itineraries = Itinerary.all
       @itineraries = policy_scope(Itinerary)
     end
+
+    # @markers = @itineraries.geocoded.map do |itinerary|
+    #   {
+    #     lat: itinerary.latitude,
+    #     lng: itinerary.longitude
+    #   }
+    # end
 
   end
 

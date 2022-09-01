@@ -9,6 +9,9 @@ class Itinerary < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  geocoded_by :country
+  after_validation :geocode, if: :will_save_change_to_country?
+
   scope :overlapping, (lambda do |start_date, end_date|
     Itinerary.where("start_date < ? AND end_date > ?",
     start_date, end_date)
