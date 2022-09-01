@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  # skip_before_action :authenticate_user!, only: [ :show ]
 
   def index
   end
@@ -11,6 +11,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    # @activity = Activity.find(params[:id])
+    # authorize @activity
   end
 
   def edit
