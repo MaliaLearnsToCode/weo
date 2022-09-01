@@ -1,0 +1,35 @@
+#review-border {
+  background-color: rgb(243, 243, 243);
+  padding: 10px;
+  margin: 0px 10px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#review-card {
+  background-color: rgb(125, 124, 124);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#reviewer-name {
+  background-color: rgb(255, 98, 0);
+  height: 25px;
+  width: 50px;
+  text-align: center;
+}
+
+#locationdate {
+  margin: 0 0 0 5px;
+}
+
+#reviewtop {
+  padding: 10px 0 10px 10px;
+  display: flex;
+}
+
+#review {
+  color: white;
+}
+
+#reviewtitle {
+  margin: 0 0 0 10px;
+}
