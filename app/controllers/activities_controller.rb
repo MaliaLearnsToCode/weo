@@ -2,6 +2,13 @@ class ActivitiesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [ :show ]
 
   def index
+    @activities = Activity.all
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
+    end
   end
 
   def new
