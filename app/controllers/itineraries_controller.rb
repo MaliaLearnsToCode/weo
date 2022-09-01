@@ -46,7 +46,7 @@ class ItinerariesController < ApplicationController
 
     @current_itineraries = []
     itineraries.each do |itinerary|
-      if itinerary.start_date > Date.today && itinerary.end_date < Date.today
+      if itinerary.start_date < Date.today && itinerary.end_date > Date.today
         @current_itineraries << itinerary
       end
     end
