@@ -1,15 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-
-User.destroy_all
+puts "Clearing old data..."
+ParticipantReview.destroy_all
 Participation.destroy_all
+CreatorReview.destroy_all
+User.destroy_all
+InterestType.destroy_all
+Interest.destroy_all
 Itinerary.destroy_all
 Activity.destroy_all
-Interest.destroy_all
-InterestType.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
 
+puts "Creating USers..."
 user1 = User.create!(
   email: "malia@lewagon.com",
   password: "12345678",
@@ -35,8 +36,7 @@ user10 = User.create!(email: "notsure@lewagon.com", password: "12345678", first_
 
 
 
-
-
+puts "Creating interest types..."
 interest_type1 = InterestType.create!(
   name: "city",
   description: "anything to do with a ground and somewhat chill, no water no dirty stuff")
@@ -52,7 +52,7 @@ interest_type3 = InterestType.create!(name: "water", description: "be ready to g
 
 
 
-
+puts "Creating Interests..."
 interest1 = Interest.create!(
   interest_type: interest_type1,
   user: user1)
@@ -69,7 +69,7 @@ interest3 = Interest.create!(interest_type: interest_type3, user: user3)
 
 
 
-
+puts "Creating Itineraries..."
 itinerary0 = Itinerary.create!(
   user: user1,
   start_date: Date.new(2022, 7, 10),
@@ -131,7 +131,7 @@ itinerary5 = Itinerary.create!(
 
 
 
-
+puts "Creating Activities..."
 activity0 = Activity.create!(
   itinerary: itinerary0,
   start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
@@ -285,51 +285,51 @@ activity10 = Activity.create!(
 
 
 
-
+puts "Creating Participations..."
   ## change to partocipations
 participation1 = Participation.create!(
   user: user2,
   activity: activity1,
   status: "confirmed")
-participation2 = Participation.create!(user: user3, activity: activity1, status: "confirmed")
-participation3 = Participation.create!(user: user4, activity: activity1, status: "confirmed")
-participation4 = Participation.create!(user: user5, activity: activity1, status: "confirmed")
-participation5 = Participation.create!(user: user6, activity: activity1, status: "confirmed")
-participation6 = Participation.create!(user: user7, activity: activity1, status: "confirmed")
+participation2 = Participation.create!(status: "confirmed", user: user3, activity: activity1)
+participation3 = Participation.create!(status: "confirmed", user: user4, activity: activity1)
+participation4 = Participation.create!(status: "confirmed", user: user5, activity: activity1)
+participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity1)
+participation6 = Participation.create!(status: "confirmed", user: user7, activity: activity1)
 
-participation3 = Participation.create!(user: user4, activity: activity2, status: "confirmed")
-participation4 = Participation.create!(user: user5, activity: activity2, status: "confirmed")
-participation5 = Participation.create!(user: user6, activity: activity2, status: "confirmed")
+participation3 = Participation.create!(status: "confirmed", user: user4, activity: activity2)
+participation4 = Participation.create!(status: "confirmed", user: user5, activity: activity2)
+participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity2)
 
-participation7 = Participation.create!(user: user2, activity: activity3, status: "confirmed")
-participation8 = Participation.create!(user: user3, activity: activity3, status: "confirmed")
-
-
-participation9 = Participation.create!(user: user1, activity: activity4, status: "confirmed")
-participation10 = Participation.create!(user: user3, activity: activity4, status: "confirmed")
-participation11 = Participation.create!(user: user4, activity: activity4, status: "confirmed")
-
-participation12 = Participation.create!(user: user8, activity: activity5, status: "confirmed")
+participation7 = Participation.create!(status: "confirmed", user: user2, activity: activity3)
+participation8 = Participation.create!(status: "confirmed", user: user3, activity: activity3)
 
 
-participation13 = Participation.create!(user: user3, activity: activity6, status: "confirmed")
-participation14 = Participation.create!(user: user4, activity: activity6, status: "confirmed")
+participation9 = Participation.create!(status: "confirmed", user: user1, activity: activity4)
+participation10 = Participation.create!(status: "confirmed", user: user3, activity: activity4)
+participation11 = Participation.create!(status: "confirmed", user: user4, activity: activity4)
 
-participation15 = Participation.create!(user: user1, activity: activity7, status: "confirmed")
-participation16 = Participation.create!(user: user3, activity: activity7, status: "pending")
-participation17 = Participation.create!(user: user6, activity: activity7, status: "confirmed")
-participation18 = Participation.create!(user: user7, activity: activity7, status: "pending")
-participation19 = Participation.create!(user: user9, activity: activity7, status: "confirmed")
-participation20 = Participation.create!(user: user10, activity: activity7, status: "pending")
-
-participation21 = Participation.create!(user: user3, activity: activity9, status: "pending")
+participation12 = Participation.create!(status: "confirmed", user: user8, activity: activity5)
 
 
+participation13 = Participation.create!(status: "confirmed", user: user3, activity: activity6)
+participation14 = Participation.create!(status: "confirmed", user: user4, activity: activity6)
+
+participation15 = Participation.create!(status: "confirmed", user: user1, activity: activity7)
+participation16 = Participation.create!(status: "confirmed", user: user3, activity: activity7)
+participation17 = Participation.create!(status: "confirmed", user: user6, activity: activity7)
+participation18 = Participation.create!(status: "confirmed", user: user7, activity: activity7)
+participation19 = Participation.create!(status: "confirmed", user: user9, activity: activity7)
+participation20 = Participation.create!(status: "pending", user: user10, activity: activity7)
+
+participation21 = Participation.create!(status: "pending", user: user3, activity: activity9)
 
 
 
 
 
+
+puts "Creating Chatrooms..."
 chatroom1 = Chatroom.create!(
   activity: activity1,
   name: "Berlin Wall")
@@ -354,7 +354,7 @@ chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
 
 
 
-
+puts "Creating Messages..."
 message1 = Message.create!(
   chatroom: chatroom1,
   user: user1,
@@ -379,20 +379,34 @@ message13 = Message.create!(chatroom: chatroom8, user: user3, content: "hi!")
 message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello?!")
 message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
 
-# creatorreview1 = CreatorReview.create!(
-#   creator: user1,
-#   participant: participation1.user,
-#   comment: "Fel was kinda niiiiice!",
-#   rating: 5)
-
-# creatorreview2 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
-
-# creatorreview3 = CreatorReview.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
-
-# creatorreview4 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
 
 
-# participationreview5 = ParticipationReview.create!(comment: "Malia iz da best", rating: 4, participation: participation3)
 
-# participationreview1 = ParticipationReview.create!(comment: "", rating: 5, participation: participation1)
-# participationreview2 = ParticipationReview.create!(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
+
+
+puts "Creating Creator Reviews....."
+creatorreview1 = CreatorReview.create!(
+  creator: user1,
+  participant: participation1.user,
+  comment: "Fel was kinda niiiiice!",
+  rating: 5)
+
+creatorreview2 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+
+creatorreview3 = CreatorReview.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
+
+creatorreview4 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
+
+
+
+
+
+puts "Creating Participant Reviews....."
+participantreview1 = ParticipantReview.create!(comment: "Malia iz da best", rating: 4, participation: participation3)
+
+participantreview2 = ParticipantReview.create!(comment: "", rating: 5, participation: participation1)
+participantreview3 = ParticipantReview.create!(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
+
+
+
+puts "OMG WE'RE DONE!"
