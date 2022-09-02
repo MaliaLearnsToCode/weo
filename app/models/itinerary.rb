@@ -9,12 +9,16 @@ class Itinerary < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  accepts_nested_attributes_for :activities
+
   geocoded_by :country
   after_validation :geocode, if: :will_save_change_to_country?
 
-  scope :overlapping, (lambda do |start_date, end_date|
-    Itinerary.where("start_date < ? AND end_date > ?",
-    start_date, end_date)
+  scope :overlapping, (lambda do |start_date, end_date, location|
+    Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ? OR ? ILIKE %#{itinerary.country}% OR ? ILIKE %#{itinerary.city}%)",
+    start_date, end_date, "%#{location}%", location, location)
+  # Itinerary.where("start_date <= ? AND end_date >= ?",
+  # start_date, end_date)
   end)
 
   # scope :current_itineraries, -> (my_itineraries) do

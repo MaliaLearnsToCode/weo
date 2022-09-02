@@ -1,79 +1,76 @@
-<div class="w-100">
-  <div class="navbar"></div>
 
-  <div class="w-full" data-controller="itinerary">
+<div class="w-full" data-controller="itinerary">
 
-    <div class="">
-      <div class="date-container" >
-        <div class= "d-flex justify-content-center">
-          <form action="/itineraries" class="form-inline">
-            <label for="start_date">From:</label><br>
-            <input type="date" id="start_date" name="start_date"><br>
-            <label for="end_date">Until:</label><br>
-            <input type="date" id="end_date" name="end_date" ><br><br>
-            <input type="submit" value="Let's go!" id="submitbutton">
-          </form>
-        </div>
+      <!----------------------- DATE & LOCATION SEARCH ------------------------->
 
+  <div class="">
+    <div class="date-container" >
+      <div class= "d-flex justify-content-center">
+        <form action="/itineraries" class="form-inline">
         <div>
-          <%= simple_form_for @itinerary do |f| %>
-            <%= f.input :country,
-            input_html: {data: {country_autocomplete_target: "country"}},
-            wrapper_html: {data: {controller: "country-autocomplete", country_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-            %>
+          <%= simple_form_for :search, url: itineraries_path, method: "GET" do |f| %>
+          <div class="d-flex justify-content-between">
+            <label for="start_date">From:</label>
+            <input type="date" id="start_date" name="start_date">
+            <label for="end_date">Until:</label>
+            <input type="date" id="end_date" name="end_date" >
+          </div>
+          <%= f.input :location,
+          input_html: {data: {location_autocomplete_target: "location"}, style: "display: none", name: "location"},
+          wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+          %>
+          <%= f.submit "Let's go", input_html: { style: "display: none" } %>
           <% end %>
-        </div>
-
-        <% if @start_date != "" %>
-          <p class="align-item-center"><%= "Let's hop on an activity with others! #{@start_date} to #{@end_date} " %></p>
-        <% end %>
+        </form>
       </div>
-    </div>
-
-    <div class="w-100">
-      <% @itineraries.each do |itinerary| %>
-
-        <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
-          <div class="d-flex justify-content-start position-relative" >
-            <div>
-              <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-              <strong><%= itinerary.user.first_name %></strong>
-            </div>
-          </div>
-          <div class="bg-light p-4">
-            <div class="card-header">
-              <strong><%= itinerary.title %></strong>
-            </div>
-            <ul class="itinerary-group">
-              <li class="list-group-item"><%= "Starting from: #{itinerary.start_date} to #{itinerary.end_date}" %></li>
-              <li class="list-group-item"><%= "Where? #{itinerary.city} " %></li>
-            </ul>
-            <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
-              <p>Activities</p>
-              <% itinerary.activities.each_with_index do |activity,index| %>
-                <%= activity.name %></li>
-                <%= activity.start_date %></li>
-                <%= activity.end_date %></li>
-                <%= activity.start_time %></li>
-                <%= activity.end_time %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-warning position-absolute" style="opacity: 0.25;">See More</button>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
 
+  <!----------------------- CARD ------------------------->
+
+  <div class="w-100">
+    <% @itineraries.each do |itinerary| %>
+
+      <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
+        <div class="d-flex justify-content-start position-relative" >
+          <div>
+            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            <strong><%= itinerary.user.first_name %></strong>
+          </div>
+        </div>
+        <div class="bg-light p-4">
+          <div class="card-header">
+            <strong><%= itinerary.title %></strong>
+          </div>
+          <ul class="itinerary-group">
+            <li class="list-group-item"><%= "Starting from: #{itinerary.start_date} to #{itinerary.end_date}" %></li>
+            <li class="list-group-item"><%= "Where? #{itinerary.city} " %></li>
+          </ul>
+          <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
+            <p>Activities</p>
+            <% itinerary.activities.each_with_index do |activity,index| %>
+              <%= activity.name %></li>
+              <%= activity.start_date %></li>
+              <%= activity.end_date %></li>
+              <%= activity.start_time %></li>
+              <%= activity.end_time %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-warning position-absolute" style="opacity: 0.25;">See More</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
-  <div>
-    <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+
+<div>
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

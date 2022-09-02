@@ -14,4 +14,10 @@ class Activity < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :max_participants, presence: true
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
+  # scope :status, ->(booking_status, current_user) { Watch.where(user: current_user).joins(:bookings).where('bookings.status': booking_status) }
+
 end

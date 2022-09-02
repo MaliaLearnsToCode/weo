@@ -8,23 +8,25 @@ class ItinerariesController < ApplicationController
 
     @start_date = ""
     @end_date = ""
+    @location = ""
     @itinerary = Itinerary.new
 
-    if params[:start_date].present? && params[:end_date].present?
+    if params[:start_date].present? && params[:end_date].present? && params[:location].present?
       start_date = DateTime.parse(params[:start_date])
       end_date = DateTime.parse(params[:end_date])
+      location = params[:location]
 
       @start_date = start_date
       @end_date = end_date
+      @location = location
 
-      @itineraries = Itinerary.overlapping(start_date, end_date)
-      @itineraries = policy_scope(Itinerary.overlapping(start_date, end_date))
+      @itineraries = Itinerary.overlapping(start_date, end_date, location)
+      @itineraries = policy_scope(Itinerary.overlapping(start_date, end_date, location))
 
     else
       @itineraries = Itinerary.all
       @itineraries = policy_scope(Itinerary)
     end
-
     # @markers = @itineraries.geocoded.map do |itinerary|
     #   {
     #     lat: itinerary.latitude,
@@ -58,7 +60,7 @@ class ItinerariesController < ApplicationController
   def my_itineraries
     #
     # raise
-    @itineraries =current_user.itineraries
+    @itineraries = current_user.itineraries
 
     @upcoming_itineraries = []
     @itineraries.each do |itinerary|
@@ -77,7 +79,6 @@ class ItinerariesController < ApplicationController
       end
     end
 
-
     # if @itinerary.start_date > Date.now && Date.now < @itinerary.end_date
     #   ongoing_itinerary
     # else
@@ -90,7 +91,7 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, photo: [])
+    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, :location, photo: [])
   end
 
   # def require_login
