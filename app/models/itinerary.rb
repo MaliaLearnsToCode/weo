@@ -14,11 +14,17 @@ class Itinerary < ApplicationRecord
   geocoded_by :country
   after_validation :geocode, if: :will_save_change_to_country?
 
+  # scope :overlapping, (lambda do |start_date, end_date, location|
+  #   Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ? OR ? ILIKE %#{itinerary.country}% OR ? ILIKE %#{itinerary.city}%)",
+  #   start_date, end_date, "%#{location}%", location, location)
+  # # Itinerary.where("start_date <= ? AND end_date >= ?",
+  # # start_date, end_date)
+  # end)
+
+
   scope :overlapping, (lambda do |start_date, end_date, location|
-    Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ? OR ? ILIKE %#{itinerary.country}% OR ? ILIKE %#{itinerary.city}%)",
-    start_date, end_date, "%#{location}%", location, location)
-  # Itinerary.where("start_date <= ? AND end_date >= ?",
-  # start_date, end_date)
+    Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ?)",
+    start_date, end_date, "%#{location}%")
   end)
 
   # scope :current_itineraries, -> (my_itineraries) do
