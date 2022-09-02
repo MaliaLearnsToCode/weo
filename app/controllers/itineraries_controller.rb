@@ -60,20 +60,46 @@ class ItinerariesController < ApplicationController
   def my_itineraries
     #
     # raise
+
     @itineraries = current_user.itineraries
 
+    @participated_itineraries = []
+
+    @participations = Participation.where(user: current_user).where(status: "confirmed")
+
+    # Itinerary.all.each do |itinerary|
+
+    #   @participated_itineraries << current_user.participations
+    #   .activity.itinerary if current_user.participation.status == "confirmed"
+    # end
+
+    @participations.each do |participation|
+      @participated_itineraries << participation.itinerary
+    end
+
+    # raise
+
+    @all_itineraries = []
+    @all_itineraries = @participated_itineraries + @itineraries
+
+    # @all_itineraries = []
+    # @itineraries.each do |itinerary|
+    #   @all_itineraries << itinerary if participation.status == "confirmed"
+    # end
+
+
     @upcoming_itineraries = []
-    @itineraries.each do |itinerary|
+    @all_itineraries.each do |itinerary|
       @upcoming_itineraries << itinerary if itinerary.start_date > Date.today
     end
 
     @past_itineraries = []
-    @itineraries.each do |itinerary|
+    @all_itineraries.each do |itinerary|
       @past_itineraries << itinerary if itinerary.end_date < Date.today
     end
 
     @current_itineraries = []
-    @itineraries.each do |itinerary|
+    @all_itineraries.each do |itinerary|
       if itinerary.start_date < Date.today && itinerary.end_date > Date.today
         @current_itineraries << itinerary
       end
