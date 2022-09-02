@@ -9,6 +9,7 @@ class ActivitiesController < ApplicationController
         lng: activity.longitude
       }
     end
+    @activities = policy_scope(Activity)
   end
 
   def new
