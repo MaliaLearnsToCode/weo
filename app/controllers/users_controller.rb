@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  skip_after_action :verify_authorized, only: %i[show]
+
   def show
-    @user = User.includes(:activities).find(params[:id])
+    @user = User.find(params[:id])
   end
 end

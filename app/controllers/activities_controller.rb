@@ -11,12 +11,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @activity = Activity.find(params[:id])
-=======
-    # @activity = Activity.find(params[:id])
-    # authorize @activity
->>>>>>> master
+    authorize @activity
   end
 
   def edit
