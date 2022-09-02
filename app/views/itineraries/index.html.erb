@@ -28,42 +28,7 @@
 
   <!----------------------- CARD ------------------------->
 
-  <div class="w-100">
-    <% @itineraries.each do |itinerary| %>
-
-      <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
-        <div class="d-flex justify-content-start position-relative" >
-          <div>
-            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-            <strong><%= itinerary.user.first_name %></strong>
-          </div>
-        </div>
-        <div class="bg-light p-4">
-          <div class="card-header">
-            <strong><%= itinerary.title %></strong>
-          </div>
-          <ul class="itinerary-group">
-            <li class="list-group-item"><%= "Starting from: #{itinerary.start_date} to #{itinerary.end_date}" %></li>
-            <li class="list-group-item"><%= "Where? #{itinerary.city} " %></li>
-          </ul>
-          <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
-            <p>Activities</p>
-            <% itinerary.activities.each_with_index do |activity,index| %>
-              <%= activity.name %></li>
-              <%= activity.start_date %></li>
-              <%= activity.end_date %></li>
-              <%= activity.start_time %></li>
-              <%= activity.end_time %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-warning position-absolute" style="opacity: 0.25;">See More</button>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+ <%= render "itineraries_card" %>
 
 
 
