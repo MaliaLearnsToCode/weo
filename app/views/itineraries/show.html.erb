@@ -1,2 +1,73 @@
-<h1>Itineraries#show</h1>
-<p>Find me in app/views/itineraries/show.html.erb</p>
+<body class="itinerary_show">
+<div class="container">
+
+  <div id="itinerary-avatar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Barack_Obama.jpg/640px-Barack_Obama.jpg" alt="profile photo" class="avatar">
+  </div>
+
+  <div id="details">
+    <h5> <%= @itinerary.user.first_name %>'s Itinerary </h5>
+    <p><%= @itinerary.city %> <%= @itinerary.country %></p>
+    <p><%= @itinerary.start_date %> - <%= @itinerary.end_date %></p>
+  </div>
+
+  <div id="all_activities">
+    <div>
+      <p>Join all activities!</p>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+      </label>
+    </div>
+  </div>
+
+    <div>
+      <% @itinerary.activities.each do |activity| %>
+        <div class="activity card">
+
+          <div id="activity_datetime">
+            <div id="activity_time">
+              <p><%= activity.start_time.strftime("%H:%M") %> - <%= activity.end_time.strftime("%H:%M") %></p>
+            </div>
+            <div id="activity_date">
+              <p><%= activity.start_date %></p>
+            </div>
+          </div>
+
+          <div id="activity_name">
+            <p><%= activity.name %></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>

@@ -1,12 +1,14 @@
 require 'date'
 class ItinerariesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_after_action :verify_authorized, only: %i[my_itineraries]
   #before_action :require_login
 
   def index
 
     @start_date = ""
     @end_date = ""
+    @itinerary = Itinerary.new
 
     if params[:start_date].present? && params[:end_date].present?
       start_date = DateTime.parse(params[:start_date])
@@ -22,6 +24,13 @@ class ItinerariesController < ApplicationController
       @itineraries = Itinerary.all
       @itineraries = policy_scope(Itinerary)
     end
+
+    # @markers = @itineraries.geocoded.map do |itinerary|
+    #   {
+    #     lat: itinerary.latitude,
+    #     lng: itinerary.longitude
+    #   }
+    # end
 
   end
 
@@ -39,6 +48,7 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+    @itinerary = Itinerary.find(params[:id])
     authorize @itinerary
   end
 
@@ -46,25 +56,27 @@ class ItinerariesController < ApplicationController
   end
 
   def my_itineraries
+    #
     # raise
-    itineraries = current_user.itineraries
+    @itineraries =current_user.itineraries
 
     @upcoming_itineraries = []
-    itineraries.each do |itinerary|
+    @itineraries.each do |itinerary|
       @upcoming_itineraries << itinerary if itinerary.start_date > Date.today
     end
 
     @past_itineraries = []
-    itineraries.each do |itinerary|
+    @itineraries.each do |itinerary|
       @past_itineraries << itinerary if itinerary.end_date < Date.today
     end
 
     @current_itineraries = []
-    itineraries.each do |itinerary|
+    @itineraries.each do |itinerary|
       if itinerary.start_date < Date.today && itinerary.end_date > Date.today
         @current_itineraries << itinerary
       end
     end
+
 
     # if @itinerary.start_date > Date.now && Date.now < @itinerary.end_date
     #   ongoing_itinerary

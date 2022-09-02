@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # delete '/itineraries/:id', to: 'itineraries#destroy' # /itineraries
 
   resources :itineraries do
+    resources :activities, only: %i[ index new create ]
     collection do
       get :my_itineraries # /my-itineraries
     end
@@ -38,9 +39,6 @@ Rails.application.routes.draw do
   get '/activities/:id/edit', to: 'activities#edit' # /activities/:id/edit
   patch '/activities/:id', to: 'activities#update'
 
-  resources :itineraries do
-    resources :activities, only: %i[ index new create ]
-  end
     # controller is activity,
     # index listed on one itinerary page path: /itineraries/:itinerary_id/activities
     # new path: /itineraries/:itinerary_id/activities/new

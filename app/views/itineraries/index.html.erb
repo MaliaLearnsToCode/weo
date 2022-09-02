@@ -1,40 +1,46 @@
-<div class="container-main">
+<div class="w-100">
   <div class="navbar"></div>
 
-  <div class="content" data-controller="itinerary">
+  <div class="w-full" data-controller="itinerary">
 
-    <div class="filter">
+    <div class="">
       <div class="date-container" >
         <div class= "d-flex justify-content-center">
-        <form action="/itineraries" class="form-inline">
-        <label for="start_date">From:</label><br>
-        <input type="date" id="start_date" name="start_date"><br>
-        <label for="end_date">Until:</label><br>
-        <input type="date" id="end_date" name="end_date" ><br><br>
-        <input type="submit" value="Let's go!" id="submitbutton">
-        </form>
+          <form action="/itineraries" class="form-inline">
+            <label for="start_date">From:</label><br>
+            <input type="date" id="start_date" name="start_date"><br>
+            <label for="end_date">Until:</label><br>
+            <input type="date" id="end_date" name="end_date" ><br><br>
+            <input type="submit" value="Let's go!" id="submitbutton">
+          </form>
+        </div>
+
+        <div>
+          <%= simple_form_for @itinerary do |f| %>
+            <%= f.input :country,
+            input_html: {data: {country_autocomplete_target: "country"}},
+            wrapper_html: {data: {controller: "country-autocomplete", country_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+            %>
+          <% end %>
         </div>
 
         <% if @start_date != "" %>
-        <h5 class="align-item-center"><%= "Let's hop on an activity with others! #{@start_date} to #{@end_date} " %></h5>
+          <p class="align-item-center"><%= "Let's hop on an activity with others! #{@start_date} to #{@end_date} " %></p>
         <% end %>
-      </div>
-      <div>
-        <p>Here will be the geocoder filter</p>
       </div>
     </div>
 
-    <div class="outer-card ml-3 mb-3 pl-3 pr-3">
+    <div class="w-100">
       <% @itineraries.each do |itinerary| %>
-      <hr>
-        <div data-itinerary-target='card'>
-          <div class="d-flex justify-content-between position-relative" >
+
+        <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
+          <div class="d-flex justify-content-start position-relative" >
             <div>
               <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
               <strong><%= itinerary.user.first_name %></strong>
             </div>
           </div>
-          <div class="card bg-light" style="width: 36rem; height: 24rem;">
+          <div class="bg-light p-4">
             <div class="card-header">
               <strong><%= itinerary.title %></strong>
             </div>
@@ -53,26 +59,21 @@
               <% end %>
             </ul>
           </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-danger">See More</button>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-warning position-absolute" style="opacity: 0.25;">See More</button>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 
+
+
   <div>
-    <div class="footer">
-      <div class="footer-links">
-        <a href="HOME"><i class="fab fa-github"></i></a>
-        <a href="MY ITINERARIES"><i class="fab fa-instagram"></i></a>
-        <a href="MESSAGE"><i class="fab fa-facebook"></i></a>
-        <a href="PROFILE"><i class="fab fa-twitter"></i></a>
-      </div>
-      <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-      </div>
+    <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
 </div>

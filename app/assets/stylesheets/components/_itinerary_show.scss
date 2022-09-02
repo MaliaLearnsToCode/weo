@@ -1,0 +1,31 @@
+.itinerary_show{
+  background-color: grey !important;
+}
+
+#itinerary-avatar{
+  display: flex;
+  justify-content: center;
+  margin: 120px 0 0 0;
+}
+
+#details {
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  line-height: 40%;
+}
+
+#all_activities {
+  font-weight: bolder;
+  margin: 0 0 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#all_activities p {
+  font-size: 20px;
+}
+
+.form-check {
+  margin: 3px 0 0 0;
+}
