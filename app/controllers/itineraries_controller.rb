@@ -6,12 +6,22 @@ class ItinerariesController < ApplicationController
 
   def index
 
+    # @itineraries = Itinerary.all
+    # # The `geocoded` scope filters only flats with coordinates
+    # @markers = @itineraries.geocoded.map do |itinerary|
+    #   {
+    #     lat: flat.latitude,
+    #     lng: flat.longitude
+    #   }
+    # end
+
     @start_date = ""
     @end_date = ""
     @location = ""
     @itinerary = Itinerary.new
 
     if params[:start_date].present? && params[:end_date].present? && params[:location].present?
+
       start_date = DateTime.parse(params[:start_date])
       end_date = DateTime.parse(params[:end_date])
       location = params[:location]
@@ -20,19 +30,19 @@ class ItinerariesController < ApplicationController
       @end_date = end_date
       @location = location
 
-      @itineraries = Itinerary.overlapping(start_date, end_date, location)
-      @itineraries = policy_scope(Itinerary.overlapping(start_date, end_date, location))
+      geocoded_location = Geocoder.search(location).first
+
+
+      @itineraries = policy_scope(Itinerary.near(geocoded_location.coordinates, "5").where("itineraries.start_date <= ? AND itineraries.end_date >= ?", start_date, end_date))
+
+      @itinerary_activities =  Activity.near(geocoded_location.coordinates, "5").map { |activity| activity.itinerary }
+
+      # JOIN @itineraries and @itinerary_activities !!! OR add start_date and end_date to @itineraries_activities !!!!! DO DO DO DO
 
     else
       @itineraries = Itinerary.all
       @itineraries = policy_scope(Itinerary)
     end
-    # @markers = @itineraries.geocoded.map do |itinerary|
-    #   {
-    #     lat: itinerary.latitude,
-    #     lng: itinerary.longitude
-    #   }
-    # end
 
   end
 

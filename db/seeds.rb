@@ -138,7 +138,7 @@ activity0 = Activity.create!(
   end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
   name: "Frankfurt PubCrawl",
   detail: "I'm ready for ma coffeeeeee jk, beers of course",
-  location: "Frankfurt Drinks, 123 Frankfurt St. Frankfurt, Germany",
+  location: "Frankfurt am Main",
   max_participants: 12,
   completed: true,
   start_date: Date.new(2022, 7, 10),
