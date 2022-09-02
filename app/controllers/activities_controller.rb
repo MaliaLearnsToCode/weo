@@ -18,8 +18,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # @activity = Activity.find(params[:id])
-    # authorize @activity
+    @activity = Activity.find(params[:id])
+    authorize @activity
   end
 
   def edit
