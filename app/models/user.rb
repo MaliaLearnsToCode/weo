@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :itineraries, dependent: :destroy
   has_many :activities, through: :itineraries, dependent: :destroy
   has_many :interests, dependent: :destroy
+  has_many :partipations, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

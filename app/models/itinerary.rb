@@ -22,6 +22,7 @@ class Itinerary < ApplicationRecord
   end)
 
 
+
   # scope :overlapping, (lambda do |start_date, end_date, location|
   #   Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ?)",
   #   start_date, end_date, "%#{location}%")
