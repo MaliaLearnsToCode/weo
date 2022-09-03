@@ -21,7 +21,7 @@
         <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
           <p>Activities</p>
           <% @itinerary.activities.each_with_index do |activity,index| %>
-            <%= link_to activity.name, activity_path(activity) %></li>
+            <label class="option"> <%= link_to activity.name, activity_path(activity) %><input type="checkbox"></label></li>
             <%= activity.start_date %></li>
             <%= activity.end_date %></li>
             <%= activity.start_time %></li>
