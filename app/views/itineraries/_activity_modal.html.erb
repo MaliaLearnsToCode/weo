@@ -1,0 +1,93 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+
+          <div class="1/3">
+
+              <div class="frank">
+                <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80" width = 400px height = 300px >
+              </div>
+          </div>
+
+          <div class="2/3">
+              <div class="d-flex flex-row-reverse time and date pt-2">
+                <% @itinerary.activities.each do |activity| %>
+                <h5><%= activity.start_time.strftime("%e.%M%P %-d %b") %> to <%= activity.end_time.strftime("%l.%M%P %-d %b")%></h5>
+                <% end %>
+              </div>
+
+              <div class="name pt-2">
+                <% @itinerary.activities.each_with_index do |activity,index| %>
+                <p><%= activity.name %></p>
+                <% end %>
+              </div>
+
+              <div class="detail bg-light text-black p-2">
+                <% @itinerary.activities.each_with_index do |activity,index| %>
+                <p><%= activity.detail %></p>
+                <% end %>
+              </div>
+          </div>
+
+          <div class="3/3 d-flex">
+            <div class="left portion">
+              <div class="profile and name p-2 m-2">
+                <div class="profile">
+                  <img src="https://www.nacionrex.com/__export/1604678545433/sites/debate/img/2020/11/06/twice-chaeyoung-novio-rumores-jyp-comunicado_1_crop1604677156879.jpg_1902800913.jpg" class="rounded-circle" width=80 height=80>
+                </div>
+                <div class="name d-flex flex-column">
+                  <%= User.first.first_name %>
+                </div>
+                <div class>
+                  <p>Together with</p>
+                </div>
+                <div class="d-flex flex-column">
+                  <div class="d-flex">
+                  <div>
+                    <p style="font-size:42px"><sup>1</sup>&frasl;<sub>4</sub></p>
+                  </div>
+                  <div class="icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1189/1189175.png" width=48 height=48>
+                  </div>
+                </div>
+                  <div>
+                    <p>Users Joined!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right portion flex-grow-1 text-black">
+              <div class="m-1">
+                <% @itinerary.activities.each_with_index do |activity,index| %>
+                <p><%= activity.location %></p>
+                <% end %>
+              </div>
+              <div>
+                <img src="https://snazzy-maps-cdn.azureedge.net/assets/1243-xxxxxxxxxxx.png?v=20220106114208" width = 260px height = 160px >
+              </div>
+            </div>
+          </div>
+
+</div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
