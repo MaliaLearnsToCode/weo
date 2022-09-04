@@ -9,10 +9,20 @@ class ParticipationsController < ApplicationController
   def create
   end
 
+  def approve
+    @participation = Participation.find(params[:id])
+    @participation.approve(status: "approved")
+    if @participation.status == "approved"
+      flash[:success] = "Done"
+    else
+      flash[:error] = "Not approved"
+    end
+  end
+
   def show
   end
 
-  def approve
+  def update
   end
 
   def destroy

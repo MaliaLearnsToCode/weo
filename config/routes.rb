@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
   #--------------------- participants -------------------------
   resources :activities do
-    resources :participations, only: %i[ index new create approve destroy ]
+    resources :participations, only: %i[index new create update approve destroy show]
   end
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
