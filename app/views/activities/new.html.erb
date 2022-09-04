@@ -1,2 +1,22 @@
-<h1>Activities#new</h1>
-<p>Find me in app/views/activities/new.html.erb</p>
+<h1>New Activity</h1>
+
+<div data-controller="insert-in-list">
+  <div class="accordion" id="accordionExample" data-insert-in-list-target="items">
+    <% @itinerary.activities.each do |activity| %>
+      <%= render 'activity', activity: activity %>
+    <% end %>
+  </div>
+  <% if @itinerary.activities.size < 5 %>
+    <div class="container">
+      <div class="w-75 mx-auto mt-3">
+
+        <%= render "form", itinerary: @itinerary, activity: @activity %>
+      </div>
+    </div>
+    <% else %>
+      <h3>Upgrade to add moooooore!</h3>
+  <% end %>
+
+  <br>
+  <%= link_to "Back to itinerary!", itinerary_path(@itinerary), class: "btn btn-outline-secondary mx-4" %>
+</div>
