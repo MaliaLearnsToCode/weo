@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # delete '/itineraries/:id', to: 'itineraries#destroy' # /itineraries
 
   resources :itineraries do
-    resources :activities, only: %i[ index new create ]
+    resources :activities, only: %i[ index new create show ]
     collection do
       get :my_itineraries # /my-itineraries
     end
