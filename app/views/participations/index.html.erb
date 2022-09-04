@@ -1,2 +1,31 @@
-<h1>Participations#index</h1>
-<p>Find me in app/views/participations/index.html.erb</p>
+<body>
+
+  <div>
+    <h1>Activity List</h1>
+  </div>
+
+  <div>
+    <img src="https://cdn-icons-png.flaticon.com/512/2984/2984960.png" alt="tick" height="30px" width="30px">
+    <h3>Approved</h3>
+  </div>
+
+  <div id="approved_list">
+
+    <div id="approved_avatar">
+      <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar">
+      <div id="activity1">
+      <%= render "activity_details", participation: @participation %>
+      </div>
+      <div id="chatbox">
+      <img src="https://cdn-icons-png.flaticon.com/512/3193/3193015.png" height="30px" width="30px">
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <img src="https://cdn-icons-png.flaticon.com/512/6828/6828772.png" alt="pending" height="30px" width="30px">
+    <h3>Pending</h3>
+  </div>
+
+</body>

@@ -1,5 +1,6 @@
 class ParticipationsController < ApplicationController
   def index
+    @participations = policy_scope(Participation)
   end
 
   def new

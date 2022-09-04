@@ -11,15 +11,22 @@ class Itinerary < ApplicationRecord
 
   accepts_nested_attributes_for :activities
 
-  geocoded_by :country
+  geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_country?
 
-  scope :overlapping, (lambda do |start_date, end_date, location|
-    Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ? OR itineraries.country ILIKE ? OR itineraries.city ILIKE ?)",
-    start_date, end_date, "%#{location}%", "%#{location}%", "%#{location}%")
-  # Itinerary.where("start_date <= ? AND end_date >= ?",
-  # start_date, end_date)
-  end)
+
+  # scope :overlapping, (lambda do |start_date, end_date, location|
+  #   Itinerary.joins(:activities).where("itineraries.start_date >= ? AND itineraries.end_date <= ?", start_date, end_date).where("itineraries.country ILIKE ? OR itineraries.city ILIKE ? OR activities.location ILIKE ? ", "%#{location}%", "%#{location}%", "%#{location}%")
+  # end)
+
+  # pg_search_scope :global_search,
+  # against: [ :country, :city, :start_time, :end_time],
+  # associated_against: {
+  #   activities: [ :location ]
+  # },
+  # using: {
+  #   tsearch: { prefix: true }
+  # }
 
 
 

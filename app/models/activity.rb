@@ -18,6 +18,7 @@ class Activity < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+
   # scope :status, ->(booking_status, current_user) { Watch.where(user: current_user).joins(:bookings).where('bookings.status': booking_status) }
 
 end
