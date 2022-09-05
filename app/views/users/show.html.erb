@@ -1,8 +1,14 @@
 <body>
 <div class="container">
 <div class="top_bar">
-  <div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Barack_Obama.jpg/640px-Barack_Obama.jpg" alt="user profile" height="100px" width="100px" id="avatar_photo">
+  <div class="container-image mb-5">
+    <div id="user photo" class="row">
+      <% @user.photos.each do |photo| %>
+        <div class="avatar-large" alt="avatar-large">
+          <%= cl_image_tag photo.key, height: 280, width: 280 %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div id="name">
