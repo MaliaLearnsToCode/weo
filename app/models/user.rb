@@ -18,5 +18,9 @@ class User < ApplicationRecord
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :gender, presence: true
 
-
+  def activity_where(status)
+    Activity.joins(:participations)
+            .where('participations.user': self)
+            .where('participations.status': status)
+  end
 end

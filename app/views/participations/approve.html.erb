@@ -1,15 +1,11 @@
-<h1>Participations#approve</h1>
-<p>Find me in app/views/participations/approve.html.erb</p>
-
-
-<% @activities.each do |activity| %>
+<% current_user.activity_where("pending").each do |activity| %>
   <% if activity.participations.count > 0 %>
     <div class="card">
       <p><%= activity.name %></p> |
 
       <% activity.participations.each do |participation| %>
         <div>
-          <%= participation.user.first_name %> | <%= participation.status %>
+          <%= participation.user.first_name %>
         </div>
       <% end %>
     </div>
