@@ -1,13 +1,27 @@
+<div class="container">
+<h1>Participants awaiting for your approval</h1>
+
 <% current_user.activity_where("pending").each do |activity| %>
   <% if activity.participations.count > 0 %>
     <div class="card">
-      <p><%= activity.name %></p> |
+      <h4><%= activity.name %></h4>
+      <p><%= activity.start_time.strftime("%e.%M%P %-d %b") %></p>
+      <p><%= activity.location%></p>
 
       <% activity.participations.each do |participation| %>
-        <div>
-          <%= participation.user.first_name %>
+        <div class ="inline">
+          <%= participation.user.first_name  %>
+          <%= simple_form_for participation.user do |f|%>
+          <%= f.input :mode, :as => :hidden, :input_html => { :value => "reject" } %>
+          <%= f.submit "Reject"%>
+          <% end %>
+          <%= simple_form_for participation.user do |f|%>
+          <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
+          <%= f.submit "Approve"%>
+          <% end %>
         </div>
       <% end %>
     </div>
   <% end %>
 <% end %>
+</div>
