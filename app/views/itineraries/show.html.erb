@@ -27,8 +27,8 @@
           <% @itinerary.activities.each_with_index do |activity,index| %>
             <label class="option"> <%= activity.name %>
             <input type="checkbox" value="<%= activity.id %>" data-check-all-checkboxes-target="checkbox"></label>
-            <%= activity.start_date %> to
-            <%= activity.end_date %>
+            <%= activity.start_date.strftime("%m/%d/%y") %> to
+            <%= activity.end_date.strftime("%m/%d/%y") %>
             <%= activity.start_time.strftime("%l:%M%P") %> to
             <%= activity.end_time.strftime("%l:%M%P") %>
             <%= render "activity_modal" %>
