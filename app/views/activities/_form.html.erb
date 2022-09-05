@@ -13,5 +13,5 @@
   <%= f.input :end_time %>
   <%= f.association :interest_type %>
   <%= f.input :photos, as: :file, input_html: { multiple: true }%>
-  <center><%= f.submit "create", class: "button button1" %></center>
+  <center><%= f.submit "create", class: "button button1" %>  <%= link_to "Back to itinerary", itinerary_path(@itinerary), class: "button button1" %></center>
 <% end %>
