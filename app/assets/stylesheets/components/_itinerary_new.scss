@@ -6,13 +6,8 @@
 }
 
 #geocoder {
-  position: absolute;
-  z-index: 1;
-  width: 80%;
-  height: 50%;
-  left: 28%;
-  margin-left: -25%;
-  top: 120px;
+  // position: absolute;
+  width: 100%;
 }
 .mapboxgl-ctrl-geocoder {
   min-width: 100%;
@@ -24,6 +19,7 @@
 .title-where {
   margin-top: 20px;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .title-when {
@@ -57,4 +53,18 @@
   margin-left: 20px;
   margin-right: 20px;
   flex: auto;
+}
+
+#start_date {
+  height: 48px !important;
+  padding: 6px 45px;
+  color: grey;
+  border: none;
+}
+
+#end_date {
+  height: 48px !important;
+  padding: 6px 45px;
+  color: grey;
+  border: none;
 }
