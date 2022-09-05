@@ -6,7 +6,7 @@
     <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
       <div class="d-flex justify-content-start position-relative" >
         <div>
-          <% @itinerary.photos.each do |photo| %>
+          <% @itinerary.user.photos.each do |photo| %>
               <div class="avatar-large" alt="avatar-large">
                 <%= cl_image_tag photo.key, height: 280, width: 280 %>
               </div>

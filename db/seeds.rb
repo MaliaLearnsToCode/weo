@@ -118,7 +118,7 @@ itinerary0 = Itinerary.new(
   description: "Malia's prehistoric itinerary. Already happened but just including it for data hahaahhaah",
   title: "Stopby but make it fun!")
 itinerary0.photos.attach(io: file, filename: "frankfurt.jpg", content_type: "image/jpg")
-itinerary0.save!!
+itinerary0.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348949/xzgrswrscatml69gi81t.jpg")
 itinerary1 = Itinerary.new(
@@ -130,7 +130,7 @@ itinerary1 = Itinerary.new(
   description: "This is Malia's perfect itinerary!",
   title: "Germany, here we come!")
 itinerary1.photos.attach(io: file, filename: "berlin.jpg", content_type: "image/jpg")
-itinerary1.save!!
+itinerary1.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348957/ditsnoddzhq6xxng11z1.jpg")
 itinerary2 = Itinerary.new(
