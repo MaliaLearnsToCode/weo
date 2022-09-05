@@ -161,8 +161,9 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, :location, photo: [])
+    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, :location, photos: [])
   end
+
 
   # def require_login
   #   unless logged_in?
