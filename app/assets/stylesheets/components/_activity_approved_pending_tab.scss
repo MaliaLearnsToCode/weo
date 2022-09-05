@@ -1,0 +1,37 @@
+#approved_avatar{
+  display: flex;
+  justify-content: space-between;
+}
+
+#activity1 {
+  margin: 5px 0 0 0;
+}
+
+#chatbox {
+  margin: 9px 7px 0 0;
+}
+
+#approved_header {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 0 0;
+}
+
+#pending_header {
+  display: flex;
+  flex-direction: row;
+}
+
+#pending_list {
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0 0 0;
+}
+
+#activity2 {
+  margin: 7px 0 0 20px;
+}
+
+#pending_header {
+  margin: 20px 0 0 0;
+}

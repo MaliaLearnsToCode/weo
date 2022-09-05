@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -46,13 +47,11 @@ Rails.application.routes.draw do
 
   #--------------------- participants -------------------------
   resources :activities do
-    resources :participations, only: %i[ index new show create approve destroy ]
+    resources :participations, only: %i[ new create approve destroy ]
   end
 
-  get 'participant_reviews/new'
-  get 'participant_reviews/create'
-  get 'creator_reviews/new'
-  get 'creator_reviews/create'
+  resources :participations, only: %i[ index]
+ 
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?

@@ -1,5 +1,5 @@
 <body class="itinerary_show">
-<div class="container">
+<div class="container" data-controller="check-all-checkboxes">
 
 
   <div class="w-100">
@@ -21,13 +21,24 @@
         <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
           <p>Activities</p>
           <% @itinerary.activities.each_with_index do |activity,index| %>
-            <label class="option"> <%= link_to activity.name, activity_path(activity) %><input type="checkbox"></label></li>
+            <label class="option"> <%= activity.name %><input type="checkbox" data-check-all-checkboxes-target="checkbox"></label></li>
             <%= activity.start_date %></li>
             <%= activity.end_date %></li>
             <%= activity.start_time %></li>
             <%= activity.end_time %></li>
+            <%= render "activity_modal" %>
           <% end %>
         </ul>
+
+        <div id="all_checkbox">
+          <h3> Join All Activities! </h3>
+          <label class="join_all"><input type="checkbox" data-action="change->check-all-checkboxes#checkAll"></label>
+        </div>
+
+        <div id="join_button">
+          <label class="option"><button type="submit" class="btn btn-success"> Join </button></label>
+        </div>
+
       </div>
     </div>
   </div>
