@@ -56,10 +56,11 @@ Rails.application.routes.draw do
 
   #--------------------- participants -------------------------
   resources :activities do
-    resources :participations, only: %i[ new create approve destroy ]
+    resources :participations, only: %i[ new approve destroy ]
   end
 
-  resources :participations, only: %i[ index]
+  # post :participations, to: "participations#create"
+  resources :participations, only: %i[index create]
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?
