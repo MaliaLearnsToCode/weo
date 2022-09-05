@@ -18,7 +18,7 @@ class ItinerariesController < ApplicationController
     @start_date = ""
     @end_date = ""
     @location = ""
-    @itinerary = Itinerary.new
+    # @itinerary = Itinerary.new
 
     if params[:start_date].present? && params[:end_date].present? && params[:location].present?
 
@@ -32,10 +32,12 @@ class ItinerariesController < ApplicationController
 
       geocoded_location = Geocoder.search(location).first
 
+      @itineraries = policy_scope(Itinerary.near(geocoded_location.coordinates, "30").where("itineraries.start_date <= ? AND itineraries.end_date >= ?", start_date, end_date))
 
-      @itineraries = policy_scope(Itinerary.near(geocoded_location.coordinates, "5").where("itineraries.start_date <= ? AND itineraries.end_date >= ?", start_date, end_date))
 
-      @itinerary_activities =  Activity.near(geocoded_location.coordinates, "5").map { |activity| activity.itinerary }
+      # @itinerary_activities = Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ?", start_date, end_date).near(geocoded_location.coordinates, "5")
+
+      # .map { |activity| activity.itinerary }
 
       # JOIN @itineraries and @itinerary_activities !!! OR add start_date and end_date to @itineraries_activities !!!!! DO DO DO DO
 
@@ -48,10 +50,42 @@ class ItinerariesController < ApplicationController
 
 
   def new
+    @itinerary = Itinerary.new
+    authorize @itinerary
+    @user = current_user
+
+    @itineraries = Itinerary.all
+    markers_arr = @itineraries.geocoded.map do |itinerary|
+      {
+        lat: itinerary.latitude,
+        lng: itinerary.longitude
+      }
+    end
+    @markers = []
+    @markers << markers_arr.first
   end
 
   def create
+    # if the person wants to save an empty itinerary, then itinerary is saved to itineraries index
+    # else if the person wants to add an activitiy, the person will be redirect to the activities/new path
+    @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.user = current_user
+    @itinerary.start_date = params[:start_date].to_date
+    @itinerary.end_date = params[:end_date].to_date
+
+    authorize @itinerary
+
+    if @itinerary.save
+      if params[:commit] == 'Save itinerary'
+        redirect_to itineraries_path
+      else
+        redirect_to new_itinerary_activity_path
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
+
 
   def edit
   end
@@ -127,8 +161,9 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, :location, photo: [])
+    params.require(:itinerary).permit(:title, :description, :country, :city, :start_date, :end_date, :user_id, :location, photos: [])
   end
+
 
   # def require_login
   #   unless logged_in?
