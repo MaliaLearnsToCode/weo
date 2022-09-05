@@ -1,2 +1,23 @@
-<h1>Activities#new</h1>
-<p>Find me in app/views/activities/new.html.erb</p>
+
+<h1 style="color: #505050;">New Activity</h1>
+
+<div data-controller="insert-in-list" style="background-color: #F1E0E0;">
+  <div class="accordion" id="accordionExample" data-insert-in-list-target="items">
+    <% @itinerary.activities.each do |activity| %>
+      <%= render 'activity', activity: activity %>
+    <% end %>
+  </div>
+  <% if @itinerary.activities.size < 5 %>
+    <div class="container">
+      <div class="w-75 mx-auto mt-3 mb-5">
+
+        <%= render "form", itinerary: @itinerary, activity: @activity %>
+      </div>
+    </div>
+    <% else %>
+      <h3>Upgrade to add moooooore!</h3>
+  <% end %>
+
+  <br>
+
+</div>

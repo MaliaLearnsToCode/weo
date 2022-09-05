@@ -10,25 +10,63 @@ Activity.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
 
-puts "Creating USers..."
-user1 = User.create!(
+puts "Creating Users..."
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931658/swk8hfiuaidnxjxa7n2b.jpg")
+user1 = User.new(
   email: "malia@lewagon.com",
   password: "12345678",
   first_name: "Malia",
   last_name: "Nyugen",
   age: 18,
   gender: "female")
+user1.photos.attach(io: file, filename: "malia.jpg", content_type: "image/jpg")
+user1.save!
 
-user2 = User.create!(email: "felita@lewagon.com", password: "12345678", first_name: "Felita", last_name: "Liem", age: 26, gender: "female")
-user3 = User.create!(email: "denish@lewagon.com", password: "12345678", first_name: "Denish", last_name: "Hisham", age: 28, gender: "male")
-user4 = User.create!(email: "julien@lewagon.com", password: "12345678", first_name: "Julien", last_name: "Wong", age: 30, gender: "male")
-user5 = User.create!(email: "ashley@lewagon.com", password: "12345678", first_name: "Ashley", last_name: "Yeo", age: 21, gender: "male")
-user6 = User.create!(email: "suansen@lewagon.com", password: "12345678", first_name: "Suansen", last_name: "Yeo", age: 21, gender: "male")
-user7 = User.create!(email: "yc@lewagon.com", password: "12345678", first_name: "Y", last_name: "C", age: 21, gender: "male")
-user8 = User.create!(email: "eason@lewagon.com", password: "12345678", first_name: "Eason", last_name: "Lewagon", age: 18, gender: "male")
-user9 = User.create!(email: "onemore@lewagon.com", password: "12345678", first_name: "John", last_name: "Doe", age: 31, gender: "male")
-user10 = User.create!(email: "notsure@lewagon.com", password: "12345678", first_name: "Jane", last_name: "Doey", age: 25, gender: "female")
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931664/zu9du1kwa8s7kv1dekm5.jpg")
+user2 = User.new(email: "felita@lewagon.com", password: "12345678", first_name: "Felita", last_name: "Liem", age: 26, gender: "female")
+user2.photos.attach(io: file, filename: "felita.jpg", content_type: "image/jpg")
+user2.save!
 
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931684/ekh2cozeztcrvita4tsf.jpg")
+user3 = User.new(email: "denish@lewagon.com", password: "12345678", first_name: "Denish", last_name: "Hisham", age: 28, gender: "male")
+user3.photos.attach(io: file, filename: "denish.jpg", content_type: "image/jpg")
+user3.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931672/j2wqz6pvb5rqhrhlkjr7.png")
+user4 = User.new(email: "julien@lewagon.com", password: "12345678", first_name: "Julien", last_name: "Wong", age: 30, gender: "male")
+user4.photos.attach(io: file, filename: "julien.jpg", content_type: "image/jpg")
+user4.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931639/ifdtfx8yvpuu5u83klxo.jpg")
+user5 = User.new(email: "ashley@lewagon.com", password: "12345678", first_name: "Ashley", last_name: "Yeo", age: 21, gender: "male")
+user5.photos.attach(io: file, filename: "ashley.jpg", content_type: "image/jpg")
+user5.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931631/kyaiwuvcaax88srp4rt2.png")
+user6 = User.new(email: "suansen@lewagon.com", password: "12345678", first_name: "Suansen", last_name: "Yeo", age: 21, gender: "male")
+user6.photos.attach(io: file, filename: "suansen.jpg", content_type: "image/jpg")
+user6.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931651/xxkkwpq31dntzsxlisht.jpg")
+user7 = User.new(email: "yc@lewagon.com", password: "12345678", first_name: "Y", last_name: "C", age: 21, gender: "male")
+user7.photos.attach(io: file, filename: "yc.jpg", content_type: "image/jpg")
+user7.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931645/b0r1yn7gqbqguzxrr2n3.jpg")
+user8 = User.new(email: "eason@lewagon.com", password: "12345678", first_name: "Eason", last_name: "Lewagon", age: 18, gender: "male")
+user8.photos.attach(io: file, filename: "eason.jpg", content_type: "image/jpg")
+user8.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931623/ovq90l0f7m1mkvdqchma.jpg")
+user9 = User.new(email: "onemore@lewagon.com", password: "12345678", first_name: "John", last_name: "Doe", age: 31, gender: "male")
+user9.photos.attach(io: file, filename: "john.jpg", content_type: "image/jpg")
+user9.save!
+
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931287/mswobhnjshv4pn5voq4g.jpg")
+user10 = User.new(email: "notsure@lewagon.com", password: "12345678", first_name: "Jane", last_name: "Doey", age: 25, gender: "female")
+user10.photos.attach(io: file, filename: "jane.jpg", content_type: "image/jpg")
+user10.save!
 
 
 
@@ -70,25 +108,32 @@ interest3 = Interest.create!(interest_type: interest_type3, user: user3)
 
 
 puts "Creating Itineraries..."
-itinerary0 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348937/zpdjfch0l7y1sgka9n1m.jpg")
+itinerary0 = Itinerary.new(
   user: user1,
   start_date: Date.new(2022, 7, 10),
   end_date: Date.new(2022, 7, 10),
-  country: "Frankfurt",
-  city: "Germany",
+  country: "Germany",
+  city: "Frankfurt",
   description: "Malia's prehistoric itinerary. Already happened but just including it for data hahaahhaah",
   title: "Stopby but make it fun!")
+itinerary0.photos.attach(io: file, filename: "frankfurt.jpg", content_type: "image/jpg")
+itinerary0.save!
 
-itinerary1 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348949/xzgrswrscatml69gi81t.jpg")
+itinerary1 = Itinerary.new(
   user: user1,
   start_date: Date.new(2022, 7, 20),
   end_date: Date.new(2022, 7, 25),
-  country: "Berlin",
-  city: "Germany",
+  country: "Germany",
+  city: "Berlin",
   description: "This is Malia's perfect itinerary!",
   title: "Germany, here we come!")
+itinerary1.photos.attach(io: file, filename: "berlin.jpg", content_type: "image/jpg")
+itinerary1.save!
 
-itinerary2 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348957/ditsnoddzhq6xxng11z1.jpg")
+itinerary2 = Itinerary.new(
   user: user1,
   start_date: Date.new(2022, 8, 31),
   end_date: Date.new(2022, 9, 28),
@@ -96,8 +141,11 @@ itinerary2 = Itinerary.create!(
   city: "Jakarta",
   description: "Still Malia's idk itinerary!",
   title: "LETS GO JKTTTTT!")
+itinerary2.photos.attach(io: file, filename: "jakarta.jpg", content_type: "image/jpg")
+itinerary2.save!
 
-itinerary3 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348975/jhpm6lmqtvk5f7qucz0d.jpg")
+itinerary3 = Itinerary.new(
   user: user1,
   start_date: Date.new(2022, 9, 20),
   end_date: Date.new(2022, 10, 1),
@@ -105,17 +153,23 @@ itinerary3 = Itinerary.create!(
   city: "Maui",
   description: "Also still Malia's perfect itinerary!",
   title: "Maui, excited for you!")
+itinerary3.photos.attach(io: file, filename: "maui.jpg", content_type: "image/jpg")
+itinerary3.save!
 
-itinerary4 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348984/lvmknogjld0sjppkfal7.jpg")
+itinerary4 = Itinerary.new(
   user: user3,
   start_date: Date.new(2022, 9, 20),
   end_date: Date.new(2022, 10, 1),
-  country: "Chiang Mai",
-  city: "Thailand",
+  country: "Thailand",
+  city: "Chiang Mai",
   description: "Dan's super cool itinerary! Filled with tons of adventures and stuff",
   title: "Thailand, I love you!")
+itinerary4.photos.attach(io: file, filename: "chiangmai.jpg", content_type: "image/jpg")
+itinerary4.save!
 
-itinerary5 = Itinerary.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662348993/utdtz3zuezpxow0y2gzn.jpg")
+itinerary5 = Itinerary.new(
   user: user2,
   start_date: Date.new(2022, 10, 1),
   end_date: Date.new(2022, 10, 8),
@@ -123,6 +177,8 @@ itinerary5 = Itinerary.create!(
   city: "Kyoto",
   description: "Felita's chill tripppppppppppp! Tea, onsen, and long walks",
   title: "Japan 2022!")
+itinerary5.photos.attach(io: file, filename: "kyoto.jpg", content_type: "image/jpg")
+itinerary5.save!
 
 
 
@@ -132,7 +188,8 @@ itinerary5 = Itinerary.create!(
 
 
 puts "Creating Activities..."
-activity0 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349155/kwwgoiopyvqvnnefpv3y.jpg")
+activity0 = Activity.new(
   itinerary: itinerary0,
   start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
   end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
@@ -144,89 +201,107 @@ activity0 = Activity.create!(
   start_date: Date.new(2022, 7, 10),
   end_date: Date.new(2022, 7, 10),
   interest_type: interest_type1)
+activity0.photos.attach(io: file, filename: "pubcrawl.jpg", content_type: "image/jpg")
+activity0.save!
 
-activity1 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349036/njzhehgyfpyaf6xmnqey.jpg")
+activity1 = Activity.new(
   itinerary: itinerary1,
   start_time: Time.new(2022, 7, 21, 14, 30, 0, "+08:00"),
   end_time: Time.new(2022, 7, 21, 18, 30, 0, "+08:00"),
   name: "Berlin Wall visit",
   detail: "We're visiting the Berlin Wall with UMBRELLASSS!",
-  location: "Berlin Wall, 123 Berlin St. Berlin, Germany",
+  location: "Kurfürstendamm",
   max_participants: 7,
   completed: true,
   start_date: Date.new(2022, 7, 21),
   end_date: Date.new(2022, 7, 21),
   interest_type: interest_type1)
+activity1.photos.attach(io: file, filename: "wall.jpg", content_type: "image/jpg")
+activity1.save!
 
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349045/wjhkcyvyjg4wrwm3pxrn.jpg")
 activity2 = Activity.new(
-
   itinerary: itinerary1,
   start_time: Time.new(2022, 7, 21, 19, 30, 0, "+08:00"),
   end_time: Time.new(2022, 7, 21, 21, 30, 0, "+08:00"),
   name: "Beer Lova",
   detail: "Touring around Berlin for the best of beers",
-  location: "Best Berlin Pub, 123 Pub St. Berlin, Germany",
+  location: "Alexander Platz",
   max_participants: 4,
   completed: false,
   start_date: Date.new(2022, 7, 21),
   end_date: Date.new(2022, 7, 21),
   interest_type: interest_type1)
+activity2.photos.attach(io: file, filename: "beer.jpg", content_type: "image/jpg")
+activity2.save!
 
-activity3 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349055/bnllwdwhvcyn3xppxcr4.jpg")
+activity3 = Activity.new(
   itinerary: itinerary1,
   start_time: Time.new(2022, 7, 25, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 7, 25, 18, 30, 0, "+08:00"),
   name: "Water Visit",
   detail: "FOSHO getting wet!!",
-  location: "Berlin Waters, 123 Waters St. Berlin, Germany",
+  location: "Berlin, Brandenburger Tor, Germany",
   max_participants: 10,
   completed: true,
   start_date: Date.new(2022, 7, 25),
   end_date: Date.new(2022, 7, 25),
   interest_type: interest_type3)
+activity3.photos.attach(io: file, filename: "water.jpg", content_type: "image/jpg")
+activity3.save!
 
-
-activity4 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349062/h2zff9eqduwjcykdqnwy.jpg")
+activity4 = Activity.new(
   itinerary: itinerary2,
   start_time: Time.new(2022, 8, 31, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 8, 31, 18, 30, 0, "+08:00"),
   name: "Bar hop",
   detail: "LETS DRIIIIIIIIIIIIIIIIIIIIIINK!",
-  location: "Barbarbar, 123 Bar St. Jakarta, Indonesia",
+  location: "Jakarta, Indonesia",
   max_participants: 2,
   completed: true,
   start_date: Date.new(2022, 8, 31),
   end_date: Date.new(2022, 8, 31),
   interest_type: interest_type1)
+activity4.photos.attach(io: file, filename: "barhop.jpg", content_type: "image/jpg")
+activity4.save!
 
-activity5 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349069/crgzsuej5xxpptfbqbkz.jpg")
+activity5 = Activity.new(
   itinerary: itinerary2,
   start_time: Time.new(2022, 9, 28, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 9, 28, 18, 30, 0, "+08:00"),
   name: "Mountain Hike",
   detail: "Its gon be a hike!",
-  location: "Mountain, 123 Mountain St. Jakarta, Indonesia",
+  location: "Merapi",
   max_participants: 8,
   completed: false,
   start_date: Date.new(2022, 9, 28),
   end_date: Date.new(2022, 9, 28),
   interest_type: interest_type2)
+activity5.photos.attach(io: file, filename: "hike.jpg", content_type: "image/jpg")
+activity5.save!
 
-
-activity6 =Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349077/x2mbhm9dj3ckiuklfiph.jpg")
+activity6 =Activity.new(
   itinerary: itinerary3,
   start_time: Time.new(2022, 9, 20, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 9, 20, 18, 30, 0, "+08:00"),
   name: "First Ocean",
   detail: "Surfing!!!!!!!!!!!!!!!!!!!!! ",
-  location: "Ocean Waters, 123 Ocean Waters St. Maui, Hawaii",
+  location: "799 Poho Place, Paia, HI 96779",
   max_participants: 3,
   completed: false,
   start_date: Date.new(2022, 9, 20),
   end_date: Date.new(2022, 9, 20),
   interest_type: interest_type3)
+activity6.photos.attach(io: file, filename: "ocean.jpg", content_type: "image/jpg")
+activity6.save!
 
-activity7 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349083/i7w9lbqekyusbk3gpail.jpg")
+activity7 = Activity.new(
   itinerary: itinerary3,
   start_time: Time.new(2022, 9, 22, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 9, 22, 18, 30, 0, "+08:00"),
@@ -238,46 +313,57 @@ activity7 = Activity.create!(
   start_date: Date.new(2022, 9, 22),
   end_date: Date.new(2022, 9, 22),
   interest_type: interest_type3)
+activity7.photos.attach(io: file, filename: "sea.jpg", content_type: "image/jpg")
+activity7.save!
 
-activity8 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349090/feq2eqkgwmnom1zydrvm.jpg")
+activity8 = Activity.new(
   itinerary: itinerary3,
   start_time: Time.new(2022, 8, 15, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 8, 15, 18, 30, 0, "+08:00"),
   name: "Third Lake",
   detail: "CANOEINGGGGGGGGGGGGGGGGGG!!!",
-  location: "Lake Waters, 123 Waters St. Maui, Hawaii",
+  location: "4351 Kahala Avenue",
   max_participants: 10,
   completed: false,
   start_date: Date.new(2022, 10, 1),
   end_date: Date.new(2022, 10, 1),
   interest_type: interest_type3)
+activity8.photos.attach(io: file, filename: "lake.jpg", content_type: "image/jpg")
+activity8.save!
 
-
-activity9 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349097/cgu8s8eb1q9rpaktbze7.jpg")
+activity9 = Activity.new(
   itinerary: itinerary5,
   start_time: Time.new(2022, 10, 1, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 10, 1, 18, 30, 0, "+08:00"),
   name: "Teaaaa",
   detail: "tea time and onsen!!!",
-  location: "Tea house, 123 Tea St. Kyoto, Japan",
+  location: "Inari, Kyoto, Japan",
   max_participants: 10,
   completed: false,
   start_date: Date.new(2022, 10, 1),
   end_date: Date.new(2022, 10, 1),
   interest_type: interest_type1)
+activity9.photos.attach(io: file, filename: "tea.jpg", content_type: "image/jpg")
+activity9.save!
 
-activity10 = Activity.create!(
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349105/ycx4i8ngvy4vuvpesbp8.jpg")
+activity10 = Activity.new(
   itinerary: itinerary5,
   start_time: Time.new(2022, 10, 7, 10, 30, 0, "+08:00"),
   end_time: Time.new(2022, 10, 7, 18, 30, 0, "+08:00"),
   name: "Walkies",
   detail: "walking along the best streets of kyoto!!!",
-  location: "Walking Street, 123 Walk Rd. Kyoto, Japan",
+  location: "Sushi Gion Matsudaya
+  570-123 Gionmachi Minamigawa, Higashiyama Ward, Kyoto, 605-0074, Japan",
   max_participants: 10,
   completed: false,
   start_date: Date.new(2022, 10, 7),
   end_date: Date.new(2022, 10, 7),
   interest_type: interest_type1)
+activity10.photos.attach(io: file, filename: "walkies.jpg", content_type: "image/jpg")
+activity10.save!
 
 
 
@@ -315,11 +401,11 @@ participation12 = Participation.create!(status: "confirmed", user: user8, activi
 participation13 = Participation.create!(status: "confirmed", user: user3, activity: activity6)
 participation14 = Participation.create!(status: "confirmed", user: user4, activity: activity6)
 
-participation15 = Participation.create!(status: "confirmed", user: user1, activity: activity7)
-participation16 = Participation.create!(status: "confirmed", user: user3, activity: activity7)
-participation17 = Participation.create!(status: "confirmed", user: user6, activity: activity7)
-participation18 = Participation.create!(status: "confirmed", user: user7, activity: activity7)
-participation19 = Participation.create!(status: "confirmed", user: user9, activity: activity7)
+participation15 = Participation.create!(status: "pending", user: user1, activity: activity7)
+participation16 = Participation.create!(status: "pending", user: user3, activity: activity7)
+participation17 = Participation.create!(status: "pending", user: user6, activity: activity7)
+participation18 = Participation.create!(status: "pending", user: user7, activity: activity7)
+participation19 = Participation.create!(status: "pending", user: user9, activity: activity7)
 participation20 = Participation.create!(status: "pending", user: user10, activity: activity7)
 
 participation21 = Participation.create!(status: "pending", user: user3, activity: activity9)

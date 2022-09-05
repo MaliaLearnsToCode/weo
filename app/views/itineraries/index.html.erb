@@ -1,19 +1,24 @@
 
 <div class="w-full" data-controller="itinerary">
 
-      <!----------------------- DATE & LOCATION SEARCH ------------------------->
+  <!----------------------- DATE & LOCATION SEARCH ------------------------->
 
-  <div class="">
+  <div class= "container" style="background-color: #F1E0E0;">
     <div class="date-container" >
+
       <div class= "d-flex justify-content-center">
         <form action="/itineraries" class="form-inline">
         <div>
           <%= simple_form_for :global_search, url: itineraries_path, method: "GET" do |f| %>
-          <div class="d-flex justify-content-between">
-            <label for="start_date">From:</label>
-            <input type="date" id="start_date" name="start_date">
-            <label for="end_date">Until:</label>
-            <input type="date" id="end_date" name="end_date" >
+          <div class="">
+            <div>
+              <label for="start_date">From:</label>
+              <input type="date" id="start_date" name="start_date" class="shadow-sm rounded w-100">
+            </div>
+            <div>
+              <label for="end_date">Until:</label>
+              <input type="date" id="end_date" name="end_date" class="shadow-sm rounded w-100">
+            </div>
           </div>
           <%= f.input :location,
           input_html: {data: {location_autocomplete_target: "location"}, style: "display: none", name: "location"},
@@ -22,26 +27,19 @@
           <%= f.submit "Let's go", input_html: { style: "display: none" } %>
           <% end %>
         </form>
-
-
-        <%= form_with url: itineraries_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a location"
-          %>
-
-          <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
-
       </div>
     </div>
   </div>
+  <!----------------------- DATE & LOCATION SEARCH ------------------------->
+
+
+
 
   <!----------------------- CARD ------------------------->
 
  <%= render "itineraries_card" %>
 
+  <!----------------------- CARD ------------------------->
 
 
 <div>
