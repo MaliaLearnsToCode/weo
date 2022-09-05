@@ -1,36 +1,24 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+<div class="navbar fixed-bottom navbar-expand-sm" style="background-color: #e36262;" id="bottomNav">
+  <div class="container">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/itineraries">
+        <img src="https://cdn-icons-png.flaticon.com/512/855/855003.png" width="30" height="30" alt=""></a>
+      </li>
+      <li class="nav-item dropup">
+        <img class=" dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn-icons-png.flaticon.com/512/1834/1834117.png" width="30" height="30">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><img src="https://cdn-icons-png.flaticon.com/512/3208/3208636.png" width="30" height="30" alt=""></a>
+          <a class="dropdown-item" href="#"><img src="https://cdn-icons-png.flaticon.com/128/4336/4336639.png" width="30" height="30" alt=""></a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/activities/1"><img src="https://cdn-icons-png.flaticon.com/512/3677/3677253.png" width="30" height="30" alt=""></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/users/1">
+        <img src="https://cdn-icons-png.flaticon.com/512/98/98415.png" width="30" height="30" alt=""></a>
+      </li>
+    </ul>
   </div>
 </div>
