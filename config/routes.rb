@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
-  # get 'participant_reviews/new'
-  # get 'participant_reviews/create'
-  # get 'creator_reviews/new'
-  # get 'creator_reviews/create'
-  # get 'participations/index'
-  # get 'participations/new'
-  # get 'participations/create'
-  # get 'participations/show'
-  # get 'participations/approve'
-  # get 'participations/destroy'
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -25,7 +16,7 @@ Rails.application.routes.draw do
   # delete '/itineraries/:id', to: 'itineraries#destroy' # /itineraries
 
   resources :itineraries do
-    resources :activities, only: %i[ index new create ]
+    resources :activities, only: %i[ index new create show ]
     collection do
       get :my_itineraries # /my-itineraries
     end
@@ -35,9 +26,9 @@ Rails.application.routes.draw do
 
   #--------------- activities --------------------
   # activities index is listed in the dependent itinerary page
-  get '/activities/:id', to: 'activities#show' # /activities/:id
-  get '/activities/:id/edit', to: 'activities#edit' # /activities/:id/edit
-  patch '/activities/:id', to: 'activities#update'
+  # get '/activities/:id', to: 'activities#show' # /activities/:id
+  # get '/activities/:id/edit', to: 'activities#edit' # /activities/:id/edit
+  # patch '/activities/:id', to: 'activities#update'
 
     # controller is activity,
     # index listed on one itinerary page path: /itineraries/:itinerary_id/activities
@@ -60,6 +51,7 @@ Rails.application.routes.draw do
   end
 
   resources :participations, only: %i[ index]
+ 
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?

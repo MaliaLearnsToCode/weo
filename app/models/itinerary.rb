@@ -12,7 +12,7 @@ class Itinerary < ApplicationRecord
   accepts_nested_attributes_for :activities
 
   geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_country?
+  after_validation :geocode, if: :will_save_change_to_city?
 
 
   # scope :overlapping, (lambda do |start_date, end_date, location|
@@ -27,8 +27,6 @@ class Itinerary < ApplicationRecord
   # using: {
   #   tsearch: { prefix: true }
   # }
-
-
 
   # scope :overlapping, (lambda do |start_date, end_date, location|
   #   Itinerary.joins(:activities).where("itineraries.start_date <= ? AND itineraries.end_date >= ? AND (activities.location ILIKE ?)",

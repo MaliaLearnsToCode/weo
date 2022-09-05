@@ -1,0 +1,60 @@
+#map {
+  position: relative;
+  top: -40px;
+  bottom: 0;
+  width: 100%;
+}
+
+#geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 80%;
+  height: 50%;
+  left: 28%;
+  margin-left: -25%;
+  top: 120px;
+}
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+}
+#map {
+  margin-top: 75px;
+}
+
+.title-where {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.title-when {
+  top: -20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.title-what {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.location-input {
+  margin-top: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.date-input {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.details-input {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.submits {
+  margin-left: 20px;
+  margin-right: 20px;
+  flex: auto;
+}

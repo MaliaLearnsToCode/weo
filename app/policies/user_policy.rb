@@ -1,19 +1,16 @@
-class ActivityPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-
       scope.all
-      scope.where(user: user)
     end
-
-    def show?
-      true
-    end
-
   end
 
-  def create?
+  def show?
     true
   end
+
+  # def create?
+  #   true
+  # end
 end
