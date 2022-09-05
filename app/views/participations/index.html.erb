@@ -15,7 +15,7 @@
       <% @participations.each do |participation| %>
         <div class="d-flex mb-2">
           <div id="approved_avatar">
-            <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar">
+            <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
           </div>
 
           <div id="activity1">
@@ -44,7 +44,7 @@
   <div id="pending_list flex-column">
       <% @participations.each do |participation| %>
       <div class="d-flex mb-2">
-        <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar">
+        <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
         <div id="activity2">
           <%= render "activity_details", participation: participation %>
        </div>
