@@ -1,14 +1,19 @@
-#approved_avatar{
+#approved_list {
   display: flex;
   justify-content: space-between;
 }
 
+#approved_avatar{
+  height: 60px;
+  width: 60px;
+}
+
 #activity1 {
-  margin: 5px 0 0 0;
+  margin: 1px 0 0 5px;
 }
 
 #chatbox {
-  margin: 9px 7px 0 0;
+  margin: 14px 7px 0 9px;
 }
 
 #approved_header {
@@ -29,7 +34,7 @@
 }
 
 #activity2 {
-  margin: 7px 0 0 20px;
+  margin: 1px 0 0 20px;
 }
 
 #pending_header {

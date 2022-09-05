@@ -16,5 +16,8 @@ application.register("itinerary", ItineraryController)
 import LocationAutocompleteController from "./location_autocomplete_controller"
 application.register("location-autocomplete", LocationAutocompleteController)
 
+import check_all_checkboxes_controller from "./check_all_checkboxes_controller";
+application.register("check-all-checkboxes", check_all_checkboxes_controller)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
