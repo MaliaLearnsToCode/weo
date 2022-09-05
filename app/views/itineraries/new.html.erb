@@ -35,6 +35,14 @@
     <%= f.input :description %>
   </div>
 
+  <div class="title-what">
+    <h3>Upload a photo</h3>
+  </div>
+  <div class="details-input">
+    <%= f.input :photos, as: :file, input_html: { multiple: true }%>
+  </div>
+
+
 
   <div class="submits mb-5 pb-5">
     <%= f.submit "Save itinerary", input_html: { style: "display: none" } %>
