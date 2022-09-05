@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  get 'participant_reviews/new'
-  get 'participant_reviews/create'
-  get 'creator_reviews/new'
-  get 'creator_reviews/create'
-  get 'participations/index'
-  get 'participations/new'
-  get 'participations/create'
-  get 'participations/show'
-  get 'participations/approve'
-  get 'participations/destroy'
+  # get 'participant_reviews/new'
+  # get 'participant_reviews/create'
+  # get 'creator_reviews/new'
+  # get 'creator_reviews/create'
+  # get 'participations/index'
+  # get 'participations/new'
+  # get 'participations/create'
+  # get 'participations/show'
+  # get 'participations/approve'
+  # get 'participations/destroy'
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -44,9 +44,16 @@ Rails.application.routes.draw do
     # new path: /itineraries/:itinerary_id/activities/new
     # for the 'create' action, the path also looks is: /itineraries/:itinerary_id/activities
 
-  resources :activities do
+  resources :activities, only: %i[destroy] do
     collection do
       get :pending # path: /activities/pending
+    end
+    resources :participations, only: %i[index new create update destroy show]
+  end
+
+  resources :participations, only: %i[ ] do
+    collection do
+      get :approve
     end
   end
 
@@ -55,9 +62,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   #--------------------- participants -------------------------
-  resources :activities do
-    resources :participations, only: %i[index new create update approve destroy show]
-  end
+
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?
