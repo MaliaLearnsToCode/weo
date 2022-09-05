@@ -21,8 +21,10 @@
       <a class="nav-link" href="http://localhost:3000/activities/1"><img src="https://cdn-icons-png.flaticon.com/512/3677/3677253.png" width="30" height="30" alt=""></a>
     </div> -->
     <div class="nav-item">
-      <%= link_to user_path(current_user) do%>
-        <img src="https://cdn-icons-png.flaticon.com/512/4021/4021407.png" width="30" height="30" alt=""></a>
+      <% if user_signed_in? %>
+        <%= link_to user_path(current_user) do%>
+          <img src="https://cdn-icons-png.flaticon.com/512/4021/4021407.png" width="30" height="30" alt=""></a>
+        <% end %>
       <% end %>
     </div>
   </div>
