@@ -17,11 +17,12 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    true
   end
 
   def new?
     create?
+    true
   end
 
   def update?
