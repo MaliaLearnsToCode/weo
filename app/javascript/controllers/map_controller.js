@@ -67,7 +67,7 @@ export default class extends Controller {
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
       language: "en-US",
-      placeholder: "Enter city and country.",
+      placeholder: "Enter city and country",
     }).on("result", ({ result }) => {
       const parsed_str = this.#parseReverseGeo(result);
       const parsed_str_array = this.#parseReverseGeo(result).split(",");
