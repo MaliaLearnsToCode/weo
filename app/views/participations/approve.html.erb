@@ -1,23 +1,31 @@
 <div class="container">
 <h1>Participants awaiting for your approval</h1>
-
-<% current_user.activity_where("pending").each do |activity| %>
+<% if @activities.count == 0 %>
+  <div>There are no pending approvals</div>
+<% end %>
+<% @activities.each do |activity| %>
   <% if activity.participations.count > 0 %>
-    <div class="card">
+    <div class="card container justify-content-center p-2">
+    <div class="">
       <h4><%= activity.name %></h4>
+    <div class="">
       <p><%= activity.start_time.strftime("%e.%M%P %-d %b") %></p>
       <p><%= activity.location%></p>
-
-      <% activity.participations.each do |participation| %>
-        <div class ="inline">
-          <%= participation.user.first_name  %>
-          <%= simple_form_for participation.user do |f|%>
-          <%= f.input :mode, :as => :hidden, :input_html => { :value => "reject" } %>
-          <%= f.submit "Reject"%>
+    </div>
+    </div>
+      <% activity.participations.where(status: "pending").each do |participation| %>
+        <div class ="container waiting d-flex m-3">
+          <h5><%= participation.user.first_name  %></h5>
+          <%= simple_form_for participation do |f|%>
+            <%= f.input :mode, :as => :hidden, :input_html => { :value => "reject" } %>
+            <%= f.submit "Reject"%>
           <% end %>
-          <%= simple_form_for participation.user do |f|%>
-          <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
-          <%= f.submit "Approve"%>
+          <%= link_to "Reject",
+            participation_path(participation),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= simple_form_for participation do |f|%>
+            <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
+            <%= f.submit "Approve"%>
           <% end %>
         </div>
       <% end %>

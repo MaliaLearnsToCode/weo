@@ -19,52 +19,54 @@ user1 = User.new(
   first_name: "Malia",
   last_name: "Nyugen",
   age: 18,
-  gender: "female")
+  gender: "female",
+  nickname: "malia123"
+)
 user1.photos.attach(io: file, filename: "malia.jpg", content_type: "image/jpg")
 user1.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931664/zu9du1kwa8s7kv1dekm5.jpg")
-user2 = User.new(email: "felita@lewagon.com", password: "12345678", first_name: "Felita", last_name: "Liem", age: 26, gender: "female")
+user2 = User.new(email: "felita@lewagon.com", password: "12345678", first_name: "Felita", last_name: "Liem", age: 26, gender: "female", nickname: "Felita123")
 user2.photos.attach(io: file, filename: "felita.jpg", content_type: "image/jpg")
 user2.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931684/ekh2cozeztcrvita4tsf.jpg")
-user3 = User.new(email: "denish@lewagon.com", password: "12345678", first_name: "Denish", last_name: "Hisham", age: 28, gender: "male")
+user3 = User.new(email: "denish@lewagon.com", password: "12345678", first_name: "Denish", last_name: "Hisham", age: 28, gender: "male", nickname: "denish123")
 user3.photos.attach(io: file, filename: "denish.jpg", content_type: "image/jpg")
 user3.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931672/j2wqz6pvb5rqhrhlkjr7.png")
-user4 = User.new(email: "julien@lewagon.com", password: "12345678", first_name: "Julien", last_name: "Wong", age: 30, gender: "male")
+user4 = User.new(email: "julien@lewagon.com", password: "12345678", first_name: "Julien", last_name: "Wong", age: 30, gender: "male", nickname: "julien123")
 user4.photos.attach(io: file, filename: "julien.jpg", content_type: "image/jpg")
 user4.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931639/ifdtfx8yvpuu5u83klxo.jpg")
-user5 = User.new(email: "ashley@lewagon.com", password: "12345678", first_name: "Ashley", last_name: "Yeo", age: 21, gender: "male")
+user5 = User.new(email: "ashley@lewagon.com", password: "12345678", first_name: "Ashley", last_name: "Yeo", age: 21, gender: "male", nickname: "ashley123")
 user5.photos.attach(io: file, filename: "ashley.jpg", content_type: "image/jpg")
 user5.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931631/kyaiwuvcaax88srp4rt2.png")
-user6 = User.new(email: "suansen@lewagon.com", password: "12345678", first_name: "Suansen", last_name: "Yeo", age: 21, gender: "male")
+user6 = User.new(email: "suansen@lewagon.com", password: "12345678", first_name: "Suansen", last_name: "Yeo", age: 21, gender: "male", nickname: "suansen123")
 user6.photos.attach(io: file, filename: "suansen.jpg", content_type: "image/jpg")
 user6.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931651/xxkkwpq31dntzsxlisht.jpg")
-user7 = User.new(email: "yc@lewagon.com", password: "12345678", first_name: "Y", last_name: "C", age: 21, gender: "male")
+user7 = User.new(email: "yc@lewagon.com", password: "12345678", first_name: "Y", last_name: "C", age: 21, gender: "male", nickname: "yc123")
 user7.photos.attach(io: file, filename: "yc.jpg", content_type: "image/jpg")
 user7.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931645/b0r1yn7gqbqguzxrr2n3.jpg")
-user8 = User.new(email: "eason@lewagon.com", password: "12345678", first_name: "Eason", last_name: "Lewagon", age: 18, gender: "male")
+user8 = User.new(email: "eason@lewagon.com", password: "12345678", first_name: "Eason", last_name: "Lewagon", age: 18, gender: "male", nickname: "eason123")
 user8.photos.attach(io: file, filename: "eason.jpg", content_type: "image/jpg")
 user8.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931623/ovq90l0f7m1mkvdqchma.jpg")
-user9 = User.new(email: "onemore@lewagon.com", password: "12345678", first_name: "John", last_name: "Doe", age: 31, gender: "male")
+user9 = User.new(email: "onemore@lewagon.com", password: "12345678", first_name: "John", last_name: "Doe", age: 31, gender: "male", nickname: "john123")
 user9.photos.attach(io: file, filename: "john.jpg", content_type: "image/jpg")
 user9.save!
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1661931287/mswobhnjshv4pn5voq4g.jpg")
-user10 = User.new(email: "notsure@lewagon.com", password: "12345678", first_name: "Jane", last_name: "Doey", age: 25, gender: "female")
+user10 = User.new(email: "notsure@lewagon.com", password: "12345678", first_name: "Jane", last_name: "Doey", age: 25, gender: "female", nickname: "jane123")
 user10.photos.attach(io: file, filename: "jane.jpg", content_type: "image/jpg")
 user10.save!
 
@@ -415,12 +417,13 @@ participation21 = Participation.create!(status: "pending", user: user3, activity
 
 
 
+
 puts "Creating Chatrooms..."
 chatroom1 = Chatroom.create!(
   activity: activity1,
-  name: "Berlin Wall")
+  name: "Berlin Wall visit")
 
-chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Love")
+chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Lova")
 chatroom3 = Chatroom.create!(activity: activity3, name: "Water Visit")
 
 chatroom4 = Chatroom.create!(activity: activity4, name: "Bar Hop")

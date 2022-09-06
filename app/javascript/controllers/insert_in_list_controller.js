@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-in-list"
 export default class extends Controller {
-  static targets = ["items","form"]
+  static targets = ["items","form", "accordion"]
 
   connect() {
     console.log(this.element)
@@ -19,13 +19,15 @@ export default class extends Controller {
       headers: { "Accept": "application/json" },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data)
-        if (data.inserted_item) {
-          this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
-        }
-        this.formTarget.outerHTML = data.form
-      })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
+      if (data.inserted_item) {
+        this.accordionTarget.insertAdjacentHTML("beforebegin", data.inserted_item)
+      }
+      this.formTarget.outerHTML = data.form
+    })
+
+    // location.reload()
   }
 }
