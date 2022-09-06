@@ -46,12 +46,16 @@ Rails.application.routes.draw do
     collection do
       get :pending # path: /activities/pending
     end
-    resources :participations, only: %i[index new create update destroy show]
+    resources :participations, only: %i[index new create update show]
   end
 
-  resources :participations, only: %i[ ] do
+  resources :participations, only: %i[ update destroy] do
     collection do
       get :approve
+    end
+
+    member do
+      delete :destroyApproved
     end
   end
 
@@ -65,7 +69,7 @@ Rails.application.routes.draw do
   end
 
   # post :participations, to: "participations#create"
-  resources :participations, only: %i[index create]
+  resources :participations, only: %i[index create destroy]
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?

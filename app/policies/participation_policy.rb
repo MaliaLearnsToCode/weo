@@ -7,9 +7,22 @@ class ParticipationPolicy < ApplicationPolicy
     def resolve
       scope.where(user: user)
     end
+  end
 
-    def approve?
-      true
-    end
+
+  def approve?
+    true
+  end
+
+  def destroy?
+    true
+  end
+
+  def update?
+    true
+  end
+
+  def destroyApproved?
+    true
   end
 end

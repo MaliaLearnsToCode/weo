@@ -17,13 +17,13 @@
 
           <div class="1/3">
 
-              <div class="frank">
-                <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80" width = 400px height = 300px >
-              </div>
+            <div class="frank">
+              <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80" width = 400px height = 300px >
+            </div>
           </div>
 
           <div class="2/3">
-              <div class="d-flex flex-row-reverse time and date pt-2">
+            <div class="d-flex flex-row-reverse time and date pt-2">
                 <% @itinerary.activities.each do |activity| %>
                 <h5><%= activity.start_time.strftime("%e.%M%P %-d %b") %> to <%= activity.end_time.strftime("%l.%M%P %-d %b")%></h5>
                 <% end %>
