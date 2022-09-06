@@ -6,7 +6,7 @@
     <% @itinerary.activities.each do |activity| %>
       <%= render 'activity', activity: activity %>
     <% end %>
-    <div class="accordion-item">
+    <div class="accordion-item" data-insert-in-list-target="accordion">
       <% if @itinerary.activities.size < 5 %>
         <h2 class="accordion-header" id="form-panel">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
