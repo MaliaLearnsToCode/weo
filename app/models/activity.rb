@@ -2,10 +2,10 @@ class Activity < ApplicationRecord
   belongs_to :itinerary
   belongs_to :interest_type
 
-  has_many :chatrooms, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, class_name: 'User', foreign_key: 'user_id'
-  has_one :creator, through: :itineraries, class_name: 'User', foreign_key: 'user_id'
+  has_one :creator, through: :itineraries, class_name: 'User'
 
   has_many_attached :photos
 
@@ -24,4 +24,11 @@ class Activity < ApplicationRecord
 
   # scope :status, ->(booking_status, current_user) { Watch.where(user: current_user).joins(:bookings).where('bookings.status': booking_status) }
 
+  def date
+    if start_date == end_date
+      start_date.strftime('%d %b')
+    else
+      "#{start_date.strftime('%d %b')} - #{end_date.strftime('%d %b')}"
+    end
+  end
 end

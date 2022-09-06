@@ -112,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_100700) do
   end
 
   create_table "participations", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "pending"
     t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
     t.datetime "created_at", null: false

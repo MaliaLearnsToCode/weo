@@ -9,7 +9,20 @@ class ParticipationPolicy < ApplicationPolicy
     end
   end
 
+
+  def approve?
+    true
+  end
+
+  def destroy?
+    true
+  end
+
   def update?
+    true
+  end
+
+  def destroyApproved?
     true
   end
 end

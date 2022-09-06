@@ -6,20 +6,20 @@
 
   <div id="approved_header">
     <img src="https://cdn-icons-png.flaticon.com/512/2984/2984960.png" alt="tick" height="30px" width="30px">
-    <h3>Approved</h3>
+    <h3>Confirmed</h3>
   </div>
 
 
   <div id="approved_list flex-column">
 
-      <% @participations.each do |participation| %>
+      <% @confirmed_activities.each do |activity| %>
         <div class="d-flex mb-2">
           <div id="approved_avatar">
             <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
           </div>
 
           <div id="activity1">
-            <%= render "activity_details", participation: participation %>
+            <%= render "activity_details", activity: activity %>
           </div>
 
           <div id="chatbox">
@@ -42,11 +42,11 @@
   </div>
 
   <div id="pending_list flex-column">
-      <% @participations.each do |participation| %>
+      <% @participations_pending.each do |activity| %>
       <div class="d-flex mb-2">
         <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
         <div id="activity2">
-          <%= render "activity_details", participation: participation %>
+          <%= render "activity_details", activity: activity %>
        </div>
       </div>
       <% end %>

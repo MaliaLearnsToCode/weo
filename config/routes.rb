@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       get :my_itineraries # /my-itineraries
     end
   end
+
+  resources :chatrooms, only: %i[index]
   # this is a selected collection of index where the user can see their own index of all the itineraries
   # path is: /my-itineraries
 
@@ -44,14 +46,19 @@ Rails.application.routes.draw do
     collection do
       get :pending # path: /activities/pending
     end
-    resources :participations, only: %i[index new create show]
+    resources :participations, only: %i[index new create update show]
   end
 
   resources :participations, only: %i[ update destroy] do
     collection do
       get :approve
     end
+
     resources :reviews, only: %i[ new create ]
+
+    member do
+      delete :destroyApproved
+    end
   end
 
   #--------------------- users -------------------------
@@ -66,7 +73,7 @@ Rails.application.routes.draw do
   end
 
   # post :participations, to: "participations#create"
-  resources :participations, only: %i[index create]
+  resources :participations, only: %i[index create destroy]
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?
@@ -75,7 +82,7 @@ Rails.application.routes.draw do
   #--------------------- chat -------------------------
 
   resources :activities, only: %i[create] do
-    resources :chatrooms, only: %i[index new create show destroy]
+    resources :chatrooms, only: %i[new create show destroy]
   end
 
   resources :chatrooms, only: %i[show] do
