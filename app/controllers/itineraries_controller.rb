@@ -79,7 +79,7 @@ class ItinerariesController < ApplicationController
       if params[:commit] == 'Save itinerary'
         redirect_to itineraries_path
       else
-        redirect_to new_itinerary_activity_path
+        redirect_to new_itinerary_activity_path(@itinerary)
       end
     else
       render :new, status: :unprocessable_entity

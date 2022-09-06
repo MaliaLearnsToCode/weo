@@ -1,12 +1,12 @@
 <body class="itinerary_show">
-<div class="container" data-controller="check-all-checkboxes">
+<div class="container">
 
 
   <div class="w-100">
     <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
       <div class="d-flex justify-content-start position-relative" >
         <div>
-          <% @itinerary.photos.each do |photo| %>
+          <% @itinerary.user.photos.each do |photo| %>
               <div class="avatar-large" alt="avatar-large">
                 <%= cl_image_tag photo.key, height: 280, width: 280 %>
               </div>
@@ -14,7 +14,7 @@
           <strong><%= @itinerary.user.first_name %></strong>
         </div>
       </div>
-      <div class="bg-light p-4">
+      <div class="bg-light p-4" data-controller="check-all-checkboxes">
         <div class="card-header">
           <strong><%= @itinerary.title %></strong>
         </div>
@@ -25,11 +25,12 @@
         <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
           <p>Activities</p>
           <% @itinerary.activities.each_with_index do |activity,index| %>
-            <label class="option"> <%= activity.name %><input type="checkbox" data-check-all-checkboxes-target="checkbox"></label></li>
-            <%= activity.start_date %></li>
-            <%= activity.end_date %></li>
-            <%= activity.start_time %></li>
-            <%= activity.end_time %></li>
+            <label class="option"> <%= activity.name %>
+            <input type="checkbox" value="<%= activity.id %>" data-check-all-checkboxes-target="checkbox"></label>
+            <%= activity.start_date %> to
+            <%= activity.end_date %>
+            <%= activity.start_time.strftime("%l:%M%P") %> to
+            <%= activity.end_time.strftime("%l:%M%P") %>
             <%= render "activity_modal" %>
           <% end %>
         </ul>
@@ -40,7 +41,7 @@
         </div>
 
         <div id="join_button">
-          <label class="option"><button type="submit" class="btn btn-success"> Join </button></label>
+          <label class="option"><button type="submit" class="btn btn-success" data-action="click->check-all-checkboxes#submit"> Join </button></label>
         </div>
 
       </div>

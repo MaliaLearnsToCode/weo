@@ -3,19 +3,15 @@
     <div class="swiper-wrapper">
       <% @itineraries.each do |itinerary| %>
         <div class="swiper-slide">
-          <div class='border border-danger position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
-            <div class="d-flex justify-content-start position-relative" >
-              <div>
-                <div class="avatar-large" alt="avatar-large">
-                  <% if itinerary.photos.attached? %>
-                    <div class="detail-img text-center w-100 rounded"><%= cl_image_tag watch.photos[0].key, crop: :fill %></div>
-                  <% else %>
-                  <% end %>
-                </div>
-                <strong><%= itinerary.user.first_name %></strong>
-              </div>
+          <div class='border position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
+            <div class="avatar-index d-flex position-absolute" >
+                <% if itinerary.photos.attached? %>
+                  <%= cl_image_tag itinerary.user.photos[0].key, crop: :fill  %>
+                <% else %>
+                <% end %>
+              <p class="m-0 avatar-text"><strong><%= itinerary.user.first_name %></strong></p>
             </div>
-            <div class="bg-light p-4">
+            <div class="bg-light p-4 pt-5 mt-4">
               <div class="card-header">
                 <strong><%= itinerary.title %></strong>
               </div>

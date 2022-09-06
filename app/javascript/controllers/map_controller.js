@@ -67,7 +67,7 @@ export default class extends Controller {
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl,
       language: "en-US",
-      placeholder: "Enter city and country.",
+      placeholder: "Enter city and country",
     }).on("result", ({ result }) => {
       const parsed_str = this.#parseReverseGeo(result);
       const parsed_str_array = this.#parseReverseGeo(result).split(",");
@@ -93,6 +93,22 @@ export default class extends Controller {
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true,
     });
+
+    this.map.on("load", function () {
+      this.map.flyTo({
+        center: [
+          -74.5 + (Math.random() - 0.5) * 10, // Example data
+          40 + (Math.random() - 0.5) * 10, // Example data
+        ],
+        essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+      });
+    });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        coordinates = [position.coords.latitude, position.coords.longitude];
+      });
+    }
 
     this.#addMarkersToMap();
     this.#fitMapToMarkers();

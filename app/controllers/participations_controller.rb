@@ -9,7 +9,6 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-
   end
 
   def approve
