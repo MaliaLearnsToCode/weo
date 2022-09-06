@@ -6,18 +6,31 @@
     <% @itinerary.activities.each do |activity| %>
       <%= render 'activity', activity: activity %>
     <% end %>
-  </div>
-  <% if @itinerary.activities.size < 5 %>
-    <div class="container">
-      <div class="w-75 mx-auto mt-3 mb-5">
-
-        <%= render "form", itinerary: @itinerary, activity: @activity %>
+    <div class="accordion-item" data-insert-in-list-target="accordion">
+      <% if @itinerary.activities.size < 5 %>
+        <h2 class="accordion-header" id="form-panel">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Create New Activity
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="form-panel">
+          <div class="accordion-body">
+            <div class="container">
+              <div class="w-75 mx-auto mt-3 mb-5">
+                <%= render "form", itinerary: @itinerary, activity: @activity %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% else %>
+          <h3>Upgrade to add moooooore!</h3>
+      <% end %>
+    </div>
       </div>
     </div>
-    <% else %>
-      <h3>Upgrade to add moooooore!</h3>
-  <% end %>
+  </div>
 
-  <br>
+
+    <br>
 
 </div>
