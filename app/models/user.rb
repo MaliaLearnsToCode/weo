@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :itineraries, dependent: :destroy
   has_many :activities, through: :itineraries, dependent: :destroy
   has_many :interests, dependent: :destroy
-  has_many :partipations, dependent: :destroy
+  has_many :participations, dependent: :destroy
+  # has_many :participations, as: :participants, through: :activities
 
   has_many_attached :photos
 
@@ -22,5 +23,11 @@ class User < ApplicationRecord
     Activity.joins(:participations)
             .where('participations.user': self)
             .where('participations.status': status)
+  end
+
+  def activity_creator(status)
+    Activity.joins(:itinerary).joins(:participations)
+            .where('itineraries.user': self)
+            .where('participations.status': status).distinct
   end
 end
