@@ -1,7 +1,6 @@
 puts "Clearing old data..."
-ParticipantReview.destroy_all
+Review.destroy_all
 Participation.destroy_all
-CreatorReview.destroy_all
 User.destroy_all
 InterestType.destroy_all
 Interest.destroy_all
@@ -469,32 +468,44 @@ message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello
 message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
 
 
-
-
-
-
-puts "Creating Creator Reviews....."
-creatorreview1 = CreatorReview.create!(
-  creator: user1,
-  participant: participation1.user,
+puts "Creating Reviews"
+review1 = Review.create!(
+  author: user1,
+  user: user2,
+  participation: participation1,
   comment: "Fel was kinda niiiiice!",
   rating: 5)
 
-creatorreview2 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+# review2 = Review.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
 
-creatorreview3 = CreatorReview.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
+# review3 = Review.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
 
-creatorreview4 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
-
-
+# review4 = Review.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
 
 
 
-puts "Creating Participant Reviews....."
-participantreview1 = ParticipantReview.create!(comment: "Malia iz da best", rating: 4, participation: participation3)
+# puts "Creating Creator Reviews....."
+# creatorreview1 = CreatorReview.create!(
+#   creator: user1,
+#   participant: participation1.user,
+#   comment: "Fel was kinda niiiiice!",
+#   rating: 5)
 
-participantreview2 = ParticipantReview.create!(comment: "", rating: 5, participation: participation1)
-participantreview3 = ParticipantReview.create!(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
+# creatorreview2 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+
+# creatorreview3 = CreatorReview.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
+
+# creatorreview4 = CreatorReview.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
+
+
+
+
+
+# puts "Creating Participant Reviews....."
+# participantreview1 = ParticipantReview.create!(comment: "Malia iz da best", rating: 4, participation: participation3)
+
+# participantreview2 = ParticipantReview.create!(comment: "", rating: 5, participation: participation1)
+# participantreview3 = ParticipantReview.create!(comment: "Dan ain't lit enough. Nice guy tho.", rating: 4, participation: participation2)
 
 
 

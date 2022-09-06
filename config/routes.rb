@@ -54,6 +54,8 @@ Rails.application.routes.draw do
       get :approve
     end
 
+    resources :reviews, only: %i[ new create ]
+
     member do
       delete :destroyApproved
     end
@@ -61,7 +63,9 @@ Rails.application.routes.draw do
 
   #--------------------- users -------------------------
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+  end
+
 
   #--------------------- participants -------------------------
   resources :activities do
