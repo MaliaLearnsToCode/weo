@@ -1,0 +1,19 @@
+<div class="row border-bottom mb-2 align-items-center">
+  <div class="col-3"><%= activity.date %></div>
+  <div class="col-5"><%= link_to activity.name, activity_path(activity) %></div>
+  <div class="col-4">
+
+  <% if current_user.participations.where(activity_id: activity.id).count == 0 %>
+    <%= simple_form_for(@participation) do |f| %>
+      <%= f.input :activity, input_html: {value: activity.id}, as: :hidden %>
+      <%= f.submit 'Join', class: 'btn btn-primary' %>
+    <% end %>
+  <% else %>
+     <%= link_to "Delete",
+      participation_path(current_user.participations.where(activity_id: activity.id).first),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'
+    %>
+  <% end %>
+
+  </div>
+</div>

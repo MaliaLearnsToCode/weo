@@ -96,6 +96,7 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     authorize @itinerary
+    @participation = Participation.new
   end
 
   def destroy

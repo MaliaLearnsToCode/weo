@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :itineraries, dependent: :destroy
   has_many :activities, through: :itineraries, dependent: :destroy
   has_many :interests, dependent: :destroy
-  has_many :partipations, dependent: :destroy
+  has_many :participations, dependent: :destroy
 
   has_many_attached :photos
 

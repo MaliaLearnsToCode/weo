@@ -22,27 +22,16 @@
           <li class="list-group-item"><%= "Starting from: #{@itinerary.start_date} to #{@itinerary.end_date}" %></li>
           <li class="list-group-item"><%= "Where? #{@itinerary.city} " %></li>
         </ul>
-        <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
-          <p>Activities</p>
-          <% @itinerary.activities.each_with_index do |activity,index| %>
-            <label class="option"> <%= activity.name %>
-            <input type="checkbox" value="<%= activity.id %>" data-check-all-checkboxes-target="checkbox"></label>
-            <%= activity.start_date.strftime("%m/%d/%y") %> to
-            <%= activity.end_date.strftime("%m/%d/%y") %>
-            <%= activity.start_time.strftime("%l:%M%P") %> to
-            <%= activity.end_time.strftime("%l:%M%P") %>
-            <%= render "activity_modal" %>
-          <% end %>
-        </ul>
 
-        <div id="all_checkbox">
-          <h3> Join All Activities! </h3>
-          <label class="join_all"><input type="checkbox" data-action="change->check-all-checkboxes#checkAll"></label>
+        <div data-controller="insert-in-list">
+          <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
+            <p>Activities</p>
+              <% @itinerary.activities.each do |activity| %>
+                <%= render 'activities/details-card', activity: activity %>
+              <% end %>
+          </ul>
         </div>
 
-        <div id="join_button">
-          <label class="option"><button type="submit" class="btn btn-success" data-action="click->check-all-checkboxes#submit"> Join </button></label>
-        </div>
 
       </div>
     </div>
