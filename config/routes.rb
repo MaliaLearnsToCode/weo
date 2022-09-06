@@ -51,6 +51,10 @@ Rails.application.routes.draw do
     collection do
       get :approve
     end
+
+    member do
+      delete :destroyApproved
+    end
   end
 
   #--------------------- users -------------------------
