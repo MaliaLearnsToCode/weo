@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import CheckAllCheckboxesController from "./check_all_checkboxes_controller"
+application.register("check-all-checkboxes", CheckAllCheckboxesController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -15,9 +21,6 @@ application.register("itinerary", ItineraryController)
 
 import LocationAutocompleteController from "./location_autocomplete_controller"
 application.register("location-autocomplete", LocationAutocompleteController)
-
-import check_all_checkboxes_controller from "./check_all_checkboxes_controller";
-application.register("check-all-checkboxes", check_all_checkboxes_controller)
 
 import MapController from "./map_controller"
 application.register("map", MapController)

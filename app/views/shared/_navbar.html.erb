@@ -1,5 +1,6 @@
 <div class="fixed-bottom d-flex justify-content-center w-100 py-2" style="background-color: #e36262;" id="bottomNav">
   <div class="w-100 d-flex justify-content-between px-5">
+
     <div class="nav-item">
       <%= link_to itineraries_path do%>
         <img src="https://cdn-icons-png.flaticon.com/512/855/855003.png" width="30" height="30" alt=""></a>
@@ -22,10 +23,17 @@
     </div> -->
     <div class="nav-item">
       <% if user_signed_in? %>
-        <%= link_to user_path(current_user) do%>
-          <img src="https://cdn-icons-png.flaticon.com/512/4021/4021407.png" width="30" height="30" alt=""></a>
-        <% end %>
+        <img src="https://cdn-icons-png.flaticon.com/512/4021/4021407.png" width="30" height="30" alt=""></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.nickname %></a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "My Profile", user_path(current_user) %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
       <% end %>
     </div>
+
   </div>
 </div>
