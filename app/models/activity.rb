@@ -2,10 +2,10 @@ class Activity < ApplicationRecord
   belongs_to :itinerary
   belongs_to :interest_type
 
-  has_many :chatrooms, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, class_name: 'User', foreign_key: 'user_id'
-  has_one :creator, through: :itineraries, class_name: 'User', foreign_key: 'user_id'
+  has_one :creator, through: :itineraries, class_name: 'User'
 
   has_many_attached :photos
 

@@ -9,7 +9,7 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    p params
+
   end
 
   def approve
