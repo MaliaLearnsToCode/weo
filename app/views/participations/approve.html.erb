@@ -21,7 +21,7 @@
             <%= f.submit "Reject"%>
           <% end %>
           <%= link_to "Reject",
-            participation_path(participation),
+            destroyApproved_participation_path(participation),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           <%= simple_form_for participation do |f|%>
             <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>

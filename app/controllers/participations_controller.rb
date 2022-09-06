@@ -62,6 +62,13 @@ class ParticipationsController < ApplicationController
 
   end
 
+  def destroyApproved
+    @participation = Participation.find(params[:id])
+    authorize @participation
+    @participation.destroy
+    redirect_to approve_participations_path, status: :see_other
+  end
+
   private
 
   def participation_params

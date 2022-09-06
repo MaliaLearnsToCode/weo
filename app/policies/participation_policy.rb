@@ -21,4 +21,8 @@ class ParticipationPolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def destroyApproved?
+    true
+  end
 end
