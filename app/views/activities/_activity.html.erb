@@ -1,12 +1,15 @@
 <div class="accordion-item">
   <h2 class="accordion-header" id="header-<%= activity.id %>">
     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= "activity-#{activity.id}" %>" aria-expanded="false" aria-controls="<%= "activity-#{activity.id}" %>">
-      <%= activity.name %>
+      <%= activity.name %> <%= activity.start_date %> to <%= activity.end_date %>
     </button>
   </h2>
   <div id="<%= "activity-#{activity.id}" %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
     <div class="accordion-body">
-      <%= activity.detail %>
+      <ul>
+        <li><%= activity.location %></li>
+        <li><%= activity.detail %></li>
+      </ul>
     </div>
   </div>
 </div>
