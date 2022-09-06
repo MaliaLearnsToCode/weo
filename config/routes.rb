@@ -51,11 +51,14 @@ Rails.application.routes.draw do
     collection do
       get :approve
     end
+    resources :reviews, only: %i[ new create ]
   end
 
   #--------------------- users -------------------------
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+  end
+
 
   #--------------------- participants -------------------------
   resources :activities do
