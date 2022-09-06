@@ -44,10 +44,10 @@ Rails.application.routes.draw do
     collection do
       get :pending # path: /activities/pending
     end
-    resources :participations, only: %i[index new create update destroy show]
+    resources :participations, only: %i[index new create show]
   end
 
-  resources :participations, only: %i[ ] do
+  resources :participations, only: %i[ update destroy] do
     collection do
       get :approve
     end
