@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'chatrooms/index'
+  get 'chatrooms/new'
+  get 'chatrooms/create'
+  get 'chatrooms/show'
+  get 'chatrooms/destroy'
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -50,5 +56,31 @@ Rails.application.routes.draw do
   #--------------------- users -------------------------
   devise_for :users
   resources :users, only: [:show]
+
+  #--------------------- participants -------------------------
+  resources :activities do
+    resources :participations, only: %i[ new approve destroy ]
+  end
+
+  # post :participations, to: "participations#create"
+  resources :participations, only: %i[index create]
+  # participants show path: /activities/:activity_id/participants/new
+  # participants create path: /activities/:activity_id/participants
+  # participants approve path: ?
+  # participants destroy path: /activities/:activity_id/participants
+
+  #--------------------- chat -------------------------
+
+  resources :activities, only: %i[create] do
+    resources :chatrooms, only: %i[index new create show destroy]
+  end
+
+  resources :chatrooms, only: %i[show] do
+    resources :messages, only: %i[create]
+  end
+
+  resources :users, only: [:show] do
+    resources :chatrooms, only: :create
+  end
 
 end

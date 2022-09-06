@@ -1,6 +1,7 @@
-<h1>New Activity</h1>
 
-<div data-controller="insert-in-list">
+<h1 style="color: #505050;">New Activity</h1>
+
+<div data-controller="insert-in-list" style="background-color: #F1E0E0;">
   <div class="accordion" id="accordionExample" data-insert-in-list-target="items">
     <% @itinerary.activities.each do |activity| %>
       <%= render 'activity', activity: activity %>
@@ -8,7 +9,7 @@
   </div>
   <% if @itinerary.activities.size < 5 %>
     <div class="container">
-      <div class="w-75 mx-auto mt-3">
+      <div class="w-75 mx-auto mt-3 mb-5">
 
         <%= render "form", itinerary: @itinerary, activity: @activity %>
       </div>
@@ -18,5 +19,5 @@
   <% end %>
 
   <br>
-  <%= link_to "Back to itinerary!", itinerary_path(@itinerary), class: "btn btn-outline-secondary mx-4" %>
+
 </div>

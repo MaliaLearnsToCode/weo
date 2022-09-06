@@ -5,6 +5,7 @@ class Activity < ApplicationRecord
   has_many :chatrooms, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, class_name: 'User', foreign_key: 'user_id'
+  has_one :creator, through: :itineraries, class_name: 'User', foreign_key: 'user_id'
 
   has_many_attached :photos
 
