@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       get :my_itineraries # /my-itineraries
     end
   end
+
+  resources :chatrooms, only: %i[index]
   # this is a selected collection of index where the user can see their own index of all the itineraries
   # path is: /my-itineraries
 
@@ -76,7 +78,7 @@ Rails.application.routes.draw do
   #--------------------- chat -------------------------
 
   resources :activities, only: %i[create] do
-    resources :chatrooms, only: %i[index new create show destroy]
+    resources :chatrooms, only: %i[new create show destroy]
   end
 
   resources :chatrooms, only: %i[show] do

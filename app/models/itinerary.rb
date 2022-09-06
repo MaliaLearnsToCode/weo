@@ -3,6 +3,7 @@ class Itinerary < ApplicationRecord
   has_many :activities, dependent: :destroy
 
   has_many_attached :photos
+  has_many :chatrooms, through: :activities
 
   validates :title, presence: true
   validates :description, presence: true
