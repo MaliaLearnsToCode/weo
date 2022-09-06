@@ -1,0 +1,11 @@
+<% @itinerary.activities.each_with_index do |activity,index| %>
+  <div>
+    <%= activity.name %>
+    <input type="submit" value="Join" class="btn btn-success">
+  </div>
+  <%= activity.id %>
+  <%= activity.start_date.strftime("%m/%d/%y") %> to
+  <%= activity.end_date.strftime("%m/%d/%y") %>
+  <%= activity.start_time.strftime("%l:%M%P") %> to
+  <%= activity.end_time.strftime("%l:%M%P") %>
+<% end %>

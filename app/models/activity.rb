@@ -24,4 +24,11 @@ class Activity < ApplicationRecord
 
   # scope :status, ->(booking_status, current_user) { Watch.where(user: current_user).joins(:bookings).where('bookings.status': booking_status) }
 
+  def date
+    if start_date == end_date
+      start_date.strftime('%d %b')
+    else
+      "#{start_date.strftime('%d %b')} - #{end_date.strftime('%d %b')}"
+    end
+  end
 end
