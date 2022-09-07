@@ -189,21 +189,7 @@ itinerary5.save!
 
 
 puts "Creating Activities..."
-file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349155/kwwgoiopyvqvnnefpv3y.jpg")
-activity0 = Activity.new(
-  itinerary: itinerary0,
-  start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
-  end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
-  name: "Frankfurt PubCrawl",
-  detail: "I'm ready for ma coffeeeeee jk, beers of course",
-  location: "Frankfurt am Main",
-  max_participants: 12,
-  completed: true,
-  start_date: Date.new(2022, 7, 10),
-  end_date: Date.new(2022, 7, 10),
-  interest_type: interest_type1)
-activity0.photos.attach(io: file, filename: "pubcrawl.jpg", content_type: "image/jpg")
-activity0.save!
+
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349036/njzhehgyfpyaf6xmnqey.jpg")
 activity1 = Activity.new(
@@ -366,6 +352,21 @@ activity10 = Activity.new(
 activity10.photos.attach(io: file, filename: "walkies.jpg", content_type: "image/jpg")
 activity10.save!
 
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349155/kwwgoiopyvqvnnefpv3y.jpg")
+activity0 = Activity.new(
+  itinerary: itinerary0,
+  start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
+  end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
+  name: "Frankfurt PubCrawl",
+  detail: "I'm ready for ma coffeeeeee jk, beers of course",
+  location: "Frankfurt am Main",
+  max_participants: 12,
+  completed: true,
+  start_date: Date.new(2022, 7, 10),
+  end_date: Date.new(2022, 7, 10),
+  interest_type: interest_type1)
+activity0.photos.attach(io: file, filename: "pubcrawl.jpg", content_type: "image/jpg")
+activity0.save!
 
 
 
@@ -384,9 +385,9 @@ participation4 = Participation.create!(status: "confirmed", user: user5, activit
 participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity1)
 participation6 = Participation.create!(status: "confirmed", user: user7, activity: activity1)
 
-participation3 = Participation.create!(status: "confirmed", user: user4, activity: activity2)
-participation4 = Participation.create!(status: "confirmed", user: user5, activity: activity2)
-participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity2)
+participation22 = Participation.create!(status: "confirmed", user: user4, activity: activity2)
+participation23 = Participation.create!(status: "confirmed", user: user5, activity: activity2)
+participation24 = Participation.create!(status: "confirmed", user: user6, activity: activity2)
 
 participation7 = Participation.create!(status: "confirmed", user: user2, activity: activity3)
 participation8 = Participation.create!(status: "confirmed", user: user3, activity: activity3)
