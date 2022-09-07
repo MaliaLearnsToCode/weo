@@ -1,70 +1,52 @@
 <body>
-<div class="container">
 
   <div id="profile_banner">
-      <div id="user photo">
+      <div>
         <% @user.photos.each do |photo| %>
             <%= cl_image_tag photo.key, class: "avatar_profile"%>
         <% end %>
       </div>
 
 
-      <div id="logout">
-        <%= link_to itineraries_path do%>
-          <img src="https://cdn-icons-png.flaticon.com/512/992/992668.png" alt="button" height="25px" width="25px">
-        <% end %>
+      <div id="logout" class="btn btn-primary">
+        Logout
       </div>
 
   </div>
 
-</div>
 
   <div id="name">
     <%= "#{current_user.first_name}" %>
   </div>
 
-<% if @user == current_user %>
-<div>
-  <%= link_to new_itinerary_path do%>
-  <button type="button" id="profilebutton">Create New Itinerary</button>
-  <% end %>
-</div>
-<% end %>
-
-<div>
-  <%= link_to itineraries_path do%>
-    <div id="bordermap">
-      <h1> All my itineraries </h1>
-      <div id="usermap">
-      <img src=https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg alt="button" height="106px" width="330px">
-      </div>
-    </div>
-  <% end %>
-</div>
-
 <div id="rating">
   <>
-  <p> Reviews </p>
 </div>
-<div>
-  <h5 id="reviewtitle"></h5>
-  <div id="review-border">
-    <div id="review-card">
-      <%= render "reviewed", user:@user %>
-    </div>
-      <div id="reviewtop">
-        <div id="reviewer-name">
-          <%= "#{current_user.first_name}" %>
+
+
+  <div id="review_container">
+    <p> Reviews </p>
+
+    <div>
+      <h5 id="reviewtitle"></h5>
+      <div id="review-border">
+        <div id="review-card">
+          <%= render "reviewed", user:@user %>
         </div>
-        <div id="locationdate">
-          <%= "Osaka, Jan 2021" %>
+          <div id="reviewtop" class="flex-column">
+            <div id="reviewer-name">
+              <%= "#{current_user.first_name}" %>
+            </div>
+            <div id="locationdate">
+              <%= "Osaka, Jan 2021" %>
+            </div>
+          </div>
+            <div id="review">
+              <%= "This is a great review!" %>
+            </div>
         </div>
       </div>
-        <div id="review">
-          <%= "This is a great review!" %>
-        </div>
     </div>
+
   </div>
-</div>
-</div>
 </body>
