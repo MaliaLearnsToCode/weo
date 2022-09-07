@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       #redirect_to chatroom_path(@chatroom)
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: {message: @message})
+        render_to_string(partial: "message", locals: { message: @message})
       )
       head :ok
     else

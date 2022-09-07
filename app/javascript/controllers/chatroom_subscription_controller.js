@@ -15,6 +15,7 @@ export default class extends Controller {
     );
 
     console.log("This is my current user id", this.currentUserIdValue);
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
   #insertMessageAndScrollDown(data) {
