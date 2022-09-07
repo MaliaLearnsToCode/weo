@@ -433,8 +433,8 @@ chatroom6 = Chatroom.create!(activity: activity6, name: "First Ocean")
 chatroom7 = Chatroom.create!(activity: activity7, name: "Second Seas")
 chatroom8 = Chatroom.create!(activity: activity8, name: "Third Lake")
 
-chatroom9 = Chatroom.create!(activity: activity4, name: "Teaaaa")
-chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
+chatroom9 = Chatroom.create!(activity: activity9, name: "Teaaaa")
+chatroom10 = Chatroom.create!(activity: activity10, name: "Walkies")
 
 
 
