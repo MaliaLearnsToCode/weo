@@ -418,22 +418,22 @@ participation21 = Participation.create!(status: "pending", user: user3, activity
 
 
 puts "Creating Chatrooms..."
-chatroom1 = Chatroom.create!(
-  activity: activity1,
-  name: "Berlin Wall visit")
+#chatroom1 = Chatroom.create!(
+#  activity: activity1,
+#  name: "Berlin Wall visit")
 
-chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Lova")
-chatroom3 = Chatroom.create!(activity: activity3, name: "Water Visit")
+#chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Lova")
+#chatroom3 = Chatroom.create!(activity: activity3, name: "Water Visit")
 
-chatroom4 = Chatroom.create!(activity: activity4, name: "Bar Hop")
-chatroom5 = Chatroom.create!(activity: activity5, name: "Mountain Hike")
+#chatroom4 = Chatroom.create!(activity: activity4, name: "Bar Hop")
+#chatroom5 = Chatroom.create!(activity: activity5, name: "Mountain Hike")
 
-chatroom6 = Chatroom.create!(activity: activity6, name: "First Ocean")
-chatroom7 = Chatroom.create!(activity: activity7, name: "Second Seas")
-chatroom8 = Chatroom.create!(activity: activity8, name: "Third Lake")
+#chatroom6 = Chatroom.create!(activity: activity6, name: "First Ocean")
+#chatroom7 = Chatroom.create!(activity: activity7, name: "Second Seas")
+#chatroom8 = Chatroom.create!(activity: activity8, name: "Third Lake")
 
-chatroom9 = Chatroom.create!(activity: activity4, name: "Teaaaa")
-chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
+#chatroom9 = Chatroom.create!(activity: activity4, name: "Teaaaa")
+#chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
 
 
 
@@ -443,38 +443,38 @@ chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
 
 
 puts "Creating Messages..."
-message1 = Message.create!(
-  chatroom: chatroom1,
-  user: user1,
-  content: "ok guys, ready?")
+#message1 = Message.create!(
+#  chatroom: chatroom1,
+#  user: user1,
+#  content: "ok guys, ready?")
 
-message2 = Message.create!(chatroom: chatroom1, user: user2, content: "yeah")
-message3 = Message.create!(chatroom: chatroom1, user: user3, content: "yes")
-message4 = Message.create!(chatroom: chatroom1, user: user2, content: "yessir")
-message5 = Message.create!(chatroom: chatroom1, user: user1, content: "yes")
+#message2 = Message.create!(chatroom: chatroom1, user: user2, content: "yeah")
+#message3 = Message.create!(chatroom: chatroom1, user: user3, content: "yes")
+#message4 = Message.create!(chatroom: chatroom1, user: user2, content: "yessir")
+#message5 = Message.create!(chatroom: chatroom1, user: user1, content: "yes")
 
-message6 = Message.create!(chatroom: chatroom5, user: user2, content: "hi, anyone see my hat?")
-message7 = Message.create!(chatroom: chatroom5, user: user1, content: "me")
-message8 = Message.create!(chatroom: chatroom5, user: user3, content: "cool, can u whatsapp me at +6281313131 thanks.")
+#message6 = Message.create!(chatroom: chatroom5, user: user2, content: "hi, anyone see my hat?")
+#message7 = Message.create!(chatroom: chatroom5, user: user1, content: "me")
+#message8 = Message.create!(chatroom: chatroom5, user: user3, content: "cool, can u whatsapp me at +6281313131 thanks.")
 
-message9 = Message.create!(chatroom: chatroom6, user: user1, content: "hola exciteeeed")
-message10 = Message.create!(chatroom: chatroom6, user: user3, content: "super")
+#message9 = Message.create!(chatroom: chatroom6, user: user1, content: "hola exciteeeed")
+#message10 = Message.create!(chatroom: chatroom6, user: user3, content: "super")
 
-message11 = Message.create!(chatroom: chatroom7, user: user3, content: "should we just cancel this?")
-message12 = Message.create!(chatroom: chatroom7, user: user3, content: "yeah, why not.")
+#message11 = Message.create!(chatroom: chatroom7, user: user3, content: "should we just cancel this?")
+#message12 = Message.create!(chatroom: chatroom7, user: user3, content: "yeah, why not.")
 
-message13 = Message.create!(chatroom: chatroom8, user: user3, content: "hi!")
-message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello?!")
-message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
+#message13 = Message.create!(chatroom: chatroom8, user: user3, content: "hi!")
+#message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello?!")
+#message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
 
 
 puts "Creating Reviews"
-review1 = Review.create!(
-  author: user1,
-  user: user2,
-  participation: participation1,
-  comment: "Fel was kinda niiiiice!",
-  rating: 5)
+#review1 = Review.create!(
+ # author: user1,
+  #user: user2,
+  #participation: participation1,
+  #comment: "Fel was kinda niiiiice!",
+  #rating: 5)
 
 # review2 = Review.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
 
