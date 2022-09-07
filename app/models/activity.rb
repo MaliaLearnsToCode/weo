@@ -31,4 +31,8 @@ class Activity < ApplicationRecord
       "#{start_date.strftime('%d %b')} - #{end_date.strftime('%d %b')}"
     end
   end
+
+  def finished?
+    end_date < Date.today
+  end
 end

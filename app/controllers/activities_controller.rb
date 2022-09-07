@@ -64,6 +64,7 @@ class ActivitiesController < ApplicationController
   def pending
   end
 
+
   private
 
   def activity_params

@@ -1,0 +1,23 @@
+<h1>New Review</h1>
+<h2>As a creator</h2>
+<p>I should be able to see all the participations and create reviews for each of them</p>
+
+<% if @activity.itinerary.user == current_user %>
+  <h1>CREATOR IS: <%= @activity.itinerary.user.first_name %></h1>
+  <%= @activity.name%>
+  <% @activity.participations.each do |participation|  %>
+    <%= participation.user.first_name%>
+    <%= render "form", participation: participation, review:@review, role: "creator" %>
+  <% end %>
+<% else %>
+  <%= render "form", participation: @participation, review:@review, activity: @activity, role: "participant" %>
+
+
+<% end %>
+
+
+
+
+
+<h2>As a participant</h2>
+<p>I should only be able to see and review the creator</p>

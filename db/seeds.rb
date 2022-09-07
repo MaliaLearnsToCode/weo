@@ -392,7 +392,7 @@ participation7 = Participation.create!(status: "confirmed", user: user2, activit
 participation8 = Participation.create!(status: "confirmed", user: user3, activity: activity3)
 
 
-participation9 = Participation.create!(status: "confirmed", user: user1, activity: activity4)
+participation9 = Participation.create!(status: "confirmed", user: user2, activity: activity4)
 participation10 = Participation.create!(status: "confirmed", user: user3, activity: activity4)
 participation11 = Participation.create!(status: "confirmed", user: user4, activity: activity4)
 
@@ -402,14 +402,14 @@ participation12 = Participation.create!(status: "confirmed", user: user8, activi
 participation13 = Participation.create!(status: "confirmed", user: user3, activity: activity6)
 participation14 = Participation.create!(status: "confirmed", user: user4, activity: activity6)
 
-participation15 = Participation.create!(status: "pending", user: user1, activity: activity7)
+participation15 = Participation.create!(status: "pending", user: user2, activity: activity7)
 participation16 = Participation.create!(status: "pending", user: user3, activity: activity7)
 participation17 = Participation.create!(status: "pending", user: user6, activity: activity7)
 participation18 = Participation.create!(status: "pending", user: user7, activity: activity7)
 participation19 = Participation.create!(status: "pending", user: user9, activity: activity7)
 participation20 = Participation.create!(status: "pending", user: user10, activity: activity7)
 
-participation21 = Participation.create!(status: "pending", user: user3, activity: activity9)
+participation21 = Participation.create!(status: "confirmed", user: user1, activity: activity10)
 
 
 
