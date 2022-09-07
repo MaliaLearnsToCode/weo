@@ -392,7 +392,7 @@ participation7 = Participation.create!(status: "confirmed", user: user2, activit
 participation8 = Participation.create!(status: "confirmed", user: user3, activity: activity3)
 
 
-participation9 = Participation.create!(status: "confirmed", user: user1, activity: activity4)
+participation9 = Participation.create!(status: "confirmed", user: user2, activity: activity4)
 participation10 = Participation.create!(status: "confirmed", user: user3, activity: activity4)
 participation11 = Participation.create!(status: "confirmed", user: user4, activity: activity4)
 
@@ -476,17 +476,30 @@ review1 = Review.create!(
   comment: "Fel was kinda niiiiice!",
   rating: 5)
 
-# review2 = Review.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+review2 = Review.create!(author: user3, user: user1, participation: participation2, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
 
-# review3 = Review.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
+review3 = Review.create!(author: user1, user: user2, participation: participation3, comment: "Fel is ma hypewomaaaan!", rating: 5)
 
-# review4 = Review.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
+review4 = Review.create!(author: user3, user: user1, participation: participation10, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
 
 
+review5 = Review.create!(
+  author: user1,
+  user: user3,
+  participation: participation2,
+  comment: "Dan ain't lit enough. Nice guy tho.",
+  rating: 4)
 
-# puts "Creating Creator Reviews....."
-# creatorreview1 = CreatorReview.create!(
-#   creator: user1,
+review6 = Review.create!(author: user2, user: user1, participation: participation7, comment: "Lit.", rating: 3)
+
+review7 = Review.create!(author: user1, user: user4, participation: participation11, comment: "Julian was nice.", rating: 5)
+
+review8 = Review.create!(author: user2, user: user1, participation: participation9, comment: "Omg Malia plan more trips please!", rating: 5)
+
+
+# review5 = Review.create!(
+
+#   user: user1,
 #   participant: participation1.user,
 #   comment: "Fel was kinda niiiiice!",
 #   rating: 5)
