@@ -9,6 +9,14 @@
   // position: absolute;
   width: 100%;
 }
+
+.geocoder1 {
+  .mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+    border-radius: 20px;
+  }
+}
+
+
 .mapboxgl-ctrl-geocoder {
   min-width: 100%;
 }
@@ -37,7 +45,15 @@
   margin-top: 60px;
   margin-left: 20px;
   margin-right: 20px;
+  border-radius: 16px;
 }
+
+.location_country {
+  input {
+    border-radius: 16px;
+  }
+}
+
 
 .date-input {
   margin-left: 20px;
@@ -55,16 +71,17 @@
   flex: auto;
 }
 
-#start_date {
+#start2 {
   height: 48px !important;
   padding: 6px 45px;
   color: grey;
-  border: none;
+  border-radius: 20px;
 }
 
-#end_date {
+#end2 {
   height: 48px !important;
   padding: 6px 45px;
   color: grey;
   border: none;
+  border-radius: 20px;
 }

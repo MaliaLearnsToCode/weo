@@ -1,27 +1,27 @@
 <body>
 <div class="container">
-<div class="top_bar">
-  <div class="container-image mb-5">
-    <div id="user photo" class="row">
-      <% @user.photos.each do |photo| %>
-        <div class="avatar-large" alt="avatar-large">
-          <%= cl_image_tag photo.key, height: 280, width: 280 %>
-        </div>
-      <% end %>
-    </div>
+
+  <div id="profile_banner">
+      <div id="user photo">
+        <% @user.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: "avatar_profile"%>
+        <% end %>
+      </div>
+
+
+      <div id="logout">
+        <%= link_to itineraries_path do%>
+          <img src="https://cdn-icons-png.flaticon.com/512/992/992668.png" alt="button" height="25px" width="25px">
+        <% end %>
+      </div>
+
   </div>
+
+</div>
 
   <div id="name">
     <%= "#{current_user.first_name}" %>
   </div>
-
-  <div>
-    <%= link_to itineraries_path do%>
-      <img src="https://cdn-icons-png.flaticon.com/512/992/992668.png" alt="button" height="25px" width="25px">
-    <% end %>
-  </div>
-
-</div>
 
 <% if @user == current_user %>
 <div>
@@ -43,38 +43,28 @@
 </div>
 
 <div id="rating">
-  <h1> 4.7/5 </h1>
-  <p> Rating </p>
+  <>
+  <p> Reviews </p>
 </div>
-
 <div>
   <h5 id="reviewtitle"></h5>
   <div id="review-border">
     <div id="review-card">
-      <%= @user.participation.participant_reviews.each do |review| %>
-          <%= participant_review.rating>
-          <%= participant_review.comment>
-      </div>
-      <% end %>
+      <%= render "reviewed", user:@user %>
     </div>
-
       <div id="reviewtop">
         <div id="reviewer-name">
           <%= "#{current_user.first_name}" %>
         </div>
-
         <div id="locationdate">
           <%= "Osaka, Jan 2021" %>
         </div>
       </div>
-
         <div id="review">
           <%= "This is a great review!" %>
         </div>
-
     </div>
   </div>
 </div>
 </div>
-
 </body>

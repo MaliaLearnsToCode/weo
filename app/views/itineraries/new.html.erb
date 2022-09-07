@@ -2,10 +2,10 @@
   <%= simple_form_for @itinerary do |f| %>
     <div class="title-where" style="color: #505050;">
       <h3>Where do you plan to go?</h3>
-      <div id="geocoder" class="geocoder"></div>
+      <div id="geocoder" class="geocoder1"></div>
     </div>
 
-    <div class="location-input" style="color: #505050;">
+    <div class="location-input location_country" style="color: #505050;">
       <%= f.input :country %>
       <%= f.input :city %>
     </div>
@@ -22,11 +22,11 @@
     <div class="title-when" style="color: #505050;">
       <h3>When do you want to go?</h3>
     </div>
-    <div class=" date-input d-flex justify-content-between" style="color: #505050;">
+    <div class="date-input" style="color: #505050;">
       <label for="start_date">From:</label>
-      <input type="date" id="start_date" name="start_date" class="shadow rounded">
+      <input type="date" id="start2" name="start_date">
       <label for="end_date">Until:</label>
-      <input type="date" id="end_date" name="end_date" >
+      <input type="date" id="end2" name="end_date" >
     </div>
 
     <div class="title-what" style="color: #505050;">

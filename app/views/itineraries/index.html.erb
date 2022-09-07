@@ -1,6 +1,6 @@
 <div style="background-color: #F1E0E0;">
   <div class="d-flex justify-content-end">
-  <%= link_to "Create your itinerary", new_itinerary_path, class: "btn btn-outline-secondary mx-4" %>
+  <%= link_to "create itinerary", new_itinerary_path%>
   </div>
 
   <div class="w-full pt-3" data-controller="itinerary" style="background-color: #F1E0E0;">
@@ -23,8 +23,8 @@
                 <input type="date" id="end_date" name="end_date">
               </div>
               <%= f.input :location,
-              input_html: {data: {location_autocomplete_target: "location"}, style: "display: none", name: "location"},
-              wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                input_html: {class: "test", data: {location_autocomplete_target: "location"}, style: "display: none;", name: "location"},
+                wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
               %>
               <%= f.submit "LET'S GO!", input_html: { style: "display: none" } %>
               <% end %>
