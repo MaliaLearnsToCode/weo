@@ -2,28 +2,31 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import ChatroomSubscriptionController from "./chatroom_subscription_controller";
-application.register("chatroom-subscription", ChatroomSubscriptionController);
+import ActivityMapController from "./activity_map_controller"
+application.register("activity-map", ActivityMapController)
 
-import CheckAllCheckboxesController from "./check_all_checkboxes_controller";
-application.register("check-all-checkboxes", CheckAllCheckboxesController);
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
 
-import HelloController from "./hello_controller";
-application.register("hello", HelloController);
+import CheckAllCheckboxesController from "./check_all_checkboxes_controller"
+application.register("check-all-checkboxes", CheckAllCheckboxesController)
 
-import InsertInListController from "./insert_in_list_controller";
-application.register("insert-in-list", InsertInListController);
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
-import ItineraryController from "./itinerary_controller";
-application.register("itinerary", ItineraryController);
+import InsertInChatController from "./insert_in_chat_controller"
+application.register("insert-in-chat", InsertInChatController)
 
-import LocationAutocompleteController from "./location_autocomplete_controller";
-application.register("location-autocomplete", LocationAutocompleteController);
+import InsertInListController from "./insert_in_list_controller"
+application.register("insert-in-list", InsertInListController)
 
-import ActivityShowMapController from "./activity_show_map_controller";
-application.register("activity-show-map-controller", ActivityShowMapController);
+import ItineraryController from "./itinerary_controller"
+application.register("itinerary", ItineraryController)
 
-import MapController from "./map_controller";
-application.register("map", MapController);
+import LocationAutocompleteController from "./location_autocomplete_controller"
+application.register("location-autocomplete", LocationAutocompleteController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)

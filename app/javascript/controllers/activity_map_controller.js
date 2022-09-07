@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="map"
-
+// Connects to data-controller="activity-map"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -9,27 +8,26 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("Connected to mapbox");
-
+    console.log("activity-map stimulus connected");
     mapboxgl.accessToken = this.apiKeyValue;
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [-24, 42], // starting center in [lng, lat]
-      zoom: 1, // starting zoom
-      projection: "globe", // display map as a 3D globe
+      style: "mapbox://styles/mapbox/streets-v10",
     });
 
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
-    this.map.addTo(this.element);
-
   }
 
   #addMarkersToMap() {
+    console.log(this.markersValue);
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker().setLngLat([marker.lng, marker.lat]).addTo(this.map);
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window); // Add this
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup) // Add this
+        .addTo(this.map);
     });
   }
 
@@ -40,3 +38,4 @@ export default class extends Controller {
     );
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
   }
+}
