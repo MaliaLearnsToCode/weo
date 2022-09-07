@@ -25,14 +25,14 @@ class ChatroomPolicy < ApplicationPolicy
     record.activity.participations.where(user: user).present? || record.activity.itinerary.user == user
   end
 
-  private
+  # private
 
-  def user_is_chatroom_participant?
-    @activity.participations.user.where(id: user.id).present?
-  end
+  # def user_is_chatroom_participant?
+  #   @activity.participations.user.where(id: user.id).present?
+  # end
 
-  def user_is_chatroom_creator?
-    @activity.itinerary.user.where(id: user.id).present?
-  end
+  # def user_is_chatroom_creator?
+  #   @activity.itinerary.user.where(id: user.id).present?
+  # end
 
 end

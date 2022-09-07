@@ -47,6 +47,12 @@ class ActivitiesController < ApplicationController
 
   def show
     authorize @activity
+    @markers = [{
+      lat: @activity.latitude,
+      lng: @activity.longitude
+    }
+    ]
+
   end
 
   def edit

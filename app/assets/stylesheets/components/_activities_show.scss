@@ -1,0 +1,64 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 32px;
+  font-weight: bold;
+  width: 100%;
+  top: 10px;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.activity-name {
+  color: black;
+  background-color: rgb(197, 111, 111);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 260px;
+}
+
+.activity-detail {
+  margin-top: 40px;
+  text-align: center;
+  font-size: large;
+}
+
+.itinerary-activity-img {
+  background-color: red;
+  overflow: hidden;
+  height: 280px;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.creator-avatar {
+  img {
+    width: 98px;
+    height: 98px;
+    border-radius: 50%;
+  }
+}
+
+.participant-avatar {
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+}
