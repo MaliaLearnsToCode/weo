@@ -16,11 +16,21 @@ class ChatroomsController < ApplicationController
     @chatrooms = policy_scope(Chatroom)
     # @chatrooms = policy_scope(Chatroom).where(id: current_user.chatroom_ids).order(created_at: :desc)
 
-    @user_chatrooms = []
+    @user_itineraries = []
+    @user_activities = []
 
-    current_user.activities.each do |activity|
-      @user_chatrooms << activity.chatroom unless activity.chatroom.nil?
+    # current_user.activities.each do |activity|
+    #   @user_chatrooms << activity.chatroom unless activity.chatroom.nil?
+    # end
+
+    current_user.participations.each do |participation|
+      @user_activities << participation.activity
     end
+
+    @user_activities.each do |activity|
+      @user_itineraries << activity.itinerary unless @user_itineraries.include?(activity.itinerary)
+    end
+
 
     @message = Message.new
   end

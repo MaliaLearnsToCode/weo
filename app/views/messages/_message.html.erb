@@ -1,7 +1,11 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.nickname %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
+<div class="clearfix">
+  <div id="message-<%= message.id %>">
+      <div style='text-align:<%= message.user == current_user ? "right" : "left"  %>;' >
+        <small>
+          <strong><%= message.user.first_name %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+  </div>
 </div>

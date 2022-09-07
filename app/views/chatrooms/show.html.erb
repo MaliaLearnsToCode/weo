@@ -1,35 +1,42 @@
-  <div class="container chatroom" data-controller="chatroom-subscription"
-    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-    <div class="chatroom-header">
-      <% if @chatroom.activity %>
+<div class="container">
+  <div class="link-chats">
+    <%= link_to "Back to all chats", chatrooms_path(@user), class: "btn btn-info" %>
+  </div>
+  <div class="chatroom-header">
+    <% if @chatroom.activity %>
+      <div class="chatroom-name">
         <h2><strong>#<%= @chatroom.activity.name %></strong></h2>
-        <p><strong>Members: </strong>
-          <%= @chatroom.activity.itinerary.user.first_name %>
+        <%= "#{@chatroom.activity.start_date} to #{@chatroom.activity.end_date}" %>
+      </div>
+      <div class="members-card  ">
+        <div class="participant-avatar">
+          <%= cl_image_tag @chatroom.activity.itinerary.user.photos[0].key%>
           <% @chatroom.activity.participations.each do |participation| %>
-              <%= participation.user.first_name if participation.status == "confirmed" %>
-          <% end %></p>
-      <% else %>
-        <%# to display the recipient's name %>
-        <% chatroom.users.each do |user| %>
-          <% if user.id != current_user.id %>
-            <strong>You are talking to:</strong> <%= user.first_name %>
+          <%= cl_image_tag participation.user.photos[0].key%>
           <% end %>
+        </div>
+        <%= @chatroom.activity.itinerary.user.first_name %>
+        <% @chatroom.activity.participations.each do |participation| %>
+            <%= participation.user.first_name if participation.status == "confirmed" %>
+        <% end %></p>
+      </div>
+    <% else %>
+      <%# to display the recipient's name %>
+      <% chatroom.users.each do |user| %>
+        <% if user.id != current_user.id %>
+          <strong>You are talking to:</strong> <%= user.first_name %>
         <% end %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+  <div class="chatroom" data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+
     <div class="messages" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
-        <div id="message-<%= message.id %>">
-          <small>
-            <strong><%= message.user.first_name %></strong>
-            <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-          </small>
-          <p><%= message.content %></p>
-        </div>
       <% end %>
     </div>
-
 
     <div class="message-input">
       <%= simple_form_for [@chatroom, @message],
@@ -47,3 +54,4 @@
     </div>
 
   </div>
+</div>
