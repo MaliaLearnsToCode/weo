@@ -4,42 +4,25 @@
 2) chatrooms = activity names => accordion drop down of the itinerary -->
 
 <div class="container mb-5" style="margin-top: 8px">
-  <div class="title center" style="color: #505050;">
-    <h1>CHATS</h1>
+  <div class="chatroom-title" style="color: #505050;">
+    <h5>CHATS WITH OTHERS</h5>
   <div>
   <div class="chat-body mb-5" data-controller="insert-in-chat" style="background-color: #F1E0E0;">
-    <% @itineraries.each do |itinerary| %>
-      <div class="accordion" id="accordionExample" data-insert-in-list-target="items">
-      <h2><%= itinerary.title %></h2>
-        <% itinerary.chatrooms.each do |chatroom| %>
-          <% if chatroom.activity%>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="header-<%= chatroom.id %>">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= "chatroom-#{chatroom.id}" %>" aria-expanded="false" aria-controls="<%= "chatroom-#{chatroom.id}" %>">
-                  <%= chatroom.activity.name %>
-                </button>
-              </h2>
-              <div id="<%= "chatroom-#{chatroom.id}" %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body", data-action="click->chatbox#displayChat", data-chatbox-target="link" data-chatbox-id="chatroom-<%= chatroom.id %>">
-                  <%= link_to "Chat with other participants ffrom this activity: #{chatroom.activity.name}", chatroom_path(chatroom) %>
-                </div>
-              </div>
-            </div>
-          <%else %>
-            <% @sender = current_user %>
-            <% chatroom.users.each do |user| %>
-              <% if user.id != @sender.id %>
-                <% @receiver = user %>
-                <div class="chat-links", data-action="click->chatbox#displayChat", data-chatbox-target="link" data-chatbox-id="chatroom-<%= chatroom.id %>">
-                  <%# placeholder avatar of the recipient %>
-                  <%= cl_image_tag @receiver.photo.key, class: "avatar-bordered", alt: "avatar-bordered" %>
-                  <%= link_to @receiver.first_name, chatroom_path(chatroom) %>
-                </div>
-              <% end %>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <% @itineraries.each do |itinerary| %>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="itinerary-<%=itinerary.id%>">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#itinerary-collapse<%=itinerary.id%>" aria-expanded="false" aria-controls="itinerary-collapse<%=itinerary.id%>">
+              <%= itinerary.title %>
+            </button>
+          </h2>
+          <div id="itinerary-collapse<%=itinerary.id%>" class="accordion-collapse collapse" aria-labelledby="itinerary-<%=itinerary.id%>" data-bs-parent="#accordionFlushExample">
+            <% itinerary.activities.each do |activity| %>
+              <div class="accordion-body"><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></div>
             <% end %>
-          <%end %>
-        <% end %>
-      </div>
-    <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
