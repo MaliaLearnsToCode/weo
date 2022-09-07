@@ -9,9 +9,7 @@
     <h3>Confirmed</h3>
   </div>
 
-
-  <div id="approved_list flex-column">
-
+    <div id="approved_list flex-column">
       <% @confirmed_activities.each do |activity| %>
         <div class="d-flex mb-2">
           <div id="approved_avatar">
@@ -24,31 +22,32 @@
 
           <div id="chatbox">
           <img src="https://cdn-icons-png.flaticon.com/512/3193/3193015.png" height="30px" width="30px">
+
+          <%= link_to "review", "#"  if activity.finished? %>
+
           </div>
         </div>
       <% end %>
-
-  </div>
-
-
-  <div id="pending_header">
-    <div>
-    <img src="https://cdn-icons-png.flaticon.com/512/6828/6828772.png" alt="pending" height="30px" width="30px">
     </div>
 
-    <div>
-    <h3>Pending</h3>
-    </div>
-  </div>
-
-  <div id="pending_list flex-column">
-      <% @participations_pending.each do |activity| %>
-      <div class="d-flex mb-2">
-        <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
-        <div id="activity2">
-          <%= render "activity_details", activity: activity %>
-       </div>
+    <div id="pending_header">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/6828/6828772.png" alt="pending" height="30px" width="30px">
       </div>
+      <div>
+        <h3>Pending</h3>
+      </div>
+    </div>
+    <div id="pending_list flex-column">
+      <% @participations_pending.each do |activity| %>
+        <% unless activity.finished? %>
+          <div class="d-flex mb-2">
+            <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
+            <div id="activity2">
+              <%= render "activity_details", activity: activity %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-  </div>
+    </div>
 </body>

@@ -96,20 +96,16 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     authorize @itinerary
-    @participation = Participation.new
+    @itinerary
+    # @participation = Participation.find(params[:id])
   end
 
   def destroy
   end
 
   def my_itineraries
-    #
-    # raise
-
     @itineraries = current_user.itineraries
-
     @participated_itineraries = []
-
     @participations = Participation.where(user: current_user).where(status: "confirmed")
 
     # Itinerary.all.each do |itinerary|
@@ -121,8 +117,6 @@ class ItinerariesController < ApplicationController
     @participations.each do |participation|
       @participated_itineraries << participation.itinerary
     end
-
-    # raise
 
     @all_itineraries = []
     @all_itineraries = @participated_itineraries + @itineraries
@@ -149,7 +143,7 @@ class ItinerariesController < ApplicationController
         @current_itineraries << itinerary
       end
     end
-
+    # raise
     # if @itinerary.start_date > Date.now && Date.now < @itinerary.end_date
     #   ongoing_itinerary
     # else
