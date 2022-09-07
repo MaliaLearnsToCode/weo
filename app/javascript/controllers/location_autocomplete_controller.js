@@ -12,6 +12,7 @@ export default class extends Controller {
       accessToken: this.apiKeyValue,
       language: "en-US",
       types: "country,region,place,postcode,locality,neighborhood,address",
+      placeholder: "Enter city and country",
     });
     this.geocoder.addTo(this.element);
     this.geocoder.on("result", (event) => this.#setInputValue(event));

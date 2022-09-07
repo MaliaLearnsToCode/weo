@@ -68,9 +68,9 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
   end
 
-  # def set_activity
-  #   @activity = Activity.find(params[:activity_id])
-  # end
+  def set_activity
+    @activity = Activity.find(params[:activity_id])
+  end
 
   private
 

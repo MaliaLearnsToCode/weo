@@ -1,21 +1,43 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
   <% @activity.photos.each do |photo| %>
-    <div>
-      <%= cl_image_tag photo.key, height: 280, width: 280 %>
+    <div class="itinerary-activity-img">
+      <%= cl_image_tag photo.key %>
     </div>
   <% end %>
-  <div class="container">
+  <div class="activity-name position-absolute" >
     <h1><strong><%= @activity.name %></strong></h1>
   </div>
 </div>
 
+<div class="activity-detail">
+    <p><%= @activity.detail %></p>
+    <p><%= @activity.start_time.strftime("%e.%M%P %-d %b") %> - <%= @activity.end_time.strftime("%l.%M%P %-d %b")%></p>
+</div>
+
+<div>
+  <%= @activity.itinerary.user.first_name %>
+  <div class="creator-avatar">
+    <%= cl_image_tag @activity.itinerary.user.photos[0].key%>
+  </div>
+
+  <% @activity.participations.each do |participation| %>
+  <div class="participant-avatar">
+    <%= cl_image_tag participation.user.photos[0].key%>
+  </div>
+  <% end %>
+</div>
+
+<div class="activity-map">
+  <div id='map' style="width: 100%; height: 480px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
 
 
-
-<!-- activity details
-participants avatars
-map
+<!--
 <div class="container">
 
   <div class="1/3">

@@ -1,13 +1,13 @@
 class Chatroom < ApplicationRecord
-  scope :private_chats, -> { where.not(id: Activity.pluck(:chatroom_id)) }
+  # scope :private_chats, -> { where.not(id: Activity.pluck(:chatroom_id)) }
 
   belongs_to :activity
   has_many :messages, dependent: :destroy
   has_many :users, through: :messages
   has_one :itinerary, through: :activities
 
-  validates :users, uniqueness: { scope: :chatroom, message: "is already in the chatroom" }
-  validate :max_two_participants, if: :chatroom_is_private?
+  # validates :users, uniqueness: { scope: :chatroom, message: "is already in the chatroom" }
+  # validate :max_two_participants, if: :chatroom_is_private?
 
   # def max_two_participants
   #   # chatroom.user_chatrooms.select(&:persisted?).size >= 2
