@@ -24,7 +24,7 @@
           <div>
             <%= simple_form_for participation do |f|%>
               <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
-              <%= f.submit "Approve"%>
+              <%= f.submit "Approve", class: 'btn btn-success'%>
             <% end %>
           </div>
 
