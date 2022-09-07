@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" >
   <% @activity.photos.each do |photo| %>
     <div class="itinerary-activity-img">
       <%= cl_image_tag photo.key %>
@@ -15,95 +15,24 @@
     <p><%= @activity.start_time.strftime("%e.%M%P %-d %b") %> - <%= @activity.end_time.strftime("%l.%M%P %-d %b")%></p>
 </div>
 
-<div>
-  <%= @activity.itinerary.user.first_name %>
+<div class="d-flex justify-content-between align-items-center">
   <div class="creator-avatar">
+    <strong><%= @activity.itinerary.user.first_name %></strong>
     <%= cl_image_tag @activity.itinerary.user.photos[0].key%>
   </div>
-
-  <% @activity.participations.each do |participation| %>
+  <div><strong>joined by</strong></div>
   <div class="participant-avatar">
+    <% @activity.participations.each do |participation| %>
     <%= cl_image_tag participation.user.photos[0].key%>
+    <% end %>
   </div>
-  <% end %>
 </div>
 
 <div class="activity-map">
   <div id='map' style="width: 100%; height: 480px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-controller="activity-map"
+    data-activity-map-markers-value="<%= @markers.to_json %>"
+    data-activity-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-
-<!--
-<div class="container">
-
-  <div class="1/3">
-    <div class="d-flex flex-row-reverse">
-      <div class="m-2">
-      <%= link_to "Back", itineraries_path, class: "btn btn-info" %>
-      </div>
-    </div>
-    <div class="frank">
-      <div>
-          <% @activity.photos.each do |photo| %>
-              <div>
-                <%= cl_image_tag photo.key, height: 280, width: 280 %>
-              </div>
-          <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="2/3">
-    <div class="d-flex flex-row-reverse time and date pt-2">
-      <h5><%= @activity.start_time.strftime("%e.%M%P %-d %b") %> to <%= @activity.end_time.strftime("%l.%M%P %-d %b")%></h5>
-    </div>
-    <div class="name pt-2">
-      <p><%= @activity.name %></p>
-    </div>
-    <div class="detail bg-light text-black p-2">
-      <p><%= @activity.detail %></p>
-    </div>
-  </div>
-
-  <div class="3/3 d-flex">
-    <div class="left portion">
-      <div class="profile and name p-2 m-2">
-        <div class="profile">
-          <img src="https://www.nacionrex.com/__export/1604678545433/sites/debate/img/2020/11/06/twice-chaeyoung-novio-rumores-jyp-comunicado_1_crop1604677156879.jpg_1902800913.jpg" class="rounded-circle" width=80 height=80>
-        </div>
-        <div class="name d-flex flex-column">
-          <%= User.first.first_name %>
-        </div>
-        <div class>
-          <p>Together with</p>
-        </div>
-        <div class="d-flex flex-column">
-          <div class="d-flex">
-          <div>
-            <p style="font-size:42px"><sup>1</sup>&frasl;<sub>4</sub></p>
-          </div>
-          <div class="icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1189/1189175.png" width=48 height=48>
-          </div>
-        </div>
-          <div>
-            <p>Users Joined!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="right portion flex-grow-1 text-black">
-      <div class="m-1">
-      <p><%= @activity.location %></p>
-      </div>
-      <div>
-      <img src="https://snazzy-maps-cdn.azureedge.net/assets/1243-xxxxxxxxxxx.png?v=20220106114208" width = 260px height = 160px >
-      </div>
-    </div>
-  </div>
-
-</div> -->
+<%= render "info_window" %>

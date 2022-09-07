@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     # for the 'create' action, the path also looks is: /itineraries/:itinerary_id/activities
 
   resources :activities, only: %i[destroy] do
+    resources :reviews, only: %i[new]
     collection do
       get :pending # path: /activities/pending
     end
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
       get :approve
     end
 
-    resources :reviews, only: %i[ new create ]
+    resources :reviews, only: %i[ create ]
 
     member do
       delete :destroyApproved

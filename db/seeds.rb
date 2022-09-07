@@ -189,21 +189,7 @@ itinerary5.save!
 
 
 puts "Creating Activities..."
-file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349155/kwwgoiopyvqvnnefpv3y.jpg")
-activity0 = Activity.new(
-  itinerary: itinerary0,
-  start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
-  end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
-  name: "Frankfurt PubCrawl",
-  detail: "I'm ready for ma coffeeeeee jk, beers of course",
-  location: "Frankfurt am Main",
-  max_participants: 12,
-  completed: true,
-  start_date: Date.new(2022, 7, 10),
-  end_date: Date.new(2022, 7, 10),
-  interest_type: interest_type1)
-activity0.photos.attach(io: file, filename: "pubcrawl.jpg", content_type: "image/jpg")
-activity0.save!
+
 
 file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349036/njzhehgyfpyaf6xmnqey.jpg")
 activity1 = Activity.new(
@@ -366,6 +352,21 @@ activity10 = Activity.new(
 activity10.photos.attach(io: file, filename: "walkies.jpg", content_type: "image/jpg")
 activity10.save!
 
+file = URI.open("https://res.cloudinary.com/dyiaygjfa/image/upload/v1662349155/kwwgoiopyvqvnnefpv3y.jpg")
+activity0 = Activity.new(
+  itinerary: itinerary0,
+  start_time: Time.new(2022, 7, 10, 14, 30, 0, "+08:00"),
+  end_time: Time.new(2022, 7, 10, 18, 30, 0, "+08:00"),
+  name: "Frankfurt PubCrawl",
+  detail: "I'm ready for ma coffeeeeee jk, beers of course",
+  location: "Frankfurt am Main",
+  max_participants: 12,
+  completed: true,
+  start_date: Date.new(2022, 7, 10),
+  end_date: Date.new(2022, 7, 10),
+  interest_type: interest_type1)
+activity0.photos.attach(io: file, filename: "pubcrawl.jpg", content_type: "image/jpg")
+activity0.save!
 
 
 
@@ -384,15 +385,15 @@ participation4 = Participation.create!(status: "confirmed", user: user5, activit
 participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity1)
 participation6 = Participation.create!(status: "confirmed", user: user7, activity: activity1)
 
-participation3 = Participation.create!(status: "confirmed", user: user4, activity: activity2)
-participation4 = Participation.create!(status: "confirmed", user: user5, activity: activity2)
-participation5 = Participation.create!(status: "confirmed", user: user6, activity: activity2)
+participation22 = Participation.create!(status: "confirmed", user: user4, activity: activity2)
+participation23 = Participation.create!(status: "confirmed", user: user5, activity: activity2)
+participation24 = Participation.create!(status: "confirmed", user: user6, activity: activity2)
 
 participation7 = Participation.create!(status: "confirmed", user: user2, activity: activity3)
 participation8 = Participation.create!(status: "confirmed", user: user3, activity: activity3)
 
 
-participation9 = Participation.create!(status: "confirmed", user: user1, activity: activity4)
+participation9 = Participation.create!(status: "confirmed", user: user2, activity: activity4)
 participation10 = Participation.create!(status: "confirmed", user: user3, activity: activity4)
 participation11 = Participation.create!(status: "confirmed", user: user4, activity: activity4)
 
@@ -402,14 +403,14 @@ participation12 = Participation.create!(status: "confirmed", user: user8, activi
 participation13 = Participation.create!(status: "confirmed", user: user3, activity: activity6)
 participation14 = Participation.create!(status: "confirmed", user: user4, activity: activity6)
 
-participation15 = Participation.create!(status: "pending", user: user1, activity: activity7)
+participation15 = Participation.create!(status: "pending", user: user2, activity: activity7)
 participation16 = Participation.create!(status: "pending", user: user3, activity: activity7)
 participation17 = Participation.create!(status: "pending", user: user6, activity: activity7)
 participation18 = Participation.create!(status: "pending", user: user7, activity: activity7)
 participation19 = Participation.create!(status: "pending", user: user9, activity: activity7)
 participation20 = Participation.create!(status: "pending", user: user10, activity: activity7)
 
-participation21 = Participation.create!(status: "pending", user: user3, activity: activity9)
+participation21 = Participation.create!(status: "confirmed", user: user1, activity: activity10)
 
 
 
@@ -418,22 +419,22 @@ participation21 = Participation.create!(status: "pending", user: user3, activity
 
 
 puts "Creating Chatrooms..."
-chatroom1 = Chatroom.create!(
-  activity: activity1,
-  name: "Berlin Wall visit")
+#chatroom1 = Chatroom.create!(
+#  activity: activity1,
+#  name: "Berlin Wall visit")
 
-chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Lova")
-chatroom3 = Chatroom.create!(activity: activity3, name: "Water Visit")
+#chatroom2 = Chatroom.create!(activity: activity2, name: "Beer Lova")
+#chatroom3 = Chatroom.create!(activity: activity3, name: "Water Visit")
 
-chatroom4 = Chatroom.create!(activity: activity4, name: "Bar Hop")
-chatroom5 = Chatroom.create!(activity: activity5, name: "Mountain Hike")
+#chatroom4 = Chatroom.create!(activity: activity4, name: "Bar Hop")
+#chatroom5 = Chatroom.create!(activity: activity5, name: "Mountain Hike")
 
-chatroom6 = Chatroom.create!(activity: activity6, name: "First Ocean")
-chatroom7 = Chatroom.create!(activity: activity7, name: "Second Seas")
-chatroom8 = Chatroom.create!(activity: activity8, name: "Third Lake")
+#chatroom6 = Chatroom.create!(activity: activity6, name: "First Ocean")
+#chatroom7 = Chatroom.create!(activity: activity7, name: "Second Seas")
+#chatroom8 = Chatroom.create!(activity: activity8, name: "Third Lake")
 
-chatroom9 = Chatroom.create!(activity: activity4, name: "Teaaaa")
-chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
+#chatroom9 = Chatroom.create!(activity: activity4, name: "Teaaaa")
+#chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
 
 
 
@@ -443,29 +444,33 @@ chatroom10 = Chatroom.create!(activity: activity5, name: "Walkies")
 
 
 puts "Creating Messages..."
-message1 = Message.create!(
-  chatroom: chatroom1,
-  user: user1,
-  content: "ok guys, ready?")
+#message1 = Message.create!(
+#  chatroom: chatroom1,
+#  user: user1,
+#  content: "ok guys, ready?")
 
-message2 = Message.create!(chatroom: chatroom1, user: user2, content: "yeah")
-message3 = Message.create!(chatroom: chatroom1, user: user3, content: "yes")
-message4 = Message.create!(chatroom: chatroom1, user: user2, content: "yessir")
-message5 = Message.create!(chatroom: chatroom1, user: user1, content: "yes")
+#message2 = Message.create!(chatroom: chatroom1, user: user2, content: "yeah")
+#message3 = Message.create!(chatroom: chatroom1, user: user3, content: "yes")
+#message4 = Message.create!(chatroom: chatroom1, user: user2, content: "yessir")
+#message5 = Message.create!(chatroom: chatroom1, user: user1, content: "yes")
 
-message6 = Message.create!(chatroom: chatroom5, user: user2, content: "hi, anyone see my hat?")
-message7 = Message.create!(chatroom: chatroom5, user: user1, content: "me")
-message8 = Message.create!(chatroom: chatroom5, user: user3, content: "cool, can u whatsapp me at +6281313131 thanks.")
+#message6 = Message.create!(chatroom: chatroom5, user: user2, content: "hi, anyone see my hat?")
+#message7 = Message.create!(chatroom: chatroom5, user: user1, content: "me")
+#message8 = Message.create!(chatroom: chatroom5, user: user3, content: "cool, can u whatsapp me at +6281313131 thanks.")
 
-message9 = Message.create!(chatroom: chatroom6, user: user1, content: "hola exciteeeed")
-message10 = Message.create!(chatroom: chatroom6, user: user3, content: "super")
+#message9 = Message.create!(chatroom: chatroom6, user: user1, content: "hola exciteeeed")
+#message10 = Message.create!(chatroom: chatroom6, user: user3, content: "super")
 
-message11 = Message.create!(chatroom: chatroom7, user: user3, content: "should we just cancel this?")
-message12 = Message.create!(chatroom: chatroom7, user: user3, content: "yeah, why not.")
+#message11 = Message.create!(chatroom: chatroom7, user: user3, content: "should we just cancel this?")
+#message12 = Message.create!(chatroom: chatroom7, user: user3, content: "yeah, why not.")
 
-message13 = Message.create!(chatroom: chatroom8, user: user3, content: "hi!")
-message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello?!")
-message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
+#message13 = Message.create!(chatroom: chatroom8, user: user3, content: "hi!")
+#message14 = Message.create!(chatroom: chatroom8, user: user3, content: "um hello?!")
+#message15 = Message.create!(chatroom: chatroom8, user: user3, content: "you guys suck!")
+
+
+
+
 
 
 puts "Creating Reviews"
@@ -475,12 +480,19 @@ review1 = Review.create!(
   participation: participation1,
   comment: "Fel was kinda niiiiice!",
   rating: 5)
+review2 = Review.create!(author: user3, user: user1, participation: participation2, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
+review3 = Review.create!(author: user1, user: user2, participation: participation3, comment: "Fel is ma hypewomaaaan!", rating: 5)
+review4 = Review.create!(author: user3, user: user1, participation: participation10, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
+review5 = Review.create!(
+  author: user1,
+  user: user3,
+  participation: participation2,
+  comment: "Dan ain't lit enough. Nice guy tho.",
+  rating: 4)
+review6 = Review.create!(author: user2, user: user1, participation: participation7, comment: "Lit.", rating: 3)
+review7 = Review.create!(author: user1, user: user4, participation: participation11, comment: "Julian was nice.", rating: 5)
+review8 = Review.create!(author: user2, user: user1, participation: participation9, comment: "Omg Malia plan more trips please!", rating: 5)
 
-# review2 = Review.create!(creator: user1, participant: participation2.user, comment: "I wish it was planned without the rain tbh, not bad tho.", rating: 3)
-
-# review3 = Review.create!(creator: user1, participant: participation1.user, comment: "Fel is ma hypewomaaaan!", rating: 5)
-
-# review4 = Review.create!(creator: user1, participant: participation2.user, comment: "Dammmmn soon! Malia killin' it!", rating: 5)
 
 
 

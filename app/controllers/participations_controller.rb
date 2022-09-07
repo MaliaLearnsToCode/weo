@@ -6,6 +6,10 @@ class ParticipationsController < ApplicationController
     @participations_pending = policy_scope(current_user.activity_where("pending"))
   end
 
+  # def notfinished?
+  #   @participation.activity.end_date > Date.today
+  # end
+
   def new
   end
 
@@ -72,6 +76,6 @@ class ParticipationsController < ApplicationController
   private
 
   def participation_params
-    params.require(:participation).permit(:mode)
+    params.require(:participation).permit(:mode, :activity_id)
   end
 end
