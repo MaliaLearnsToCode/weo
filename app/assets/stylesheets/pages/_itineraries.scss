@@ -61,24 +61,71 @@ input[type="date"] {
 
 .cardbg {
   background-color: rgb(211, 168, 179);
+  border-radius: 8px;
+}
+
+.card-body{
+  border-radius: 7px;
 }
 
 .activity-card {
-  padding: 5px;
-  margin: 2px;
   width: 100%;
-  height: 60px;
+  height: 100%;
+  border: 2px solid #E76143;
+  border-radius: 7px;
+  margin: 10px 0 10px 0;
 }
 
 .card-header {
   top: 45px;
-  left: 90px;
+  left: 60px;
   font-size: larger;
   color: rgb(194, 71, 71);
+  padding: 20px 0 0 0;
 }
 
 .activity-date {
-  background-color: rgb(216, 119, 15);
-  margin: 0px;
+  width: 60px;
+  background-color: #E76143;
+  border-radius: 5px;
   padding: 0px;
+}
+
+.activity-time {
+  width: 80px;
+  text-align: center;
+}
+
+.activity3 {
+  width: 90px;
+  text-align: center;
+}
+
+#start_date {
+  border-radius: 16px;
+}
+
+#end_date {
+  border-radius: 16px;
+}
+
+.location_field {
+  border-radius: 16px;
+}
+
+.itinerary-group {
+  padding: 20px 0 0 0;
+}
+
+.inputfont {
+  input.mapboxgl-ctrl-geocoder--input {
+    // -moz-border-radius: 100px;
+	  // -webkit-border-radius: 100px;
+	  // border-radius: 100px;
+    font-size: 0.8rem;
+  }
+  .mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+    border-radius: 16px;
+  }
+
 }

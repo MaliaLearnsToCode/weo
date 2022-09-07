@@ -9,9 +9,9 @@
                   <%= cl_image_tag itinerary.user.photos[0].key, crop: :fill  %>
                 <% else %>
                 <% end %>
-              <div class="m-0 avatar-text"><strong><%= itinerary.user.first_name %></strong></div>
+              <div class="m-0"><strong class="avatar-text"><%= itinerary.user.first_name %></strong></div>
             </div>
-            <div class="cardbg p-4 pt-5 mt-4" style="height:360px;">
+            <div class="cardbg p-4 pt-5 m-3" style="height:360px;">
               <div class="card-header position-absolute">
                 <strong><%= itinerary.title %></strong>
               </div>
@@ -20,17 +20,17 @@
                 <li class="list-group-item"><%= "Starting from: #{itinerary.start_date.strftime("%-d/%^b/%-y")} to #{itinerary.end_date.strftime("%-d/%^b/%-y")}" %></li>
               </ul>
               <div class="card-body">
-                <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
+                <ul class="list-group list-group-flush ml-3 mb-3 pl-3 pr-3">
                 <% itinerary.activities.each_with_index do |activity,index| %>
-                <div class="activity-card border border-danger">
+                <div class="activity-card bg-white ">
                   <div class="d-flex justify-content-between">
-                    <div class="activity-date w-20">
-                      <%= "#{activity.start_date.strftime("%-d/%^b")} - #{activity.end_date.strftime("%-d/%^b")}" %>
+                    <div class="activity-date">
+                      <%= "#{activity.start_date.strftime("%d%b")} - #{activity.end_date.strftime("%d%b")}" %>
                     </div>
-                      <div class="d-flex justify-content-between">
+                      <div class="d-flex justify-content-between activity-time">
                         <%= "#{activity.start_time.strftime("%H:%M")} - #{activity.end_time.strftime("%H:%M")}" %>
                       </div>
-                      <div>
+                      <div class="activity3">
                         <%= activity.name %>
                       </div>
                   </div>

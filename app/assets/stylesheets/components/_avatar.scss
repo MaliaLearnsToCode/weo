@@ -8,12 +8,16 @@
 }
 
 .avatar-text {
-  padding-top: 30px;
-  padding-left: 5px;
-  font-size: 2rem;
-  color: rgb(216, 119, 15);
+  padding: 0 10px 0 13px;
+  font-size: 25px;
+  color: rgb(255, 241, 241);
   width: 100%;
   height: 15px;
+  background-color: #E76143;
+  border-radius: 4px;
+  position: relative;
+  top: 45px;
+  right: 5px;
 }
 
 .avatar-index {
@@ -23,6 +27,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    border: 5px solid #E76143;
   }
 }
 .avatar-bordered {
@@ -42,4 +47,11 @@
   height: 60px;
   width: 60px;
   border-radius: 50%;
+}
+
+.avatar_profile {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid #E76143
 }
