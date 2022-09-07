@@ -1,37 +1,42 @@
+<div style="background-color: #F1E0E0;">
+  <div class="d-flex justify-content-end">
+  <%= link_to "Create your itinerary", new_itinerary_path, class: "btn btn-outline-secondary mx-4" %>
+  </div>
 
-<div class="w-full" data-controller="itinerary">
+  <div class="w-full pt-3" data-controller="itinerary" style="background-color: #F1E0E0;">
 
-  <!----------------------- DATE & LOCATION SEARCH ------------------------->
+    <!----------------------- DATE & LOCATION SEARCH ------------------------->
 
-  <div class= "container" style="background-color: #F1E0E0;">
-    <div class="date-container" >
+    <div class= "container" style="background-color: #F1E0E0;">
+      <div class="date-container" >
 
-      <div class= "d-flex justify-content-center">
-        <form action="/itineraries" class="form-inline">
-        <div>
-          <%= simple_form_for :global_search, url: itineraries_path, method: "GET" do |f| %>
-          <div class="">
-            <div>
-              <label for="start_date">From:</label>
-              <input type="date" id="start_date" name="start_date" class="shadow-sm rounded w-100">
+        <div class= "d-flex justify-content-center" style="background-color: #F1E0E0;">
+          <form action="/itineraries" class="form-inline">
+            <%= simple_form_for :global_search, url: itineraries_path, method: "GET" do |f| %>
+            <div class="inputfont">
+              <div>
+                <label for="start_date">FROM</label>
+                <input type="date" id="start_date" name="start_date" placeholder="">
+              </div>
+              <div>
+                <label for="end_date">UNTIL</label>
+                <input type="date" id="end_date" name="end_date">
+              </div>
+              <%= f.input :location,
+              input_html: {data: {location_autocomplete_target: "location"}, style: "display: none", name: "location"},
+              wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+              %>
+              <%= f.submit "LET'S GO!", input_html: { style: "display: none" } %>
+              <% end %>
             </div>
-            <div>
-              <label for="end_date">Until:</label>
-              <input type="date" id="end_date" name="end_date" class="shadow-sm rounded w-100">
-            </div>
-          </div>
-          <%= f.input :location,
-          input_html: {data: {location_autocomplete_target: "location"}, style: "display: none", name: "location"},
-          wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-          %>
-          <%= f.submit "Let's go", input_html: { style: "display: none" } %>
-          <% end %>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <!----------------------- DATE & LOCATION SEARCH ------------------------->
+</div>
 
+<!----------------------- DATE & LOCATION SEARCH ------------------------->
 
 
 

@@ -94,19 +94,10 @@ export default class extends Controller {
       showUserHeading: true,
     });
 
-    this.map.on("load", function () {
-      this.map.flyTo({
-        center: [
-          -74.5 + (Math.random() - 0.5) * 10, // Example data
-          40 + (Math.random() - 0.5) * 10, // Example data
-        ],
-        essential: true, // this animation is considered essential with respect to prefers-reduced-motion
-      });
-    });
-
+    // to track location autmatically when opening map page
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        coordinates = [position.coords.latitude, position.coords.longitude];
+      navigator.geolocation.getCurrentPosition((e) => {
+        this.map.jumpTo({ center: [e.coords.longitude, e.coords.latitude] });
       });
     }
 

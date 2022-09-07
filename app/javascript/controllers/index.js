@@ -2,25 +2,28 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import ChatroomSubscriptionController from "./chatroom_subscription_controller"
-application.register("chatroom-subscription", ChatroomSubscriptionController)
+import ChatroomSubscriptionController from "./chatroom_subscription_controller";
+application.register("chatroom-subscription", ChatroomSubscriptionController);
 
-import CheckAllCheckboxesController from "./check_all_checkboxes_controller"
-application.register("check-all-checkboxes", CheckAllCheckboxesController)
+import CheckAllCheckboxesController from "./check_all_checkboxes_controller";
+application.register("check-all-checkboxes", CheckAllCheckboxesController);
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
 
-import InsertInListController from "./insert_in_list_controller"
-application.register("insert-in-list", InsertInListController)
+import InsertInListController from "./insert_in_list_controller";
+application.register("insert-in-list", InsertInListController);
 
-import ItineraryController from "./itinerary_controller"
-application.register("itinerary", ItineraryController)
+import ItineraryController from "./itinerary_controller";
+application.register("itinerary", ItineraryController);
 
-import LocationAutocompleteController from "./location_autocomplete_controller"
-application.register("location-autocomplete", LocationAutocompleteController)
+import LocationAutocompleteController from "./location_autocomplete_controller";
+application.register("location-autocomplete", LocationAutocompleteController);
 
-import MapController from "./map_controller"
-application.register("map", MapController)
+import ActivityShowMapController from "./activity_show_map_controller";
+application.register("activity-show-map-controller", ActivityShowMapController);
+
+import MapController from "./map_controller";
+application.register("map", MapController);
