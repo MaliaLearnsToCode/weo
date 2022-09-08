@@ -1,5 +1,5 @@
 <body>
-
+<div class="container">
   <div>
     <h1>Participation List</h1>
   </div>
@@ -21,9 +21,10 @@
           </div>
 
           <div id="chatbox">
-          <img src="https://cdn-icons-png.flaticon.com/512/3193/3193015.png" height="30px" width="30px">
 
-          <%= link_to "review", "#"  if activity.finished? %>
+              <img src="https://cdn-icons-png.flaticon.com/512/3193/3193015.png" height="30px" width="30px">
+
+            <%= link_to "review", new_activity_review_path(activity) if activity.finished? %>
 
           </div>
         </div>
@@ -50,4 +51,5 @@
         <% end %>
       <% end %>
     </div>
+  </div>
 </body>

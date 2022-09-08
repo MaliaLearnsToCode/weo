@@ -1,3 +1,4 @@
+<div id="activity_form">
 <%= simple_form_for([itinerary, activity],
   data: {
     insert_in_list_target: "form",
@@ -15,3 +16,4 @@
   <%= f.input :photos, as: :file, input_html: { multiple: true }%>
   <center><%= f.submit "create"%>  <%= link_to "Back to itinerary", itinerary_path(@itinerary), class: "button button1" %></center>
 <% end %>
+</div>
