@@ -22,15 +22,19 @@
   <div id="itinerary-collapse<%=itinerary.id%>" class="accordion-collapse collapse" aria-labelledby="itinerary-<%=itinerary.id%>" data-bs-parent="#accordionFlushExample">
     <div class="accordion-body">
       <div class="row">
-      <strong>Chat with others in </strong>
-      <% itinerary.activities.each do |activity| %>
-        <div class="col-6 mb-3">
-          <div class="activity-chatroom-photo">
-            <%= cl_image_tag activity.photos[0].key%>
+        <div class="chat-invitation"><h6> Activity Chatrooms </h6></div>
+        <% itinerary.activities.each do |activity| %>
+          <div class="col-6 mb-3">
+            <%= link_to chatroom_path(activity.chatroom), :action => 'go' do %>
+              <div class="activity-chatroom-photo">
+                <div class="height: 200px;">
+                  <%= cl_image_tag activity.photos[0].key%>
+                </div>
+                <div><strong class=" activity-chatroom-title align-items-center"><%= activity.chatroom.name %></strong></div>
+              </div>
+            <% end %>
           </div>
-          <strong class="align-items-center"><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></strong>
-        </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
   </div>
