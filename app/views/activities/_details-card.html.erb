@@ -5,7 +5,7 @@
 
   <% if activity.finished? %>
     <% if activity.participations.select { |participant| participant.user == current_user }.count > 0 %>
-      <%= link_to "Review", new_activity_review_path(activity), class: "button button1" %>
+      <%= link_to "Review", new_activity_review_path(activity), class: "btn btn-primary" %>
     <% end %>
   <% else %>
     <% if current_user.participations.where(activity_id: activity.id).count == 0 %>

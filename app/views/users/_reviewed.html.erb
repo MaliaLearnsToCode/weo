@@ -1,18 +1,20 @@
 <div>
   <% user.reviews.each do |review| %>
-    <div>
-      <div class="d-flex justify-content-between">
-        <% review.author.photos.each do |photo| %>
-          <div class="avatar-small" alt="avatar-small">
-            <%= cl_image_tag photo.key, height: 100, width: 100 %>
+      <div class="review-card">
+        <div id="review_bar">
+          <div id="reviewer_name">
+            <%= review.author.first_name %>
           </div>
-        <% end %>
-        <%= review.author.first_name %>
-        <%= review.rating %>
+          <div id="review_rating">
+            <%= review.rating %>/5
+          </div>
+        </div>
+        <div id="review_location">
+          <%= review.participation.activity.location %>
+        </div>
+        <div>
+          <%= review.comment %>
+        </div>
       </div>
-    </div>
-    <div>
-      <%= review.comment %>
-    </div>
   <% end %>
 </div>

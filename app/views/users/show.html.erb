@@ -3,7 +3,7 @@
   <div id="profile_banner">
       <div>
         <% @user.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, class: "avatar_profile"%>
+            <%= cl_image_tag current_user.photos[0].key, class: "avatar_profile"%>
         <% end %>
       </div>
 
@@ -36,33 +36,14 @@
     <% end %>
   </div>
 
-<div id="rating">
-  4/5
-</div>
-
-
   <div id="review_container">
     <p> Reviews </p>
 
     <div>
       <h5 id="reviewtitle"></h5>
-      <div id="review-border">
-        <div id="review-card">
+        <div>
           <%= render "reviewed", user:@user %>
         </div>
-          <div id="reviewtop" class="flex-column">
-            <div id="reviewer-name">
-              <%= "#{current_user.first_name}" %>
-            </div>
-            <div id="locationdate">
-              <%= "Osaka, Jan 2021" %>
-            </div>
-          </div>
-            <div id="review">
-              <%= "This is a great review!" %>
-            </div>
-        </div>
-      </div>
     </div>
 
   </div>
