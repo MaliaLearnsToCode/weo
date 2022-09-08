@@ -5,9 +5,9 @@ class ChatroomsController < ApplicationController
   # before_action :set_activity, only: %i[ show create]
 
   def index
-    @itineraries = current_user.itineraries
+    @my_itineraries = current_user.itineraries
 
-    @itineraries.each do |itinerary|
+    @my_itineraries.each do |itinerary|
       itinerary.activities.each do |activity|
         Chatroom.create!(activity: activity, name: activity.name) if activity.chatroom.nil?
       end
@@ -30,6 +30,8 @@ class ChatroomsController < ApplicationController
     @user_activities.each do |activity|
       @user_itineraries << activity.itinerary unless @user_itineraries.include?(activity.itinerary)
     end
+
+    @itineraries = @my_itineraries + @user_itineraries
 
 
     @message = Message.new
