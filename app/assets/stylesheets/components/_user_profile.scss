@@ -68,3 +68,66 @@ body {
   position: relative;
   left: 250px;
 }
+
+.create-itinerary-text {
+  top: 50%;
+  transform: translateY(-50%);
+  left:30px;
+  position: absolute;
+  font-size: 28px;
+  width:120px;
+  line-height: 100%;
+  color: black;
+}
+
+.create-itinerary {
+  position: relative;
+}
+
+#create_circle {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+background-color: #E76143;
+}
+
+.my_itineraries {
+  position: relative
+
+}
+
+#my_circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #E76143;
+  position: relative;
+  left: 333px;
+  top: 60px;
+  }
+
+
+.my_text {
+  font-size: 28px;
+  color: black;
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+  right: 20px;
+}
+
+.itinerary_text {
+  font-size: 28px;
+  color: black;
+  text-align: right;
+  margin-top: 0;
+  position: relative;
+  bottom: 35px;
+  right: 20px;
+}
+
+.my_itineraries {
+  height: 80px;
+  position: relative;
+  bottom: 60px;
+}

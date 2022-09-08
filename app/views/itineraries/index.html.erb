@@ -1,6 +1,14 @@
+<body>
+<div class="container">
 <div style="background-color: #F1E0E0;">
-  <div class="d-flex justify-content-end">
-  <%= link_to "Create your itinerary", new_itinerary_path, class: "btn btn-success mx-4" %>
+  <div class="d-flex justify-content-end index_header">
+    <div class="create-itinerary-2">
+      <%= link_to new_itinerary_path, :action => 'go' do %>
+      <div id="create_circle2"></div>
+      <div class="m-0 create-itinerary-text2" style="">Create an</div>
+      <div class="m-0 create-itinerary-text3" style="">Itinerary</div>
+      <% end %>
+  </div>
   </div>
 
   <div class="w-full pt-3" data-controller="itinerary" style="background-color: #F1E0E0;">
@@ -54,3 +62,5 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+</div>
+</body>
