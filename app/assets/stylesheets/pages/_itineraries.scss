@@ -60,7 +60,8 @@ input[type="date"] {
 }
 
 .cardbg {
-  background-color: rgb(211, 168, 179);
+  background-color: #EFDBDB;
+  border: 1px solid #e76143;
   border-radius: 8px;
 }
 
@@ -128,4 +129,37 @@ input[type="date"] {
     border-radius: 16px;
   }
 
+}
+
+.create-itinerary-text2 {
+  position: relative;
+  right: 30px;
+  bottom: 60px;
+  font-size: 20px;
+  color: black;
+}
+
+.create-itinerary-text3 {
+  position: relative;
+  right: 30px;
+  bottom: 70px;
+  font-size: 20px;
+  color: black;
+}
+
+#create_circle2 {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+background-color: #E76143;
+position: relative;
+}
+
+.index_header {
+  height: 100px;
+}
+
+.create-itinerary-2 {
+  position: relative;
+  top: 20px;
 }
