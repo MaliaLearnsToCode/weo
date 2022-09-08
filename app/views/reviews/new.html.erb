@@ -7,10 +7,10 @@
   <%= @activity.name%>
   <% @activity.participations.each do |participation|  %>
     <%= participation.user.first_name%>
-    <%= render "form", participation: participation, review:@review, role: "creator" %>
+    <%= render "form", participation: participation, review:@review %>
   <% end %>
 <% else %>
-  <%= render "form", participation: @participation, review:@review, activity: @activity, role: "participant" %>
+  <%= render "form", participation: @participation, review:@review %>
 <% end %>
 
 

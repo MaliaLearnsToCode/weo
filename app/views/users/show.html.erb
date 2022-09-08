@@ -1,8 +1,6 @@
 <body>
 
   <div id="profile_banner">
-  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
-  class: "dropdown-item" %>
       <div>
         <% @user.photos.each do |photo| %>
             <%= cl_image_tag photo.key, class: "avatar_profile"%>
@@ -10,10 +8,12 @@
       </div>
 
 
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete},
+    class: "dropdown-item", :action => 'go' do %>
       <div id="logout" class="btn btn-success">
         Logout
       </div>
-
+    <% end %>
   </div>
 
 
@@ -37,7 +37,7 @@
   </div>
 
 <div id="rating">
-  <>
+  4/5
 </div>
 
 
