@@ -27,7 +27,7 @@
           <ul class="list-group list-group-flush bg-light ml-3 mb-3 pl-3 pr-3">
             <p>Activities</p>
               <% @itinerary.activities.each do |activity| %>
-                <%= render 'activities/details-card', activity: activity %>
+                <%= render 'activities/details-card', activity: activity, participation: @participation %>
               <% end %>
           </ul>
         </div>
