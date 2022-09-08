@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+.waterfall {
+  background-repeat: no-repeat;
+}
+
 .info {
   word-wrap: break-word;
 }
@@ -6,4 +10,31 @@
 .container {
   min-height: 100%;
   padding-bottom: 10px;
+}
+
+.intro {
+  text-align: center;
+}
+
+.steps {
+  border-style: solid;
+  border-radius: 9px;
+  text-align: center;
+  color: rgb(68, 68, 154);
+  box-shadow: 3px 3px 3px rgb(154, 149, 149);
+  }
+
+.final {
+  text-align: center;
+  color: rgb(68, 68, 154);
+}
+
+.final .fun {
+  font-family : 'Permanent Marker';
+  font-size: 2rem;
+  text-align: center;
+}
+
+.waterfall {
+  background-image: url("waterfall2.JPG");
 }
