@@ -1,67 +1,52 @@
 <body>
-<div class="container">
+<div class="waterfall">
 	<div class="top 1/3 pt-5">
 		<div class="d-flex justify-content-center">
-    <%= image_tag "our_logo2.png", width: 200  %>
+      <%= image_tag "Orange_logo.png", width: 200  %>
 		</div>
-		<div class="info pt-5 mx-5 text-justify">
-		<p>Want to travel with strangers in a safe and efficient manner?</p>
-		<p>You came to the right place!</p>
-    <p>Welcome to <u>WEO!</u></p>
+		<div class="intro pt-5 mx-5 ">
+		  <p>Keen to travel with strangers<br> in a safe and efficient manner?</p>
+      <h3>Welcome to WEO!</h3>
 		</div>
 	</div>
-	<div class="steps and text pt-3">
-		<div class="steps d-flex justify-content-around">
-			<div class="first_step">
-				<u><h3>Step 1</h3></u>
+
+	<div>
+    <div class="d-flex justify-content-around">
+			<div class="steps p-2 m-2">
+				<h4><strong>Step 1</strong></h4>
+        <p>Create activities in an itenerary</p>
 			</div>
-			<div class="second_step">
-				<u><h3>Step 2</h3></u>
+
+			<div class="steps p-2 m-2">
+        <h4><strong>Step 2</strong></h4>
+				<p>Post your itenerary</p>
 			</div>
-			<div class="third_step">
-				<u><h3>Step 3</h3></u>
-			</div>
-		</div>
-    <div class="steps d-flex justify-content-around">
-			<div class="first_step">
-				<h4>Create</h4>
-			</div>
-			<div class="second_step">
-				<h4>Post</h4>
-			</div>
-			<div class="third_step">
-				<h4>Wait for</h4>
-			</div>
-		</div>
-		<div class="steps text d-flex justify-content-around">
-			<div class="first_text d-flex text-center">
-        <h4>an itenerary</h4>
-			</div>
-			<div class="second_text  d-flex justify-content-center pb-3">
-				<h4>an itenerary</h4>
-			</div>
-			<div class="third_text">
-        <h4>others to join</h4>
+
+			<div class="steps p-2 m-2">
+        <h4><strong>Step 3</strong></h4>
+				<p>Wait and approve other travellers</p>
 			</div>
 		</div>
 	</div>
-	<div class="Last steps and text pt-1">
-		<div class="Last step d-flex justify-content-center">
-		<u><p>Final step</p></u>
-		</div>
-		<div class="Having fun  d-flex justify-content-center pb-5">
-			<h2>Have fun with new friends!</h2>
+
+	<div class="final pt-3 justify-content-center">
+    <h4><strong>Last step</strong></h4>
+		<div class="fun justify-content-center pb-3">
+			<p><u>Have fun!</u></p>
 		</div>
 	</div>
-	<div class="buttons d-flex flex-column ">
+
+	<div class="d-flex flex-column">
 		<div class="login d-flex justify-content-center pb-3">
       <%= link_to "Login", new_user_session_path, class: "btn btn-success" %>
 		</div>
+
 		<div class="sign up d-flex justify-content-center">
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
 		</div>
 	</div>
-	<div class="footer about us">
+
+	<div class="footer">
 	</div>
 </div>
 </body>
