@@ -8,41 +8,46 @@
     </div>
 
     <div class="nav-item dropup">
-    <i class="fa-regular fa-bell " id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-      <div class="dropdown-menu" style="min-width: 40px" aria-labelledby="navbarDropdown">
+      <i class="fa-regular fa-bell " id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown-menu" style="min-width: 40px" aria-labelledby="navbarDropdown">
 
-        <%= link_to participations_path, class:"dropdown-item" do %>
-          <i class="fa-regular fa-hourglass"></i>
-        <% end %>
+          <%= link_to participations_path, class:"dropdown-item" do %>
+            <i class="fa-regular fa-hourglass"></i>
+          <% end %>
 
-        <%= link_to approve_participations_path, class:"dropdown-item" do %>
-          <i class="fa-regular fa-square-check"></i>
-        <% end %>
-
+          <%= link_to approve_participations_path, class:"dropdown-item" do %>
+            <i class="fa-regular fa-square-check"></i>
+          <% end %>
+        </div>
       </div>
-    </div>
 
     <div class="nav-item">
-        <%= link_to chatrooms_path, class:"nav-item" do %>
-          <i class="fa-regular fa-comment"></i>
-        <% end %>
-    </div>
-
-    <div class="nav-item">
-      <% if user_signed_in? %>
-
-        <%= link_to user_path(current_user), class:"nav-item" do %>
-          <i class="fa-regular fa-user"></i>
-        <% end %>
-
-        <li class="nav-item dropdown p-8">
-          <a class="nav-link" data-bs-toggle="dropdown"><%= current_user.nickname %></a></i>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
+      <%= link_to chatrooms_path, class:"nav-item" do %>
+        <i class="fa-regular fa-comment"></i>
       <% end %>
     </div>
+
+    <div class="nav-item">
+      <%= link_to user_path(current_user), class:"nav-item" do %>
+        <%= cl_image_tag current_user.photos[0].key, class: "rounded-circle", style: "width: 36px"%>
+      <% end %>
+    </div>
+
+    <!-- <div class="nav-item dropup">
+      <div id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <% if user_signed_in? %>
+
+        <%= link_to user_path(current_user), class:"nav-item" do %>
+          <%= cl_image_tag current_user.photos[0].key, class: "rounded-circle", style: "width: 36px"%>
+        <% end %>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </div>
+      </div>
+      <% else %>
+      <% end %>
+    </div>-->
   </div>
 </div>
