@@ -15,12 +15,10 @@ class ReviewsController < ApplicationController
     authorize @review
     @activity = Activity.find(params[:activity_id])
     @participation = Participation.where(user: current_user).where(activity: @activity).first
-    # @participation =
   end
 
   def create
     # debugger
-    # raise
     @review = Review.new(review_params)
     @review.participation = @participation
     @review.author = @author
