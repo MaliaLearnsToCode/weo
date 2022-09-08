@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'chatrooms/index'
-  get 'chatrooms/new'
-  get 'chatrooms/create'
-  get 'chatrooms/show'
-  get 'chatrooms/destroy'
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -27,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chatrooms, only: %i[index]
+
   # this is a selected collection of index where the user can see their own index of all the itineraries
   # path is: /my-itineraries
 
@@ -43,14 +38,14 @@ Rails.application.routes.draw do
     # for the 'create' action, the path also looks is: /itineraries/:itinerary_id/activities
 
   resources :activities, only: %i[destroy] do
+    resources :participations, only: %i[index new show approve ]
     resources :reviews, only: %i[new]
     collection do
       get :pending # path: /activities/pending
     end
-    resources :participations, only: %i[index new create update show]
   end
 
-  resources :participations, only: %i[ update destroy] do
+  resources :participations, only: %i[ index create update destroy] do
     collection do
       get :approve
     end
@@ -69,12 +64,11 @@ Rails.application.routes.draw do
 
 
   #--------------------- participants -------------------------
-  resources :activities do
-    resources :participations, only: %i[ new approve destroy ]
-  end
+
+
+
 
   # post :participations, to: "participations#create"
-  resources :participations, only: %i[index create destroy]
   # participants show path: /activities/:activity_id/participants/new
   # participants create path: /activities/:activity_id/participants
   # participants approve path: ?
@@ -82,16 +76,13 @@ Rails.application.routes.draw do
 
   #--------------------- chat -------------------------
 
-  resources :activities, only: %i[create] do
+  resources :chatrooms, only: %i[index]
+
+  resources :activities, only: %i[] do
     resources :chatrooms, only: %i[new create show destroy]
   end
 
-  resources :chatrooms, only: %i[show] do
+  resources :chatrooms, only: %i[] do
     resources :messages, only: %i[create]
   end
-
-  resources :users, only: [:show] do
-    resources :chatrooms, only: :create
-  end
-
 end
