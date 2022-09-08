@@ -1,6 +1,6 @@
 <div class="row border-bottom mb-2 align-items-center">
   <div class="col-3"><%= activity.date %></div>
-  <div class="col-5"><%= link_to activity.name, activity_path(activity) %></div>
+  <div class="col-5"><%= link_to activity.name, itinerary_activity_path(itinerary, activity) %></div>
   <div class="col-4">
 
   <% if activity.finished? %>

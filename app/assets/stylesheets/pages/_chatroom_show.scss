@@ -3,16 +3,17 @@
 }
 
 .chatroom {
-  background: rgb(247, 235, 235);
+  //background: rgb(247, 235, 235);
+
+  background: #ece5dd;
+
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  border: 1px solid rgb(194, 180, 180);
-  border-radius: 8px;
-  box-shadow: 4px;
+  border: 1px solid rgb(194, 167, 167);
 }
 
 h1 {
@@ -30,8 +31,6 @@ h1 {
 
 #message {
   width: fit-content;
-  border-color: aqua;
-  border-radius: 8px;
 }
 
 #new_message {
@@ -56,7 +55,120 @@ h1 {
   margin: 2px;
 }
 
-.chat-form {
-  height: 40px;
-  border-color: rgb(160, 187, 187);
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.msg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: hidden;
+
+  .bubble {
+    float: left;
+    max-width: 75%;
+    width: auto;
+    height: auto;
+    display: block;
+    background: #ebebeb;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 0 3px 25px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+    &.alt {
+      margin: 10px 25px 3px 0px;
+      background: #dcf8c6;
+      float: right;
+    }
+    &.follow {
+      margin: 2px 0 3px 25px;
+    }
+
+    &.altfollow {
+      margin: 2px 25px 3px 0px;
+      background: #dcf8c6;
+      float: right;
+    }
+    .txt {
+      padding: 8px 0 8px 0;
+      width: 100%;
+      .name {
+        font-weight: 120;
+        font-size: 14px;
+        display: inline-table;
+        padding: 0 0 0 15px;
+        margin: 0 0 4px 0;
+        color: #3498db;
+        span {
+          font-weight: normal;
+          color: #b3b3b3;
+          overflow: hidden;
+        }
+        &.alt {
+          color: #2ecc51;
+        }
+      }
+      .message {
+        font-size: 14px;
+        font-weight: 100;
+        padding: 0 15px 0 15px;
+        //margin: auto;
+        color: #2b2b2b;
+        display: table;
+      }
+      .timestamp {
+        font-size: 11px;
+        margin: auto;
+        padding: 0 15px 0 3px;
+        display: table;
+        float: right;
+        position: relative;
+        text-transform: uppercase;
+        color: #999;
+      }
+    }
+    .bubble-arrow {
+      position: absolute;
+      float: left;
+      left: -11px;
+      top: 0px;
+      &.alt {
+        bottom: 20px;
+        left: auto;
+        right: 4px;
+        float: right;
+      }
+    }
+    .bubble-arrow:after {
+      content: "";
+      position: absolute;
+      border-top: 15px solid #ebebeb;
+      border-left: 15px solid transparent;
+      border-radius: 4px 0 0 0px;
+      width: 0;
+      height: 0;
+      //box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+      //looks like I can't give a shadow to the arrows
+    }
+    .bubble-arrow.alt:after {
+      border-top: 15px solid #dcf8c6;
+      transform: scaleX(-1);
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
+  .timestamp {
+    display: none;
+    color: red;
+  }
 }

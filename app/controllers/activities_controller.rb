@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show success]
-  before_action :set_itinerary, only: %i[new create]
+  before_action :set_itinerary, only: %i[show new create]
 
   def index
     @activities = Activity.all
@@ -26,12 +26,6 @@ class ActivitiesController < ApplicationController
 
     authorize @activity
 
-    # if @activity.save
-    #   redirect_to itinerary_path(@itinerary)
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
-
     respond_to do |format|
       if @activity.save
         format.html { redirect_to itinerary_path(@itinerary) }
@@ -40,18 +34,15 @@ class ActivitiesController < ApplicationController
       end
       format.json
     end
-
   end
 
-
-
   def show
-    authorize @activity
     @markers = [{
       lat: @activity.latitude,
       lng: @activity.longitude,
       info_window: render_to_string(partial: "info_window", locals:{ activity: @activity })
     }]
+    authorize @activity
   end
 
   def edit
