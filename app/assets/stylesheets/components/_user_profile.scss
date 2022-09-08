@@ -1,7 +1,13 @@
 #name {
-  margin: 50px 260px 0 0;
+  width: 75px;
+  background-color: rgb(254, 244, 244);
   font-weight: bolder;
-  font-size: 25px;
+  font-size: 22px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  left: 163px;
+  bottom: 27px;
 }
 
 #avatar_photo {
@@ -48,6 +54,17 @@ body {
 #profile_banner {
   background-image: url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80");
   height: 158px;
-  width: 400px;
+  width: 420px;
   background-size: cover;
+}
+
+#logout {
+  position: relative;
+  left: 315px;
+  bottom: 70px;
+}
+
+#user_photo {
+  position: relative;
+  left: 250px;
 }
