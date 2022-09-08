@@ -1,41 +1,48 @@
 <div class="container-activity" style="background-color: #F1E0E0;">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
-    <div class="itinerary-activity-img">
-      <% if @activity.photos.attached? %>
-        <%= cl_image_tag @activity.photos[0].key %>
-      <% else %>
-        <%= image_tag "sofa.jpg", alt: "photo placeholder", width: 200, height: 200 %>
-      <% end %>
-      <div class="banner-name position-absolute">
-        <h1><strong><%= @activity.name %></strong></h1>
+  <div class="">
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+      <div class="itinerary-activity-img">
+        <% if @activity.photos.attached? %>
+          <%= cl_image_tag @activity.photos[0].key %>
+        <% else %>
+          <%= image_tag "sofa.jpg", alt: "photo placeholder", width: 200, height: 200 %>
+        <% end %>
+        <div class="banner-name position-absolute">
+          <h1><strong><%= @activity.name %></strong></h1>
+          <div>
+            <p><%= @activity.detail %></p>
+            <div class="join-here-button">
+              <%= link_to "Join here", itinerary_path(@itinerary), class: "btn btn-success mx-4 rounded-pill" %>
+            </div>
+          </div>
+          <div class="date-time-schedule">
+            <%= @activity.start_date.strftime("%-d %b") %> / <%= @activity.start_time.strftime("%l.%M%P")%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-members d-flex align-items-center">
+      <div class="creator-avatar d-flex flex-column align-items-center">
+        <div><%= cl_image_tag @activity.itinerary.user.photos[0].key%></div>
+        <div style="margin-bottom: 20px;" ><strong><%= @activity.itinerary.user.first_name %></strong></div>
+      </div>
+
+      <div class="participant-avatar">
+        <% @activity.participations.each do |participation| %>
+        <%= cl_image_tag participation.user.photos[0].key%>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="activity-detail">
-      <p><%= @activity.detail %></p>
-      <p><%= @activity.start_time.strftime("%e.%M%P %-d %b") %> - <%= @activity.end_time.strftime("%l.%M%P %-d %b")%></p>
-  </div>
-
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="creator-avatar">
-      <div><strong><%= @activity.itinerary.user.first_name %></strong></div>
-      <div><%= cl_image_tag @activity.itinerary.user.photos[0].key%></div>
-    </div>
-    <div><strong>joined by</strong></div>
-    <div class="participant-avatar">
-      <% @activity.participations.each do |participation| %>
-      <%= cl_image_tag participation.user.photos[0].key%>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="activity-map">
-    <div id='map' style="width: 100%; height: 480px;"
+  <div class="activity-map pl-5 pr-5">
+    <div id='map' style="width: 100%; height: 400px; width: 90%; height: 400px; margin: 18px; border: solid grey; border-radius: 20px;"
       data-controller="activity-map"
       data-activity-map-markers-value="<%= @markers.to_json %>"
       data-activity-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
   <%= render "info_window" %>
+
 </div>
