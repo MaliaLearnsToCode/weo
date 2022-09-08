@@ -30,6 +30,8 @@ h1 {
 
 #message {
   width: fit-content;
+  border-color: aqua;
+  border-radius: 8px;
 }
 
 #new_message {
@@ -52,4 +54,9 @@ h1 {
 .participant-avatar {
   padding: 1px;
   margin: 2px;
+}
+
+.chat-form {
+  height: 40px;
+  border-color: rgb(160, 187, 187);
 }
