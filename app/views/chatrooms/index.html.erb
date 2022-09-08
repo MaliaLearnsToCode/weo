@@ -3,44 +3,55 @@
 1) itinerary title clickable and drops down to
 2) chatrooms = activity names => accordion drop down of the itinerary -->
 
-<div class="container mb-5" style="margin-top: 8px">
-  <div class="chatroom-title" style="color: #505050;">
-    <h5>CHATS WITH OTHERS</h5>
-  <div>
-  <div class="chat-body mb-5" data-controller="insert-in-chat" style="background-color: #F1E0E0;">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <% @itineraries.each do |itinerary| %>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="itinerary-<%=itinerary.id%>">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#itinerary-collapse<%=itinerary.id%>" aria-expanded="false" aria-controls="itinerary-collapse<%=itinerary.id%>">
-              <%= itinerary.title %>
-            </button>
-          </h2>
-          <div id="itinerary-collapse<%=itinerary.id%>" class="accordion-collapse collapse" aria-labelledby="itinerary-<%=itinerary.id%>" data-bs-parent="#accordionFlushExample">
-            <% itinerary.activities.each do |activity| %>
-              <div class="accordion-body"><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <% @user_itineraries.each do |itinerary|%>
-        <div class="accordion-item">
+<div class="container-main">
+  <div class="container-chat">
+    <div class="chatroom-title" style="color: #505050;">
+      <h5><span class="label label-default">CHATS WITH OTHERS</span></h5>
+    <div>
+    <div class="chat-body mb-5" data-controller="insert-in-chat" style="background-color: #F1E0E0;">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <% @itineraries.each do |itinerary| %>
+          <div class="accordion-item">
             <h2 class="accordion-header" id="itinerary-<%=itinerary.id%>">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#itinerary-collapse<%=itinerary.id%>" aria-expanded="false" aria-controls="itinerary-collapse<%=itinerary.id%>">
-                <%= itinerary.title %>
+                <%= "Itinerary: #{itinerary.title}" %>
               </button>
             </h2>
             <div id="itinerary-collapse<%=itinerary.id%>" class="accordion-collapse collapse" aria-labelledby="itinerary-<%=itinerary.id%>" data-bs-parent="#accordionFlushExample">
-              <% @user_activities.each do |activity|%>
-                <% if activity.itinerary == itinerary %>
-                  <div class="accordion-body"><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></div>
-                <% end %>
+              <% itinerary.activities.each do |activity| %>
+                <div class="accordion-body"><strong>Chat with others in </strong><strong><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></strong></div>
               <% end %>
             </div>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+        <% @user_itineraries.each do |itinerary|%>
+          <div class="accordion-item">
+              <h2 class="accordion-header" id="itinerary-<%=itinerary.id%>">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#itinerary-collapse<%=itinerary.id%>" aria-expanded="false" aria-controls="itinerary-collapse<%=itinerary.id%>">
+                  <%= itinerary.title %>
+                </button>
+              </h2>
+              <div id="itinerary-collapse<%=itinerary.id%>" class="accordion-collapse collapse" aria-labelledby="itinerary-<%=itinerary.id%>" data-bs-parent="#accordionFlushExample">
+                <% @user_activities.each do |activity|%>
+                  <% if activity.itinerary == itinerary %>
+                    <div class="accordion-body"><strong>Chat with others in </strong><%= link_to activity.chatroom.name, chatroom_path(activity.chatroom) %></div>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-
 </div>
+
+
+<script>
+  $("#accordion").on("hide.bs.collapse show.bs.collapse", e => {
+    $(e.target)
+      .prev()
+      .find("i:last-child")
+      .toggleClass("fa-minus fa-plus");
+  });
+</script>

@@ -5,8 +5,8 @@
         <p style="color:white;"><strong><%= itinerary.title%></strong> by: <%= itinerary.user.first_name%></p>
       </div>
       <div class="d-flex justify-content-between">
-        <div>
-          <%= image_tag "our_logo.png", alt: "Itinerary cover", width: 100 %>
+        <div class="itinerary-cover">
+          <%= cl_image_tag itinerary.photos[0].key, :width=>100, :height=>100%>
         </div>
         <div class= "mx-2 my-2">
           <p style="color:white;"><%= itinerary.country %>, <%= itinerary.city %> </p>
