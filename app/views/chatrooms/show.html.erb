@@ -42,18 +42,18 @@
       html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
         %>
         <div class="chat-form">
-        <%= f.input :content,
-          label: false,
-          placeholder: "Message your friends @ ##{@chatroom.name}",
-          wrapper_html: {class: "flex-grow-1"},
-          input_html: { :cols => 70 }
-        %>
-        <%= f.submit "Send", class: "btn btn-success mb-3" %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Message your friends @ ##{@chatroom.name}",
+            wrapper_html: {class: "flex-grow-1"},
+            input_html: { :cols => 70 }
+          %>
+          <%= f.submit "Send", class: "btn btn-success mb-3" %>
+          <div class="link-chats">
+            <%= link_to "Back to all chats", chatrooms_path(@user), class: "btn btn-success" %>
+          </div>
         </div>
       <% end %>
-    </div>
-    <div class="link-chats">
-      <%= link_to "Back to all chats", chatrooms_path(@user), class: "btn btn-success" %>
     </div>
 
   </div>
