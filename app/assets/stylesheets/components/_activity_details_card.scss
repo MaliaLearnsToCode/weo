@@ -1,5 +1,5 @@
 #activity_list_details {
-  background-color: rgb(141, 124, 124);
+  background-color: #EFDBDB;
   display: flex;
   justify-content: space-between;
   height: 65px;
@@ -11,4 +11,12 @@
 #approved-avatar {
   height: 60px;
   width: 60px;
+}
+
+#activity_time_date {
+  text-align: left;
+}
+
+#activity_name_location {
+  text-align: right;
 }
