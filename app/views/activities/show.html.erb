@@ -1,10 +1,14 @@
 <div class="container-activity" style="background-color: #F1E0E0;">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
     <div class="itinerary-activity-img">
-
-      <%= cl_image_tag @activity.photos[0].key %>
-      <h1><strong><%= @activity.name %></strong></h1>
-
+      <% if @activity.photos.attached? %>
+        <%= cl_image_tag @activity.photos[0].key %>
+      <% else %>
+        <%= image_tag "sofa.jpg", alt: "photo placeholder", width: 200, height: 200 %>
+      <% end %>
+      <div class="banner-name position-absolute">
+        <h1><strong><%= @activity.name %></strong></h1>
+      </div>
     </div>
   </div>
 
