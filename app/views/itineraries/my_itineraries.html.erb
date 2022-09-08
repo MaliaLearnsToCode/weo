@@ -1,4 +1,11 @@
-<h1 style="color: #505050;"> My<br> Itineraries </h1>
+<div class= "d-flex">
+<div>
+<h1 style="color: #505050;"> <strong><%="#{@itineraries.first.user.first_name}"%>'s</strong> <br> Itineraries </h1>
+</div>
+<div class= "justify-center-between mx-auto my-auto">
+<%=link_to "Back to #{@itineraries.first.user.first_name}'s Profile", user_path(@itineraries.first.user), class: "btn btn-success mx-4" %>
+</div>
+</div>
 
 <div class= "container" style="background-color: #F1E0E0;">
   <div class="row">
@@ -7,13 +14,13 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current" type="button" role="tab" aria-controls="current" aria-selected="true">Current</button>
+        <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current" type="button" role="tab" aria-controls="current" aria-selected="true"><strong>Current</strong></button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Upcoming</button>
+        <button class="nav-link" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false"><strong>Upcoming</strong></button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past</button>
+        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false"><strong>Past</strong></button>
       </li>
     </ul>
 

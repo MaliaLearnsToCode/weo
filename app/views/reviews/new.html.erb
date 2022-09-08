@@ -1,21 +1,41 @@
-<h1>New Review</h1>
-<h2>As a creator</h2>
-<p>I should be able to see all the participations and create reviews for each of them</p>
 
 <% if @activity.itinerary.user == current_user %>
-  <h1>CREATOR IS: <%= @activity.itinerary.user.first_name %></h1>
-  <%= @activity.name%>
-  <% @activity.participations.each do |participation|  %>
-    <%= participation.user.first_name%>
-    <%= render "form", participation: participation, review:@review %>
-  <% end %>
+  <div style="background-color:#F1E0E0;">
+    <div class= "justify-content-between d-flex">
+      <div class= "mt-3 mx-2">
+        <p><h1 style="color: #505050"> Leave a Review </h1></p>
+      </div>
+      <div style="justify-content-between mt-1 mx-2">
+        <center><%= link_to "Back to itinerary", itinerary_path(@activity.itinerary), class: "btn btn-success mx-4 mt-5" %> </center>
+      </div>
+    </div>
+  <div class= "d-flex justify-content-between mx-4 mt-1">
+    <div>
+      <p style="color: #505050;"><strong><%= @activity.name %>:</strong> <br> <i><%= @activity.detail %></i> <br> <u><%= @activity.location %></u> </p>
+    </div>
+    <div>
+      <center> <p style="color: #505050;">  <%= "#{@activity.start_date.strftime("%-d/%^b/%-y")}"%> to <br><%= "#{@activity.end_date.strftime("%-d/%^b/%-y")}" %></p> </center>
+    </div>
+  </div>
+  <div style="background-color:#F1E0E0;" class="mx-4 mt-2">
+    <% @activity.participations.each do |participation|  %>
+      <center><strong "color: #505050;"><%= participation.user.first_name%></strong></center>
+      <%= render "form", participation: participation, review:@review %>
+    <% end %>
+  </div>
+</div>
 <% else %>
-  <%= render "form", participation: @participation, review:@review %>
+  <div style="background-color:#F1E0E0;">
+    <center><h1 style="color: #505050;"> Leave a Review for <strong> <%="#{@activity.itinerary.user.first_name}"%> </strong> </h1></center>
+  </div>
+  <div class= "d-flex justify-content-between mx-4 mt-4">
+    <div>
+      <p style="color: #505050;"><strong><%= @activity.name %>:</strong> <br> <i><%= @activity.detail %></i> <br> <u><%= @activity.location %></u> </p>
+    </div>
+    <div>
+      <center> <strong><p style="color: #505050;"> <%= "#{@activity.start_date.strftime("%-d/%^b/%-y")}"%> to <br><%= "#{@activity.end_date.strftime("%-d/%^b/%-y")}" %> </p></strong>  </center>
+    </div>
+  </div>
+      <%= render "form", participation: @participation, review:@review %>
+  </div>
 <% end %>
-
-
-
-
-
-<h2>As a participant</h2>
-<p>I should only be able to see and review the creator</p>
