@@ -19,6 +19,12 @@
 h5 {
   color: rgb(206, 117, 9);
   font-size: x-large;
+  font-weight: bolder;
+}
+
+.chat-invitation {
+  color: rgb(45, 43, 42);
+  font-weight: bolder;
 }
 
 .accordion-button {
@@ -32,7 +38,6 @@ h5 {
 
 .accordion-body {
   font-size: larger;
-  color: crimson;
   margin-bottom: 4px;
 }
 
@@ -48,14 +53,24 @@ h5 {
 }
 
 .activity-chatroom-photo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 160px;
   border-radius: 8%;
   overflow: hidden;
   margin-right: 10px;
+  border: solid;
+  border-color: lightgrey;
 
   img {
     width: 100%;
     object-fit: cover;
   }
+}
+
+.activity-chatroom-title {
+  margin-top: 4px;
+}
+
+.panel-default > .panel-heading {
+  background-color: rgb(246, 243, 243);
 }
