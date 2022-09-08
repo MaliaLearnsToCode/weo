@@ -1,0 +1,43 @@
+.container-main {
+  background: rgb(251, 222, 222);
+  height: 100%;
+}
+
+.chatroom-title {
+  font-weight: 200;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  color: rgb(206, 117, 9);
+}
+
+.accordion-header {
+  border-bottom-color: #edeff0;
+  background: transparent;
+}
+
+h5 {
+  color: rgb(206, 117, 9);
+}
+
+.accordion-button {
+  width: 100%;
+  height: 60px;
+  font-weight: bold;
+  color: #371920;
+  padding: 10px;
+  box-shadow: #371920;
+}
+
+.accordion-body {
+  font-size: larger;
+  color: crimson;
+  margin-bottom: 4px;
+}
+
+.accordion-button.collapsed {
+  background: rgb(197, 154, 154);
+}
+.accordion-button:not(.collapsed) {
+  background: #db9999;
+}

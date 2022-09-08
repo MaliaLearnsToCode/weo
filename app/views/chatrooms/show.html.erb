@@ -1,23 +1,25 @@
 <div class="container">
   <div class="link-chats">
-    <%= link_to "Back to all chats", chatrooms_path(@user), class: "btn btn-info" %>
+    <%= link_to "Back to all chats", chatrooms_path(@user), class: "btn btn-success" %>
   </div>
   <div class="chatroom-header">
     <% if @chatroom.activity %>
       <div class="chatroom-name">
         <h2><strong>#<%= @chatroom.activity.name %></strong></h2>
-        <%= "#{@chatroom.activity.start_date} to #{@chatroom.activity.end_date}" %>
+        <%= "#{@chatroom.activity.start_date.strftime("%-d/%^b")} to #{@chatroom.activity.end_date.strftime("%-d/%^b")}, starting at: #{@chatroom.activity.start_time.strftime("%H:%M")}" %>
       </div>
       <div class="members-card  ">
         <div class="participant-avatar">
           <%= cl_image_tag @chatroom.activity.itinerary.user.photos[0].key%>
+          <small> ----------- </small>
           <% @chatroom.activity.participations.each do |participation| %>
           <%= cl_image_tag participation.user.photos[0].key%>
           <% end %>
         </div>
-        <%= @chatroom.activity.itinerary.user.first_name %>
+        <strong><%= @chatroom.activity.itinerary.user.first_name %></strong>
+        <small> joined by </small>
         <% @chatroom.activity.participations.each do |participation| %>
-            <%= participation.user.first_name if participation.status == "confirmed" %>
+            <strong><%= participation.user.first_name if participation.status == "confirmed" %></strong>
         <% end %></p>
       </div>
     <% else %>
@@ -46,7 +48,8 @@
         <%= f.input :content,
           label: false,
           placeholder: "Message ##{@chatroom.name}",
-          wrapper_html: {class: "flex-grow-1"}
+          wrapper_html: {class: "flex-grow-1"},
+          input_html: { :cols => 50 }
         %>
         <%= f.submit "Send", class: "btn btn-success mb-3" %>
         </div>
