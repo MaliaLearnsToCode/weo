@@ -3,18 +3,20 @@
   <head>
     <title>Weo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
+    <%= render 'shared/ios_pwa_links' %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
