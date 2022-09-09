@@ -11,7 +11,7 @@
 
     <div id="approved_list flex-column">
       <% @confirmed_activities.each do |activity| %>
-        <div class="d-flex mb-2">
+        <div class="d-flex mb-2 tab1">
           <div id="approved_avatar">
             <div class="avatar_participation" >
               <%= cl_image_tag activity.itinerary.user.photos[0].key, width:60, height:60, crop: :fill, class: "rounded-circle" %>
@@ -23,8 +23,11 @@
           </div>
 
           <div id="chatbox">
-
+            <%= link_to activity_chatroom_path(activity, activity.chatroom), :action => 'go' do %>
+              <div>
               <img src="https://cdn-icons-png.flaticon.com/512/3193/3193015.png" height="30px" width="30px">
+              </div>
+            <% end %>
 
             <%= link_to "review", new_activity_review_path(activity) if activity.finished? %>
 
@@ -44,7 +47,7 @@
     <div id="pending_list flex-column">
       <% @participations_pending.each do |activity| %>
         <% unless activity.finished? %>
-          <div class="d-flex mb-2">
+          <div class="d-flex mb-2 tab1">
             <%= cl_image_tag activity.itinerary.user.photos[0].key, width:60, height:60, crop: :fill, class: "rounded-circle" %>
             <div id="activity2">
               <%= render "activity_details", activity: activity %>
