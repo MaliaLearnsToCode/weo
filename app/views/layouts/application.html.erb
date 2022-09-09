@@ -28,8 +28,10 @@
 
   <%= render "shared/flashes" %>
   <%= render "shared/navbar" if user_signed_in? %>
+  <div class="body-container">
+    <%= yield %>
+  </div>
 
-  <%= yield %>
   </body>
 
 </html>

@@ -3,17 +3,14 @@
 
       <div class="review-card">
         <div id="review_bar">
-          <div id="reviewer_name">
-            <%= review.author.first_name %>
-          </div>
-          <div id="review_rating">
-            <%= review.author.first_name %> rated <%= review.rating %>
+          <div id="reviewer_name" class="d-flex">
+            <span class="me-1"><strong><%= review.author.first_name %> </strong></span>  rated <%= review.rating %>/5
           </div>
         </div>
         <div id="review_location">
           <%= review.participation.activity.location %>
         </div>
-        <div>
+        <div class="px-4 pb-4">
           <%= review.comment %>
         </div>
       </div>
