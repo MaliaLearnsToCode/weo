@@ -1,20 +1,21 @@
 <div style="background-color:#F1E0E0;  border border-success">
   <% user.reviews.each do |review| %>
-    <div>
-      <div class="d-flex justify-content-between  border border-danger">
-        <% review.author.photos.each do |photo| %>
-          <div class="avatar-small" alt="avatar-small">
-            <%= cl_image_tag photo.key, height: 50, width: 50 %>
+
+      <div class="review-card">
+        <div id="review_bar">
+          <div id="reviewer_name">
+            <%= review.author.first_name %>
           </div>
-        <% end %>
-        <div class="mt-3 mx-4 ">
-          <strong><%= review.author.first_name %> </strong> rated
-          <strong><u><%= review.rating %></u></strong>
+          <div id="review_rating">
+            <%= review.author.first_name %> rated <%= review.rating %>
+          </div>
+        </div>
+        <div id="review_location">
+          <%= review.participation.activity.location %>
+        </div>
+        <div>
+          <%= review.comment %>
         </div>
       </div>
-    </div>
-    <div class="mb-4">
-      <%= review.comment %>
-    </div>
   <% end %>
 </div>
