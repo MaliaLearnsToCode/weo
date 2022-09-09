@@ -14,20 +14,23 @@
     </div>
     </div>
       <% activity.participations.where(status: "pending").each do |participation| %>
-        <div class ="container waiting d-flex m-3">
+        <div class ="container waiting d-flex justify-content-between align-items-center ">
           <h5><%= participation.user.first_name  %></h5>
-          <div>
-            <%= link_to "Reject",
-              destroyApproved_participation_path(participation),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          </div>
-          <div>
-            <%= simple_form_for participation do |f|%>
-              <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
-              <%= f.submit "Approve", class: 'btn btn-success'%>
-            <% end %>
-          </div>
+          <div class="d-flex align-items-center approve-form">
+            <div class="m-0">
+              <%= link_to destroyApproved_participation_path(participation), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <div class="btn btn-forreject">Reject</div>
+              <% end %>
+            </div>
 
+              <%= simple_form_for participation do |f|%>
+                <%= f.input :mode, :as => :hidden, :input_html => { :value => "accept" } %>
+                <div>
+                  <%= f.submit "Approve", class: 'btn btn-olivery'%>
+                </div>
+              <% end %>
+
+          </div>
         </div>
       <% end %>
     </div>
