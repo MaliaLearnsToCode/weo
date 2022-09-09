@@ -4,7 +4,7 @@
 
   <div class="w-100">
     <div class='position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
-      <div class="d-flex justify-content-start position-relative" >
+      <div class="d-flex align-items-center justify-content-between position-relative" >
         <div>
           <% @itinerary.user.photos.each do |photo| %>
               <div class="avatar_participation">
@@ -13,8 +13,10 @@
           <% end %>
           <strong id="itinerary_show_name"><%= @itinerary.user.first_name %></strong>
         </div>
+        <%= link_to "Back to itineraries", my_itineraries_itineraries_path, class: "btn btn-success mx-4" %>
       </div>
       <div class="bg-light p-4 itinerary_container">
+
         <div class="card-header">
           <strong><%= @itinerary.title %></strong>
         </div>
