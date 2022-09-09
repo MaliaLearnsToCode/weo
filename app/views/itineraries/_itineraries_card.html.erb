@@ -3,16 +3,16 @@
     <div class="swiper-wrapper">
       <% @itineraries.each do |itinerary| %>
         <div class="swiper-slide">
-          <div class='border position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
+          <div class='position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
             <div class="avatar-index d-flex position-absolute" >
               <%= cl_image_tag itinerary.user.photos[0].key, crop: :fill  %>
               <div class="m-0"><strong class="avatar-text"><%= itinerary.user.first_name %></strong></div>
             </div>
-            <div class="cardbg p-4 pt-5 m-3" style="height:360px;">
+            <div class="cardbg p-4 pt-5 m-3">
               <div class="card-header position-absolute">
                 <strong><%= itinerary.title %></strong>
               </div>
-              <ul class="itinerary-group">
+              <ul class="itinerary-group mt-4">
                 <li class="list-group-item"><%= itinerary.country %></li>
                 <li class="list-group-item"><%= "Starting from: #{itinerary.start_date.strftime("%-d/%^b/%-y")} to #{itinerary.end_date.strftime("%-d/%^b/%-y")}" %></li>
               </ul>
