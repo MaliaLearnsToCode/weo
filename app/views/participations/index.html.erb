@@ -13,7 +13,9 @@
       <% @confirmed_activities.each do |activity| %>
         <div class="d-flex mb-2">
           <div id="approved_avatar">
-            <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
+            <div class="avatar_participation" >
+              <%= cl_image_tag activity.itinerary.user.photos[0].key, width:60, height:60, crop: :fill, class: "rounded-circle" %>
+            </div>
           </div>
 
           <div id="activity1">
@@ -43,7 +45,7 @@
       <% @participations_pending.each do |activity| %>
         <% unless activity.finished? %>
           <div class="d-flex mb-2">
-            <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" class="avatar_participation">
+            <%= cl_image_tag activity.itinerary.user.photos[0].key, width:60, height:60, crop: :fill, class: "rounded-circle" %>
             <div id="activity2">
               <%= render "activity_details", activity: activity %>
             </div>
