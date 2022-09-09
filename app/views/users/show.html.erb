@@ -1,3 +1,4 @@
+
 <body>
 
   <div id="profile_banner">
@@ -18,7 +19,7 @@
 
 
   <div id="name">
-    <%= "#{current_user.first_name}" %>
+    <%= "#{@user.first_name}" %>
   </div>
 
   <div class="my_itineraries">
@@ -32,7 +33,7 @@
   <div class="create-itinerary">
     <%= link_to new_itinerary_path, :action => 'go' do %>
       <div class="m-0 create-itinerary-text" style="">Create Itineraries</div>
-      <div id="create_circle"></div>
+      <div class="create_circle"></div>
     <% end %>
   </div>
 
@@ -49,7 +50,7 @@
         <div>
           <%= render "reviewed", user:@user %>
         </div>
+      </div>
     </div>
 
-  </div>
-</body>
+  </body>

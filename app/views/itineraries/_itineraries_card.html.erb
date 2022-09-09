@@ -5,10 +5,7 @@
         <div class="swiper-slide">
           <div class='border position-relative my-5 px-2 itinerary-card' data-itinerary-target='card'>
             <div class="avatar-index d-flex position-absolute" >
-                <% if itinerary.photos.attached? %>
-                  <%= cl_image_tag itinerary.user.photos[0].key, crop: :fill  %>
-                <% else %>
-                <% end %>
+              <%= cl_image_tag itinerary.user.photos[0].key, crop: :fill  %>
               <div class="m-0"><strong class="avatar-text"><%= itinerary.user.first_name %></strong></div>
             </div>
             <div class="cardbg p-4 pt-5 m-3" style="height:360px;">
@@ -102,7 +99,6 @@
 
       .swiper-slide img {
         display: block;
-        width: 100%;
       }
     </style>
   </head>
@@ -121,7 +117,7 @@
         slidesPerView: "auto",
         coverflowEffect: {
           rotate: 50,
-          stretch: 0,
+          stretch: 40,
           depth: 100,
           modifier: 1,
           slideShadows: true,

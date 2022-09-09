@@ -40,7 +40,8 @@ body {
 
 .swiper-slide img {
   display: block;
-  width: 80%;
+  width: 120px;
+  height: 120px;
 }
 
 // input {
@@ -60,19 +61,19 @@ input[type="date"] {
 }
 
 .cardbg {
-  background-color: #EFDBDB;
+  background-color: #efdbdb;
   border: 1px solid #e76143;
   border-radius: 8px;
 }
 
-.card-body{
+.card-body {
   border-radius: 7px;
 }
 
 .activity-card {
   width: 100%;
   height: 100%;
-  border: 2px solid #E76143;
+  border: 2px solid #e76143;
   border-radius: 7px;
   margin: 10px 0 10px 0;
 }
@@ -87,7 +88,7 @@ input[type="date"] {
 
 .activity-date {
   width: 60px;
-  background-color: #E76143;
+  background-color: #e76143;
   border-radius: 5px;
   padding: 0px;
 }
@@ -121,14 +122,13 @@ input[type="date"] {
 .inputfont {
   input.mapboxgl-ctrl-geocoder--input {
     // -moz-border-radius: 100px;
-	  // -webkit-border-radius: 100px;
-	  // border-radius: 100px;
+    // -webkit-border-radius: 100px;
+    // border-radius: 100px;
     font-size: 0.8rem;
   }
   .mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
     border-radius: 16px;
   }
-
 }
 
 .create-itinerary-text2 {
@@ -148,11 +148,11 @@ input[type="date"] {
 }
 
 #create_circle2 {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-background-color: #E76143;
-position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #e76143;
+  position: relative;
 }
 
 .index_header {

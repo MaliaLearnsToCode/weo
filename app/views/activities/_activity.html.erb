@@ -1,14 +1,13 @@
 <div class="accordion-item" >
   <h2 class="accordion-header" id="header-<%= activity.id %>" >
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= "activity-#{activity.id}" %>" aria-expanded="false" aria-controls="<%= "activity-#{activity.id}" %>">
-      <%= activity.name %> <%= activity.start_date %> to <%= activity.end_date %>
-    </button>
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= "activity-#{activity.id}" %>" aria-expanded="false" aria-controls="<%= "activity-#{activity.id}" %>"  style=" color:#505050; background-color: #F1E0E0;" >
+      <%= activity.name %> (<%= "#{activity.start_date.strftime("%-d/%^b/%-y")} - #{activity.end_date.strftime("%-d/%^b/%-y")}" %>)</p>
   </h2>
   <div id="<%= "activity-#{activity.id}" %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-    <div class="accordion-body" >
-      <ul>
-        <li><%= activity.location %></li>
-        <li><%= activity.detail %></li>
+    <div class="accordion-body" style=" color:white; background-color:#878383;" >
+        <p><strong>Location: </strong><u><%= activity.location %></u></p>
+        <p><strong>Details: </strong><%= activity.detail %></p>
+        <p><strong><%= activity.max_participants %></strong>  participants </p>
       </ul>
     </div>
   </div>

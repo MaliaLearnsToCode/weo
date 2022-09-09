@@ -1,19 +1,19 @@
 
-<h1 style="color: #505050;">New Activity</h1>
+<center><h1 style="color: #505050;">Create New Activities</h1></center>
 
 <div data-controller="insert-in-list" style="background-color: #F1E0E0;">
-  <div class="accordion" id="accordionExample" data-insert-in-list-target="items">
+  <div class="accordion" id="accordionExample" data-insert-in-list-target="items" >
     <% @itinerary.activities.each do |activity| %>
       <%= render 'activity', activity: activity %>
     <% end %>
-    <div class="accordion-item" data-insert-in-list-target="accordion">
+    <div class="accordion-item" data-insert-in-list-target="accordion" style=" color:"505050">
       <% if @itinerary.activities.size < 5 %>
         <h2 class="accordion-header" id="form-panel">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" background-color: "#F1E0E0;">
             Create New Activity
           </button>
         </h2>
-        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="form-panel">
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="form-panel"  style=" color:505050"; background-color: "#F1E0E0;" >
           <div class="accordion-body">
             <div class="container">
               <div class="w-75 mx-auto mt-3 mb-5">
