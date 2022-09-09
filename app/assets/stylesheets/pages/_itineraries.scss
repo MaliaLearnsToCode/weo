@@ -132,17 +132,17 @@ input[type="date"] {
 }
 
 .create-itinerary-text2 {
-  position: relative;
-  right: 30px;
-  bottom: 60px;
+  position: absolute;
+  left: -20px;
+  top: 15px;
   font-size: 20px;
   color: black;
 }
 
 .create-itinerary-text3 {
-  position: relative;
-  right: 30px;
-  bottom: 70px;
+  position: absolute;
+  right: 20px;
+  bottom: 35px;
   font-size: 20px;
   color: black;
 }

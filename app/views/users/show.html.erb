@@ -21,21 +21,22 @@
   <div id="name">
     <%= "#{@user.first_name}" %>
   </div>
+  <% if current_user == @user %>
+    <div class="my_itineraries">
+      <%= link_to my_itineraries_itineraries_path, :action => 'go' do %>
+        <div id="my_circle"></div>
+        <div class="m-0 my_text" style="">My</div>
+        <div class="m-0 itinerary_text">Itineraries</div>
+      <% end %>
+    </div>
 
-  <div class="my_itineraries">
-    <%= link_to my_itineraries_itineraries_path, :action => 'go' do %>
-      <div id="my_circle"></div>
-      <div class="m-0 my_text" style="">My</div>
-      <div class="m-0 itinerary_text">Itineraries</div>
-    <% end %>
-  </div>
-
-  <div class="create-itinerary">
-    <%= link_to new_itinerary_path, :action => 'go' do %>
-      <div class="m-0 create-itinerary-text" style="">Create Itineraries</div>
-      <div class="create_circle"></div>
-    <% end %>
-  </div>
+    <div class="create-itinerary">
+      <%= link_to new_itinerary_path, :action => 'go' do %>
+        <div class="m-0 create-itinerary-text" style="">Create Itineraries</div>
+        <div class="create_circle"></div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div id class="rating_header">
     <h2>Rating: <u><strong>4.8</strong></u></h2>
