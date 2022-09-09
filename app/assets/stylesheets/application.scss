@@ -15,4 +15,10 @@
 body {
   width: 100vw;
   font-family: Source Sans Pro, sans-serif;
+
+  .body-container {
+    width:100%;
+    overflow: hidden;
+    padding-bottom: 52px;
+  }
 }
